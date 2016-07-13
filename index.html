@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="blank" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="stylesheet" href="src/css/parameter.css">
+    <link rel="stylesheet" href="src/css/silsidebar.css">
+    <link rel="stylesheet" href="src/css/widget-v10.css">
+	<script src="src/js/zepto-1.2.min.js"></script>
+	<script src="src/js/mass-1.17.10.min.js"></script>
+	<script src="src/js/iscroll-probe.js"></script>
+	<script src="src/js/template-native.js"></script>
+	<script src="src/js/comparenew.js"></script>
+	
+
+	
+</head>
+<body>
+	<section class="wrapper">
+		<!--导航-->
+        <nav class="nav-final">
+          <p>车型对比</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont icon-backward"></i>返回</a>
+        </nav>
+        <!--end导航-->
+        <section class="parameter-detail fn-mt">
+          <header><!--class="sticky"-->
+            <section class="compare">
+          <div class="left">
+            <label><input type="checkbox"><span>隐藏暂无</span></label>
+            <label><input type="checkbox"><span>隐藏相同</span></label>
+            <label><input type="checkbox" id="chkHL"><span>高亮差异</span></label>
+          </div>
+          <div class="main" id="scroller__compare">
+            <div class="slide">
+              <div class="column">
+                <i class="iconfont icon-add added"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+            <section class="markbar">
+          <strong>基本参数</strong>
+          <span class="markup">
+            <em><i class="iconcss"></i>标配</em>
+            <em><i class="iconcss"></i>选配</em>
+            <em><i class="iconcss"></i>无</em>
+          </span>
+        </section>
+          </header>
+          <section class="header-stand fn-hide"></section>
+          <section class="detail">
+             <div class="left">
+             </div>
+             <div class="main" id="scroller__detail">
+             <div class="slide">
+               <div class="data">
+
+               </div>
+             </div>
+        </div>
+         </section>
+        </section>
+
+
+        <section class="parameter-anchor" data-dropdown-close>
+            <div class="tag" data-role="dropdown" data-dropdown-only>目录</div>
+            <div class="cont fn-hide">
+            </div>
+        </section>
+
+        <i class="iconfont icon-backtop fn-hide" data-role="backTop"></i>
+	</section>
+
+	<!--load-->
+	<div id="loadData" class="widget">
+        <div id="loadSpec" style="display:none;">
+        </div>
+         <div id="loadSeries" style="display:none;">
+        </div>
+    </div>
+    <div id="loading" style="display:none;"></div>
+	<!--end load-->
+
+	<!-- 模板引擎 -->
+    <script id="popListData" type="text/html">
+        <div id="divloadSeries">
+            <div class="w-nav">
+                <h2 class="w-nav-title">奥迪A8-选择车型</h2><a href="javascript:void(0)" class="first-w-nav-back w-nav-back"><i class="w-icon-arrow w-arrow-left"></i><span>返回</span></a>
+                <div class="w-nav-mini">
+                    <a href="javascript:void(0)" class="w-nav-mini-btn">
+                        <img src="http://x.autoimg.cn/m/news/images/img-navmini.png">
+                    </a>
+                    <div class="w-nav-mini-pop w-pop-opacity w-fn-hide">
+                    <a href="http://m.autohome.com.cn/">首页</a>
+                    <a href="http://car.m.autohome.com.cn/car/">找车</a>
+                    <a href="http://dealer.m.autohome.com.cn/">经销商</a>
+                    <a href="http://buy.m.autohome.com.cn/0/0/0/0/0/0-1-1-1.html">降价</a>
+                    <a href="http://club.m.autohome.com.cn/">论坛</a>
+                    <i class="w-icon-opacity-arrow w-arrow-top"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-main">
+                <div id="nav_select_list" class="w-nav-channel w-nav-channel-col3">
+                    <ul>
+                        <li>
+                            <a href="javascript:void(0)" class="selected" data-target="#common_specselect_list">
+                                <span>奥迪A8<i class="w-arrow-top"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li style="position:relative;">
+                            <a id="btn_brandselect_list" href="javascript:void(0)" data-target="#common_brandselect_list">
+                                <span>按品牌查找<i class="w-arrow-top"></i>
+                                </span>
+                            </a><i class="w-icon w-icon-hot">HOT</i>
+                        </li>
+                        <li class="last">
+                            <a id="btn_historyselect_list" href="javascript:void(0)" data-target="#common_historyselect_list">
+                                <span>对比历史记录<i class="w-arrow-top"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div id="model_select_list" class="model"> 
+                    <div class="model-xm" id="common_specselect_list">
+                        <# for(var i=0;i<SpecGroupList.length;i++){#>
+                            <div class="w-title01">
+                                <h3>
+                                    <#if(SpecGroupList[i].ParamIsShow>0){#>
+                                        <#=SpecGroupList[i].Displacement>0?(SpecGroupList[i].Displacement.toFixed(1)+'升 '):(SpecGroupList[i].FuelTypeId==4?'电动 ':'') #>
+                                        <#=SpecGroupList[i].FlowmodeId>1?SpecGroupList[i].FlowmodeName+' ':''#>
+                                        <#=SpecGroupList[i].Enginepower#>马力
+                                    <#}else{#>
+                                        参数配置未公布
+                                    <#}#>
+                                </h3>
+                            </div>
+                            <ul class="w-list-infor01">
+                                <#for(var j=0 ;j<SpecGroupList[i].SpecList.length;j++){#>
+                                    <li>
+                                        <a href="#" data-id="<#=SpecGroupList[i].SpecList[j].id#>" class="add-sid">
+                                            <span class="caption">
+                                                <#=SpecGroupList[i].SpecList[j].name#>
+                                            </span><i class="icon-arrow arrow-right"></i>
+                                        </a>
+                                    </li>
+                                <#}#>
+                            </ul>
+                        <#}#>
+                        <#if(SpecUpcomingList.length>0){#>
+                            <div class="w-title01">
+                                <h3>即将销售</h3>
+                            </div>
+                            <ul class="w-list-infor01">
+                                <#for(var j=0 ;j<SpecUpcomingList.length;j++){#>
+                                    <li>
+                                        <a href="#" data-id="<#=SpecUpcomingList[j].id#>">
+                                            <span class="caption">
+                                                <#=SpecUpcomingList[j].name#>
+                                            </span><i class="icon-arrow arrow-right"></i>
+                                        </a>
+                                    </li>
+                                <#}#>
+                            </ul>
+                        <#}#>
+                        <#if(SpecStopList.length>0){#>
+                            <div class="w-title01">
+                                <h3>停售车型</h3>
+                            </div>
+                            <ul class="w-list-infor01">
+                                <#for(var j=0 ;j<SpecStopList.length;j++){#>
+                                    <li>
+                                        <a href="#" data-id="<#=SpecStopList[j].id#>">
+                                            <span class="caption">
+                                                <#=SpecStopList[j].name#>
+                                            </span><i class="icon-arrow arrow-right"></i>
+                                        </a>
+                                    </li>
+                                <#}#>
+                            </ul>
+                        <#}#>
+                    </div>
+                    <div class="model-xm" id="common_brandselect_list" style="display:none;">
+                        <div class="w-sift-letter" >
+                            <h3>请按拼音首字母选品牌</h3>
+                            <div class="w-sift-letter-content">
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">A</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">B</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">C</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">D</a>
+                                <span class="w-btn w-btn-big w-btn-disabled">E</span>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">F</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">G</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">H</a>
+                                <span class="w-btn w-btn-big w-btn-disabled">I</span>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">J</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">K</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">L</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">M</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">N</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">O</a>
+                                <span class="w-btn w-btn-big w-btn-disabled">P</span>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">Q</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">R</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">S</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">T</a>
+                                <span class="w-btn w-btn-big w-btn-disabled">U</span>
+                                <span class="w-btn w-btn-big w-btn-disabled">V</span>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">W</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">X</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">Y</a>
+                                <a class="w-btn w-btn-big " href="javascript:void(0);">Z</a>
+                            </div>
+                        </div>
+                        <div id="common_brand_list">
+                        
+                        </div>
+                    </div>
+                    <div  class="model-xm" id="common_historyselect_list" style="display:none;">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="divloadSpec"></div>
+    </script>
+	
+	<!-- 模板引擎 品牌列表 -->
+    <script id="popListDataBrand" type="text/html">
+        <#if(FirstLetter=="0"){ #>
+            <div class="w-title01">
+                <h3>热门品牌</h3>
+            </div>
+        <#}#>
+         <ul class="w-list-brand">
+            <# for(var i=0;i<BrandList.length;i++){ #>
+                <li class="item">
+                    <a href="#" data-brandid="<#=BrandList[i].brandid #>" class="js-branditem">
+                        <img src="<#=BrandList[i].logo #>">
+                        <span class="noskip"><#=BrandList[i].brandname #></span>
+                    </a><i class="w-icon-arrow w-arrow-top"></i>
+                </li>
+            <#}#>
+             <li id="common_seriesselect_items" class="item-sub" style="display:none;"></li>
+        </ul>
+    </script>
+
+     <!-- 模板引擎 历史列表 -->
+    <script id="popListDataHistory" type="text/html">
+        <# if(SpecList&&SpecList.length>0){#>
+            <ul class="w-list-infor01">
+                <#for(var i=0 ;i<SpecList.length;i++){#>
+                    <li>
+                        <a href="#" data-id="<#=SpecList[i].Id#>" class="add-sid">
+                            <span class="caption">
+                            <#=SpecList[i].SeriesName#> <#=SpecList[i].Name#>
+                            </span><i class="icon-arrow arrow-right"></i>
+                        </a>
+                    </li>
+                <#}#>
+            </ul>
+        <#}else{#>
+            <div class="list-null">抱歉，暂无浏览记录！</div>
+         <#}#>
+    </script>
+
+
+	<script type="text/javascript">
+        //页面初始化
+        $(function () {
+            //对比列表添加以及数据操作
+           var paramCompare = new compareList({
+                seriesId: "146",   //栏目ID
+                seriesName: "奥迪A8",
+                ids: [25379,25189,0,0]  //车型对比ID
+            });
+            $('.js-back').on('click', function () { history.go(-1); });
+
+            window.paramCompare = paramCompare;
+        });
+
+    </script>
+    <script src="src/js/configcommon.js"></script>
+</body>
+</html>
