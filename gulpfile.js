@@ -31,7 +31,7 @@ gulp.task('copy',function(cb){
 
 gulp.task('copy_html',function(cb){
     gulp.src(['*.html'])
-    	.pipe(replace('src/', 'docs/'))
+    	.pipe(replace('src/', ''))
     	//.pipe(minifyHTML({collapseWhitespace: true}))
     	.pipe(gulp.dest('docs'))
 });
@@ -39,7 +39,7 @@ gulp.task('copy_html',function(cb){
 gulp.task('jsmin', function (cb) {
   pump([
         gulp.src(['src/js/*.js']),
-        replace('src/', 'docs/'),
+        replace('src/', ''),
         uglify(),
         gulp.dest('docs/js/')
     ],
