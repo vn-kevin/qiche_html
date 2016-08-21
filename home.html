@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选机</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/parameter.css">
+    <style>
+        html,body{
+            background: #628cdf;
+        }
+    </style>
+</head>
+<body>
+    <section class="wrapper">
+        <header class="header clearfix index-header">
+            <div class="fl h_q">天气 <span class="m f_blue">晴</span></div>
+            <a href="#" class="fr f_blue" data-url="src/json/city.js" data-template="false" data-role="aside" data-title="选择省份" data-relation="block-area">长沙 <i class="iconfont xl">&#xe610;</i></a>
+        </header>
+        <section class="index-img">
+        </section>
+    </section>
+    <nav class="index-nav">
+            <a class="nav-wj" href="car_home.html">
+                <i class="iconfont">&#xe60b;</i>
+                <span>挖掘机</span>
+            </a>
+            <a class="nav-zz" href="car_home.html">
+                <i class="iconfont">&#xe614;</i>
+                <span>装载机</span>
+            </a>
+    </nav>
+    <nav class="footer-nav">
+        <a class="nav-index active">
+            <i class="iconfont">&#xe604;</i>
+            <span>选机</span>
+        </a>
+        <a class="nav-server">
+          <i class="iconfont">&#xe612;</i>
+          <span>服务</span>
+        </a>
+        <a class="nav-my">
+          <i class="iconfont">&#xe606;</i>
+          <span>我的</span>
+        </a>
+    </nav>
+
+    <!-- start 地区 -->
+    <aside class="aside block-area">
+        <nav class="nav-final">
+            <p class="f_c666">选择省份</p>
+            <a class="back" href="#">关闭</a>
+        </nav>
+        <section class="aside-main list-ok aside-main-area">
+        </section>
+    </aside>
+    <aside class="aside block-area-sub">
+        <nav class="nav-final">
+            <p class="f_c666">选择城市</p>
+            <a class="back" href="#">返回</a>
+            <a class="masks" href="#">关闭</a>
+        </nav>
+        <section class="aside-main list-ok">
+        </section>
+    </aside>
+    <!-- end 地区 -->
+
+    <script src="src/js/zepto-1.2.min.js"></script>
+    <script src="src/js/fastclick.min.js"></script>
+    <script src="src/js/template-native.js"></script>
+    <script src="src/js/searchAll.js"></script>
+    <script src="src/js/main.js"></script>
+    
+</body>
+</html>

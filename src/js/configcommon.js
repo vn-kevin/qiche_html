@@ -206,7 +206,9 @@ $(function () {
                 paramToggle();
             }
         });
-
+        $('.toggleHide').click(function(){
+            paramToggles();
+        });
         function paramToggle(checkClass) {
             $paramItem.each(function (index, group) {
                 var isItemSame = true;
@@ -217,10 +219,17 @@ $(function () {
                         return false;
                     }
                 });
-
                 $paramItem.eq(index).toggleClass('fn-hide', isItemSame);
                 $paramGroup.eq(index).toggleClass('fn-hide', isItemSame);
                 $paramAnchor.find('.item').eq(index).toggleClass('fn-hide', isItemSame);
+            });
+        }
+        function paramToggles(){
+            $paramItem.find('.item').each(function(index,item){
+                if($(item).find('.item-same').length){
+                    $(item).toggleClass('fn-hide');
+                    $paramDetail.find('.main .group .item').eq(index).toggleClass('fn-hide');
+                }
             });
         }
 

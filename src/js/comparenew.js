@@ -5,38 +5,23 @@
     this._EventHandle = $({});
     this.init();
   };
-
+ function displayList(e,n){
+    var _this=e;
+    side.brand_detail.open();
+    $('#div_BrandDetailListContent h3').text(n);
+ }
   function displaySpec(e) {
-    var _this = e;
-    var stateLoad = _this.defaultParam.sereisStateLoad; //加载后 不在请求
-    var url = PATH_LIST;
-    if (!stateLoad) {
-      _this.popEvent();
-      $.ajax({
-        url: url,
-        data: {
-          seriesId: _this.config.seriesId,
-          state: 4,
-          v: 1
-        },
-        dataType: "jsonp",
-        success: function(data) {
-          _this.renderPopList('loadSpec', 'popListData', data);
-          _this.defaultParam.sereisStateLoad = true;
-          $('#loadSpec').show();
-          $('.wrapper').hide(); 
-          document.body.scrollTop = 0;
-          $('.parameter-detail header').removeClass('sticky');
-          $('.parameter-detail .header-stand').addClass('fn-hide');
-        }
-      });
-    } else {
-      $('#loadSpec').show();
-      $('.wrapper').hide();
-      document.body.scrollTop = 0;
-      $('.parameter-detail header').removeClass('sticky');
-      $('.parameter-detail .header-stand').addClass('fn-hide');
-    }
+    side.brand.open();
+   /* var html='';
+        html+="<div class=\'Bd_search\'>";
+        html+="  <i class=\'Bd_i iconfont\'>&#xe600;</i>";
+        html+="    <input type=\'text\' class=\'Bd_t\' placeholder=\'请输入品牌名称\'>";
+        html+="    <a href=\'javascript:SeachAll({type:1})\' class=\'Bd_b\' >搜索</a>";
+        html+="</div>";
+
+        html+='<div class="series">';
+        html+='</div>';
+    $('#div_BrandListContent').html(html);*/
   }
 
   compareList.prototype = {
@@ -86,12 +71,26 @@
         _this.controlPopItem('remove', specId);
       });
       //添加
-      $('i.added').on("click", function() {
-        displaySpec(_this);
+      $('i.added').on("click", function(evt) {
+        displaySpec(evt);
       });
-      $('#compare_ul').on("click", "span.null", function() {
-        displaySpec(_this);
+      //选择品牌
+      //$('#div_BrandListContent').off("click",'.series a');
+      $('#div_BrandListContent').on("click",'.series a',function(evt) {
+        var name=$(this).find('h4').text();
+        displayList(_this,'品牌 > '+name);
       });
+      $('#div_BrandDetailListContent').off('click','a')
+      $('#div_BrandDetailListContent').on('click','a',function() {
+        var nid = $(this).attr('data-ids');
+        _this.config.ids.push(nid);
+        alert('已选中'+_this.config.ids);
+        _this.getData(_this.config.ids);
+        side.brand.close();
+        side.brand_detail.close();
+
+      });
+
 
       //对比               
       $("span[data-comid]").on("click", function() {
@@ -187,7 +186,7 @@
           if (valueItems[0] && valueItems[0].specid != 0) {
             html += '<div class="column" data-specid="' + valueItems[0].specid + '">';
             html += '<h4>' + valueItems[0].value + "</h4>";
-            html += '<p class="price">厂家指导价：<strong>' + valuePriceItems[0].value + "</strong></p>";
+            //html += '<p class="price">厂家指导价：<strong>' + valuePriceItems[0].value + "</strong></p>";
             html += '<span class="btn small" data-comid="' +
               valueItems[0].specid +
               '" data-name="' +
@@ -201,12 +200,12 @@
             if (valueItems[i] && valueItems[i].specid != 0) {
               html += '<div class="column" data-specid="' + valueItems[i].specid + '">';
               html += '<h4>' + valueItems[i].value + "</h4>";
-              html += '<p class="price">' + valuePriceItems[i].value + "</p>";
-              html += '<i class="iconfont icon-cross reduce" data-specid="' + valueItems[i].specid + '"></i>';
+              //html += '<p class="price">' + valuePriceItems[i].value + "</p>";
+              html += '<i class="cross reduce" data-specid="' + valueItems[i].specid + '">&#xe608;</i>';
               html += '</div>';
             } else {
               if (i <= 3) {
-                html += '<div class="column"><i class="iconfont icon-add added"></i></div>';
+                html += '<div class="column"><i class="iconfont add added">&#xe603;</i></div>';
               }
             }
           }
@@ -224,7 +223,7 @@
       for (var i in d) {
         var groupName = d[i].name;
         //添加vs标题信息
-        titleHtml += '<div class="group"><h4><strong>' + groupName + '</strong><span class="markup"><em><i class="iconcss"></i>标配</em><em><i class="iconcss"></i>选配</em><em><i class="iconcss"></i>无</em></span></h4>';
+        titleHtml += '<div class="group"><h4><strong>' + groupName + '</strong></h4>';
         //添加表格内容
         html += '<div class="group">';
         if (d[i].paramitems) {
@@ -234,7 +233,7 @@
             var items = groupItems[j].valueitems;
             var classType = _this.checkTypeItem(items);
 
-            if (itemName == "车型名称") {
+            if (itemName == "机械名称") {
               continue;
             }
 
@@ -243,7 +242,7 @@
             html += '<div class="item">';
             for (var k in items) {
               if (items[k] !== null && items[k] !== undefined) {
-                if (itemName == "厂商指导价(元)") {
+                if (itemName == "厂商指导价<br/>(元)") {
                   items[k].value = "<strong>" + items[k].value + "</strong>";
                 }
                 html += '<span class="inner ' + classType + '" data-specid="' + items[k].specid + '" >' + items[k].value + '</span>';
@@ -251,8 +250,8 @@
             }
             html += '</div>';
 
-            if (itemName == '厂商指导价(元)') {
-              html += '<div class="item js-subsidy item-differ fn-hide">';
+            if (itemName == '厂商指导价<br/>(元)') {
+              /*html += '<div class="item js-subsidy item-differ fn-hide">';
               var index = 0;
               for (var k in items) {
                 if (items[k] !== null && items[k] !== undefined) {
@@ -260,8 +259,9 @@
                 }
                 index++;
               }
-              html += '</div>';
-              titleHtml += '<div class="item js-subsidy fn-hide"><span class="inner item-differ">国家/地方补贴(元)</span></div>';
+              html += '</div>';*/
+              
+              /*titleHtml += '<div class="item js-subsidy fn-hide"><span class="inner item-differ">国家/地方补贴(元)</span></div>';
 
               html += '<div id="trMinPrice" class="item item-differ">';
               var index = 0;
@@ -271,8 +271,8 @@
                 }
                 index++;
               }
-              html += '</div>';
-              titleHtml += '<div class="item"><span class="inner inquiry-span item-waitload">本地参考底价(元)</span></div>';
+              html += '</div>';*/
+              //titleHtml += '<div class="item"><span class="inner inquiry-span item-waitload">本地参考底价(元)</span></div>';
             }
           }
         }
@@ -308,43 +308,6 @@
         ids = _this.config.ids,
         cityid = $.getCookie('cookieCityId') == undefined ? '' : $.getCookie('cookieCityId');
       cityid = 110100;
-      url = PATH_PRICE + ids + "&city=" + cityid;
-      $.getJSON(url, function(d) {
-        if (d == null || d == undefined || d.body == null || d.body == undefined || d.body.item == null || d.body.item == undefined) {
-          return;
-        }
-        for (var i in d.body.item) {
-          var item = d.body.item[i];
-
-          var html = '<strong>' + (item.MinPrice / 10000).toFixed(2) + '万</strong><br/><a class="enquire" href="http://dealer.m.autohome.com.cn/dealer/order-' + item.SeriesId + '-' + item.SpecId + '.html#pvareaid=2113129">询底价</a>'
-          if (cityid == '') {
-            html = '<span class="price-inquiry">-</span>';
-          }
-          $('#trMinPrice [data-specid="' + item.SpecId + '"]').html(html);
-        }
-
-        $('#trMinPrice span').each(function () {
-            if ($(this).text() == '加载中...') {
-                $(this).text("-");
-            }
-        });
-
-          //设置是否相同样式
-        var minPriceList = $("#trMinPrice>span");
-        var data = [];
-        if (minPriceList && minPriceList.length > 0) {
-            for (var i = 0; i < minPriceList.length; i++) {
-                var item = new Object();
-                item.value = $(minPriceList[i]).text();
-                data[i] = item;
-            }
-            var classType = _this.checkTypeItem(data);
-            $("#trMinPrice>span").addClass(classType);
-            $(".item-waitload").addClass(classType);
-            //触发高亮显示
-            _this.otherDeal();
-        }
-      });
 
       if ($.grep(_this.defaultParam.currData, function(n) {
           return n.name == '电动机';
@@ -371,7 +334,7 @@
       for (var p in d) {
         if (d[p].name === "基本参数") {
           for (var pItem in d[p].paramitems) {
-            if (d[p].paramitems[pItem].name === "车型名称") {
+            if (d[p].paramitems[pItem].name === "机械名称") {
               return d[p].paramitems[pItem].valueitems;
             }
           }
@@ -657,7 +620,7 @@
 
   //数据接口
   var PATH_LIST = "src/json/add.json",
-    PATH_DATA = 'src/json/data.json?',
+    PATH_DATA = 'src/json/data.json?ids=',
     PATH_HISTORY = 'src/json/HistoryComSpecNew.json?',
     PATH_BRAND = 'src/json/pinpai.json?',
     PATH_SERIES = '/ashx/spec/GetSeriesListByBrandIdNew.ashx?brandid=',

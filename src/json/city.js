@@ -1,3 +1,8 @@
+<div class="Bd_search">
+	<i class="Bd_i iconfont">&#xe600;</i>
+    <input type="text" class="Bd_t" placeholder='请输入您要搜索的省份'>
+    <a href="javascript:SeachAll({type:0})" class="Bd_b" >搜索</a>
+</div>
 <h3>定位城市</h3>
 <ul class="list-line">
   <li><i class="iconfont icon-pos"></i>北京</li>
@@ -9,13 +14,11 @@
     <a class='btn simple' href='#areaA'>北京</a>
     <a class='btn simple' href='#areaA'>北京</a>
 </div>
-<div data-role="quickjump" data-titcell="jump-tag" style="
-    position: relative;
-">
+<div data-role="quickjump" data-titcell="jump-tag">
 
 <div>
 <h3 id="areaA" data-tips="A">A</h3>
-<ul class="list-line"><li data-title="安徽" data-url="src/json/citys.js" data-relation="block-area-sub" data-role="aside">安徽</li></ul>
+<ul class="list-line"><li data-title="安徽" data-url="src/json/citys.js" data-relation="block-area-sub" data-role="aside" href="#">安徽</li></ul>
 <h3 id="areaB" data-tips="B">B</h3><ul class="list-line"><li data-title="北京" _onclick="window.location='/beijing/list/'" data-url="src/json/citys.js">北京</li></ul>
 <h3 id="areaC" data-tips="C">C</h3><ul class="list-line"><li data-title="重庆" _onclick="window.location='/chongqing/list/'" data-url="src/json/citys.js">重庆</li></ul>
 <h3 id="areaF" data-tips="F">F</h3><ul class="list-line"><li data-title="福建" data-url="src/json/citys.js" data-relation="block-area-sub" data-role="aside">福建</li></ul>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>挖掘机</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/parameter.css">
+</head>
+<body>
+<section class="wrapper sidebar-floor">
+   
+    <nav class="nav-final">
+          <p>挖掘机</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+          <div class="final-right">
+            <span class="searchs">
+                <i class='iconfont'>&#xe600;</i>
+                长沙
+            </span>
+          </div>
+    </nav>
+    <section class="carousel-images downpa" data-role="carousel" data-timeout="3000" data-autoplay="false" data-speed="300" data-scale="4x2" >
+        <ul class="carousel">
+            <li class="c-item" data-index="0" style="position:relative;float:left">
+            <a href='javascript:;'><img index='0' data-src-load="src/img/a0.png"></a></li>
+            <li class="c-item" data-index="1" style="position:relative;float:left">
+            <a href='javascript:;'><img index='1' data-src-load="src/img/a1.png"></a></li>
+        </ul>  
+        <div class="pos">
+        </div>   
+    </section>
+
+    <section class="home-main">
+        <div class="match">
+            <span class="item" id="sp_CollectSeries"><i class="iconfont a1">&#xe60a;</i><br>我的收藏</span>
+            <span class="item" id="sp_HistorySeries"><i class="iconfont a2">&#xe609;</i><br>浏览历史</span>
+            <span class="item" id="sp_HotSell"><i class="iconfont a3">&#xe601;</i><br>热销排行</span>
+        </div>
+        <div class="block-hot">
+            <h3>热门品牌
+                <div class="js-more" data-url="src/json/pinpai.js" data-template="false" data-role="aside" data-title="品牌" data-relation="block-pinpai">更多 <i class="iconfont">&#xe615;</i></div>
+            </h3>
+            <ul class="hot-brandgroup">
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工1</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工2</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工3</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工4</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工5</span></li>
+
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工6</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工7</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工8</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工9</span></li>
+                <li v="1"><img src="src/img/index_lg.jpg"><br><span>龙工10</span></li>
+            </ul>
+
+        </div>
+        <div class="block-hot">
+            <h3>系列选机</h3>
+            <div class="itemgroup">
+                <div class="item">
+                    <span class="btn">国产</span>
+                </div>
+                <div class="item">
+                    <span class="btn">韩系</span>
+                </div>
+                <div class="item">
+                    <span class="btn">小型</span>
+                </div>
+                <div class="item">
+                    <span class="btn">紧凑型</span>
+                </div>
+            </div>
+            
+        </div>
+        <div class="block-hot">
+            <h3>吨位选型</h3>
+
+            <div class="itemgroup">
+                <div class="item1">
+                    <span class="btn">6T以下</span>
+                </div>
+                <div class="item1">
+                    <span class="btn">6T-10T</span>
+                </div>
+                <div class="item1">
+                    <span class="btn">10T-20T</span>
+                </div>
+                <div class="item1">
+                    <span class="btn">20T-30T</span>
+                </div>
+                <div class="item1">
+                    <span class="btn">30T-40T</span>
+                </div>
+                <div class="item1">
+                    <span class="btn">40T-50T</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+   
+</section>
+<nav class="footer-nav">
+        <a class="nav-index active">
+            <i class="iconfont">&#xe604;</i>
+            <span>选机</span>
+        </a>
+        <a class="nav-server">
+          <i class="iconfont">&#xe612;</i>
+          <span>服务</span>
+        </a>
+        <a class="nav-my">
+          <i class="iconfont">&#xe606;</i>
+          <span>我的</span>
+        </a>
+</nav>
+
+<!--品牌内容侧栏-->
+      <aside class="sidebar findcar-sidebar brandcore" data-role-side='{"container": ".sidebar-floor", "target": "brandcore", "open": "sidebar-in", "close": "sidebar-out", "delay": "true", "name": "brand"}'>
+        
+          <div id="div_RightBrand" class="module" data-side-view="right">
+            <div id="yeti" style="display:none" class="brandevent"></div>
+           <div data-role="tabSwitch" data-tab-active="1"  id="div_BrandListContent">
+                <div class="Bd_search">
+                    <i class="Bd_i iconfont">&#xe600;</i>
+                    <input type="text" class="Bd_t" placeholder='请输入品牌名称'>
+                    <a href="javascript:SeachAll({type:1})" class="Bd_b" >搜索</a>
+                </div>
+                <h3>品牌</h3>
+                <div class="series">
+                    <a href="#">
+                    <img src="src/img/lg.jpg">
+                    <h4>龙工</h4>
+                    </a>
+                    <a href="#">
+                    <img src="src/img/lg.jpg">
+                    <h4>龙工</h4>
+                    </a>
+                </div>
+          </div>
+        </div>
+        <div class="mask" data-side-mask data-side-close></div>
+      </aside>
+  <!--end品牌内容侧栏-->
+<!--详细机械内容侧栏-->
+    <aside class="sidebar findcar-sidebar brandcore" data-role-side='{"container": ".sidebar-floor", "target": "brandcore", "open": "sidebar-in", "close": "sidebar-out", "delay": "true", "name": "brand_detail"}'>
+        
+          <div id="div_RightBrand" class="module" data-side-view="right">
+            <div id="yeti" style="display:none" class="brandevent"></div>
+           <div data-role="tabSwitch" data-tab-active="1"  id="div_BrandDetailListContent">
+                <h3>品牌</h3>
+                <div class="series">
+                    <a href="#" data-ids="23">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                    <a href="#" data-ids="24">
+                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                    <a href="#" data-ids="25">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                    <a href="#" data-ids="26">
+                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                </div>
+          </div>
+        </div>
+        <div class="mask" data-side-mask data-side-close></div>
+      </aside>
+<!--end详细机械内容侧栏-->
+    <!--all pinpai-->
+    <aside class="aside block-pinpai">
+        <nav class="nav-final">
+            <p>品牌</p>
+            <a class="back" href="#"><i class="iconfont">&#xe60e;</i></a>
+        </nav>
+        <section class="aside-main list-ok aside-main-area">
+        </section>
+    </aside>
+
+    <script src="src/js/zepto-1.2.min.js"></script>
+    <script src="src/js/fastclick.min.js"></script>
+    <script src="src/js/template-native.js"></script>
+    <script src="src/js/searchAll.js"></script>
+    <script src="src/js/main.js"></script>
+
+<script type="text/javascript">
+        //页面初始化
+        $(function () {
+            $('.js-back').on('click', function () { history.go(-1); });
+
+            //收藏
+            $('.match').on('click','.item',function(){
+                var i=$(this).index(),
+                    title='',
+                    url='';
+                switch(i){
+                    case 0:
+                        title='我的收藏';
+                    break;
+                    case 1:
+                        title='浏览记录';
+                    break;
+                    case 2:
+                        title='热销排行';
+                    break;
+                }
+                $('#div_BrandDetailListContent h3').text(title);
+                side.brand_detail.open();
+            });
+            //热门品牌
+            $('.hot-brandgroup').on('click','li',function(){
+                var t=$(this).text();
+                $('#div_BrandDetailListContent h3').text(t);
+                //内容拼接部分
+                side.brand_detail.open();
+            });
+            //更多品牌
+            $('.block-pinpai').on('click','.series a',function(){
+                var t=$('#div_BrandListContent h3').text()+' > '+$(this).text();
+                $('#div_BrandDetailListContent h3').text(t);
+                //内容拼接部分
+                side.brand_detail.open();
+            });
+            //系列
+            $('.itemgroup').on('click','.item .btn',function(){
+                var t=$(this).text();
+                $('#div_BrandListContent h3').text(t);
+                //内容拼接部分
+                side.brand.open();
+            });
+            //系列 -> 品牌
+            $('#div_BrandListContent').on('click','.series a',function(){
+                var t=$('#div_BrandListContent h3').text()+' > '+$(this).text();
+                $('#div_BrandDetailListContent h3').text(t);
+                //内容拼接部分
+                side.brand_detail.open();
+            });
+            //吨位
+            $('.itemgroup').on('click','.item1 .btn',function(){
+                var t=$(this).text();
+                $('#div_BrandDetailListContent h3').text(t);
+                //内容拼接部分
+                side.brand_detail.open();
+            });
+
+
+        });
+
+    </script>
+</body>
+</html>

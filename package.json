@@ -10,6 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.0.0",
+    "pump": "^1.0.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }

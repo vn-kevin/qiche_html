@@ -1,1 +1,13 @@
-{"SpecList":[{"Id":25189,"Name":"2016款 A8L 30 FSI 舒适型","SeriesId":146,"SeriesName":"奥迪A8"},{"Id":25379,"Name":"2016款 1.4L 手动风尚型","SeriesId":145,"SeriesName":"POLO"}]}
+{
+	"SpecList": [{
+		"Id": 25189,
+		"Name": "2016款 A8L 30 FSI 舒适型",
+		"SeriesId": 146,
+		"SeriesName": "奥迪A8"
+	}, {
+		"Id": 25379,
+		"Name": "2016款 1.4L 手动风尚型",
+		"SeriesId": 145,
+		"SeriesName": "POLO"
+	}]
+}
