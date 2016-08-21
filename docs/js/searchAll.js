@@ -1,0 +1,1 @@
+function SeachAll(e){var a={};$.extend(!0,a,e);var c="";switch(a.type){case 0:c="搜索城市";break;case 1:c="品牌名称"}console.log(c)}

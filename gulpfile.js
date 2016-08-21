@@ -26,22 +26,22 @@ var replace = require("gulp-replace");
 
 gulp.task('copy',function(cb){
     gulp.src(['src/{images,img,json}/*.*'])
-    	.pipe(gulp.dest('dist'))
+    	.pipe(gulp.dest('docs'))
 });
 
 gulp.task('copy_html',function(cb){
     gulp.src(['*.html'])
-    	.pipe(replace('src/', ''))
+    	.pipe(replace('src/', 'docs/'))
     	//.pipe(minifyHTML({collapseWhitespace: true}))
-    	.pipe(gulp.dest('dist'))
+    	.pipe(gulp.dest('docs'))
 });
 
 gulp.task('jsmin', function (cb) {
   pump([
         gulp.src(['src/js/*.js']),
-        replace('src/', ''),
+        replace('src/', 'docs/'),
         uglify(),
-        gulp.dest('dist/js/')
+        gulp.dest('docs/js/')
     ],
     cb
   );
@@ -50,7 +50,7 @@ gulp.task('jsmin', function (cb) {
 gulp.task('cssmin', function (cb) {
   pump([
         gulp.src(['src/css/*.css']),
-        gulp.dest('dist/css/')
+        gulp.dest('docs/css/')
     ],
     cb
   );

@@ -1,0 +1,128 @@
+{
+	"param": [{
+		"name": "基本参数",
+		"paramitems": [{
+			"name": "机械名称",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "ZL50D-3N"
+			}, {
+				"specid": 25189,
+				"value": "ZL30B-ⅡN"
+			}]
+		}, {
+			"name": "厂商指导价<br/>(元)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "117.59万"
+			}, {
+				"specid": 25189,
+				"value": "87.98万"
+			}]
+		}, {
+			"name": "工作质量<br/>(t)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "16.9"
+			}, {
+				"specid": 25189,
+				"value": "10.6"
+			}]
+		}, {
+			"name": "斗容<br/>(m3)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "2.5、2.7、3.9"
+			}, {
+				"specid": 25189,
+				"value": "1.5、1.7、2.1"
+			}]
+		}, {
+			"name": "额定载重量<br/>(t)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": 5
+			}, {
+				"specid": 25189,
+				"value": 5
+			}]
+		}, {
+			"name": "最大牵引力<br/>(KN)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "160"
+			}, {
+				"specid": 25189,
+				"value": "155±3"
+			}]
+		}, {
+			"name": "掘起力<br/>(kN)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "170"
+			}, {
+				"specid": 25189,
+				"value": "102"
+			}]
+		}]
+	},{
+		"name": "其他参数",
+		"paramitems": [{
+			"name": "机械名称",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "ZL50D-3N"
+			}, {
+				"specid": 25189,
+				"value": "ZL30B-ⅡN"
+			}]
+		},  {
+			"name": "工作质量<br/>(t)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "16.9"
+			}, {
+				"specid": 25189,
+				"value": "10.6"
+			}]
+		}, {
+			"name": "斗容<br/>(m3)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "2.5、2.7、3.9"
+			}, {
+				"specid": 25189,
+				"value": "1.5、1.7、2.1"
+			}]
+		}, {
+			"name": "额定载重量<br/>(t)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": 5
+			}, {
+				"specid": 25189,
+				"value": 5
+			}]
+		}, {
+			"name": "最大牵引力<br/>(KN)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "160"
+			}, {
+				"specid": 25189,
+				"value": "155±3"
+			}]
+		}, {
+			"name": "掘起力<br/>(kN)",
+			"valueitems": [{
+				"specid": 25379,
+				"value": "170"
+			}, {
+				"specid": 25189,
+				"value": "102"
+			}]
+		}]
+	}],
+	"config": [],
+	"search": ""
+}

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>对比页面</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="docs/css/style.css">
+    <link rel="stylesheet" href="docs/css/parameter.css">
+    <link rel="stylesheet" href="docs/css/silsidebar.css">
+    <link rel="stylesheet" href="docs/css/widget-v10.css">
+
+
+
+</head>
+<body>
+	<section class="wrapper sidebar-floor">
+		<!--导航-->
+        <nav class="nav-final">
+          <p>机型对比</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+          <span class="final-right toggleHide">隐藏相同项</span>
+        </nav>
+        <!--end导航-->
+        <section class="parameter-detail fn-mt">
+          <header><!--class="sticky"-->
+            <section class="compare">
+          <div class="left">
+        
+          </div>
+          <div class="main" id="scroller__compare">
+            <div class="slide">
+              <div class="column">
+                <i class="iconfont icon-add added"></i>
+              </div>
+            </div>
+          </div>
+        </section>
+            <section class="markbar">
+          <strong>基本参数</strong>
+        </section>
+          </header>
+          <section class="header-stand fn-hide"></section>
+          <section class="detail">
+             <div class="left">
+             </div>
+             <div class="main" id="scroller__detail">
+             <div class="slide">
+               <div class="data">
+
+               </div>
+             </div>
+        </div>
+         </section>
+        </section>
+        <p class="C_ps">注：以上仅供参考，以店内实际为准</p>
+        
+	</section>
+
+	
+	<!-- 模板引擎 品牌列表 -->
+    <script id="popListDataBrand" type="text/html">
+        <#if(FirstLetter=="0"){ #>
+            <div class="w-title01">
+                <h3>热门品牌</h3>
+            </div>
+        <#}#>
+         <ul class="w-list-brand">
+            <# for(var i=0;i<BrandList.length;i++){ #>
+                <li class="item">
+                    <a href="#" data-brandid="<#=BrandList[i].brandid #>" class="js-branditem">
+                        <img src="<#=BrandList[i].logo #>">
+                        <span class="noskip"><#=BrandList[i].brandname #></span>
+                    </a><i class="w-icon-arrow w-arrow-top"></i>
+                </li>
+            <#}#>
+             <li id="common_seriesselect_items" class="item-sub" style="display:none;"></li>
+        </ul>
+    </script>
+
+    <!--品牌内容侧栏-->
+      <aside class="sidebar findcar-sidebar brandcore" data-role-side='{"container": ".sidebar-floor", "target": "brandcore", "open": "sidebar-in", "close": "sidebar-out", "delay": "true", "name": "brand"}'>
+        
+          <div id="div_RightBrand" class="module" data-side-view="right">
+            <div id="yeti" style="display:none" class="brandevent"></div>
+           <div data-role="tabSwitch" data-tab-active="1"  id="div_BrandListContent">
+                <div class="Bd_search">
+                    <i class="Bd_i iconfont">&#xe600;</i>
+                    <input type="text" class="Bd_t" placeholder='请输入品牌名称'>
+                    <a href="javascript:SeachAll({type:1})" class="Bd_b" >搜索</a>
+                </div>
+                <h3>品牌</h3>
+                <div class="series">
+                    <a href="#">
+                    <img src="docs/img/lg.jpg">
+                    <h4>龙工</h4>
+                    </a>
+                    <a href="#">
+                    <img src="docs/img/lg.jpg">
+                    <h4>龙工</h4>
+                    </a>
+                </div>
+          </div>
+        </div>
+        <div class="mask" data-side-mask data-side-close></div>
+      </aside>
+  <!--end品牌内容侧栏-->
+  <!--详细机械内容侧栏-->
+    <aside class="sidebar findcar-sidebar brandcore" data-role-side='{"container": ".sidebar-floor", "target": "brandcore", "open": "sidebar-in", "close": "sidebar-out", "delay": "true", "name": "brand_detail"}'>
+        
+          <div id="div_RightBrand" class="module" data-side-view="right">
+            <div id="yeti" style="display:none" class="brandevent"></div>
+           <div data-role="tabSwitch" data-tab-active="1"  id="div_BrandDetailListContent">
+                <h3>品牌</h3>
+                <div class="series">
+                    <a href="#" data-ids="23">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                    <a href="#" data-ids="24">
+                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                    <a href="#" data-ids="25">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                    <a href="#" data-ids="26">
+                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">308.80万</p>
+                    </a>
+                </div>
+          </div>
+        </div>
+        <div class="mask" data-side-mask data-side-close></div>
+      </aside>
+      <!--end详细机械内容侧栏-->
+
+
+
+    <script src="docs/js/zepto-1.2.min.js"></script>
+    <script src="docs/js/fastclick.min.js"></script>
+    <script src="docs/js/template-native.js"></script>
+    <script src="docs/js/searchAll.js"></script>
+    <script src="docs/js/main.js"></script>
+    <script src="docs/js/iscroll-probe.js"></script>
+    <script src="docs/js/comparenew.js"></script>
+
+
+	<script type="text/javascript">
+        //页面初始化
+        $(function () {
+            //对比列表添加以及数据操作
+           var paramCompare = new compareList();
+            $('.js-back').on('click', function () { history.go(-1); });
+
+            window.paramCompare = paramCompare;
+        });
+
+    </script>
+    <script src="docs/js/configcommon.js"></script>
+</body>
+</html>
