@@ -8,7 +8,27 @@ var massCfg = {
 	click: "click",
 	hideClass: "fn-hide"
 };
+//tab
+;(function($){
+    var dom=$('[data-tab]');
+    
+    dom.each(function(){
+        var t=$(this),
+            a=t.attr('data-tab-a'),
+            b=t.attr('data-tab-b');
+            
+        var init=function(){
+            t.find(a).eq(0).addClass('active');
+            t.find(b).eq(0).show();
+        };
+        init();
+            t.on('click',a,function(){
+                $(this).addClass('active').siblings().removeClass('active');
+                t.find(b).eq($(this).index()).show().siblings(b).hide();
+            });
 
+    });
+})(Zepto);
 //aside
 ;
 (function(a) {
@@ -418,8 +438,8 @@ var massCfg = {
             e("body").css({
                 height: this.clientHeight,
                 overflow: "hidden",
-                position: 'fixed',
-                width:'100%'
+                //position: 'fixed',
+                //width:'100%'
             }).scrollTop(0))
         }
         this.trigger("open"),
@@ -429,8 +449,8 @@ var massCfg = {
         e("body").css({
             height: this.clientHeight,
             overflow: "hidden",
-            position: 'fixed',
-            width:'100%'
+            //position: 'fixed',
+            //width:'100%'
         }),
         this.$contentNode.css({
             "-webkit-transform": "translate3d(0,-" + this.scrollTop + "px,0)",
