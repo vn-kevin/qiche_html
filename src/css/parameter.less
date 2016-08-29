@@ -943,7 +943,7 @@ html {
 
 }
 
-.alert .info .icon-info,.alert .info .icon-exclamation,.alert .info .icon-query,.alert .info .icon-cross,.alert .info .icon-ok {
+.alert .info .icon-info,.alert .info .icon-exclamation,.alert .info .icon-query,.alert .info .icon-cross,.alert .info .ok {
     position: absolute;
     top: 0.1875rem;
     left: 0;
@@ -956,7 +956,7 @@ html {
     border-radius: 50%
 }
 
-.alert .info .icon-info::before,.alert .info .icon-exclamation::before,.alert .info .icon-query::before,.alert .info .icon-cross::before,.alert .info .icon-ok::before {
+.alert .info .icon-info::before,.alert .info .icon-exclamation::before,.alert .info .icon-query::before,.alert .info .icon-cross::before,.alert .info .ok::before {
     display: inline-block;
     margin-top: 0.1875rem
 }
@@ -978,8 +978,9 @@ html {
     background-color: #f43531
 }
 
-.alert .info .icon-ok {
-    background-color: #4fb947
+.alert .info .ok {
+    background-color: #4fb947;
+        line-height: 18px;
 }
 
 .alert .info.pure {
@@ -1453,11 +1454,14 @@ html {
 .parameter-detail header {
     position: relative;
     z-index: 10;
-    width: 100%
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow: hidden;
+
 }
 
 .parameter-detail header.sticky {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0
 }
@@ -1471,9 +1475,10 @@ html {
 
 .parameter-detail .compare .left {
     display: table-cell;
-    width: 5rem;
+    width:5rem;
     border-right: solid #d7d7d7 1px;
-    vertical-align: middle
+    vertical-align: middle;
+    background-color: #fff;
 }
 
 .parameter-detail .compare .left label {
@@ -1536,11 +1541,13 @@ html {
 
 .parameter-detail .compare .main .column {
     position: relative;
-    width: 6.4375rem;
+    max-width: 7rem;
+    min-width: 5.2rem;
     display: inline-block;
     height: 100%;
     vertical-align: top;
-    border-right: solid #d7d7d7 1px
+    border-right: solid #d7d7d7 1px;
+    background-color: #fff;
 }
 
 .parameter-detail .compare .main .column h4 {
@@ -1926,7 +1933,7 @@ html {
 
 .parameter-detail .detail .left {
     display: table-cell;
-    width: 5rem;
+    width: 4.5rem;
     border-right: solid #d7d7d7 1px
 }
 
@@ -1976,7 +1983,8 @@ html {
 }
 
 .parameter-detail .detail .main .group .item .inner {
-    width: 6.4375rem;
+    max-width: 7rem;
+    min-width: 5.2rem;
     color: #444;
     border-right: solid #d7d7d7 1px;
     background-color: #f4f8fe;
@@ -2167,3 +2175,4 @@ html {
 .widget .list-null {
     padding: 10px
 }
+

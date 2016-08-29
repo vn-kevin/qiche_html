@@ -19,7 +19,7 @@
           <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
           <div class="final-right">
             <span>
-                <a href="#" class="fr f_blue" data-url="src/json/city.js" data-template="false" data-role="aside" data-title="选择省份" data-relation="block-area">长沙 <i class="iconfont xl">&#xe610;</i></a>
+                <a href="#" class="fr f_blue dbpoint" data-template="false" data-role="aside" data-title="对比" data-relation="block-duibi" >对比 <i class="ii">3</i></a>
             </span>
           </div>
         </nav>
@@ -45,8 +45,8 @@
                 </ul>
             </div>
             <div class="box">
-                <a href="javascript:alert('添加中')">
-                    <i class="iconfont">&#xe611;</i>对比
+                <a href="javascript:void(0)" id="add_">
+                    <i class="iconfont">&#xe611;</i>添加对比
                 </a>
                 <a href="javascript:alert('添加中')">
                     <i class="iconfont">&#xe602;</i>购机计算器
@@ -90,7 +90,7 @@
                             <td>121</td>
                         </tr>
                     </table>
-                    <p class="C_ps">注：以上仅供参考，以店内实际为准</p>
+                    <p class="C_ps">注：以上仅供参考，以店内实机为准</p>
                 </div>
             </div>
         </section>
@@ -105,25 +105,53 @@
     <a href="tel:1351713000" class="item item-call"><i class="iconfont">&#xe607;</i>我要咨询</a>
 </footer>
 
- <!-- start 地区 -->
-    <aside class="aside block-area">
+
+<!--详细机械内容侧栏-->
+    <aside class="sidebar findcar-sidebar brandcore" data-role-side='{"container": ".sidebar-floor", "target": "brandcore", "open": "sidebar-in", "close": "sidebar-out", "delay": "true", "name": "brand_detail"}'>
+        
+          <div id="div_RightBrand" class="module" data-side-view="right">
+            <div id="yeti" style="display:none" class="brandevent"></div>
+           <div data-role="tabSwitch" data-tab-active="1"  id="div_BrandDetailListContent">
+                <h3>品牌</h3>
+                <div class="series">
+                    <a href="#" data-ids="23">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">厂商指导价：308.80万</p>
+                    </a>
+                    <a href="#" data-ids="24">
+                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">厂商指导价：308.80万</p>
+                    </a>
+                    <a href="#" data-ids="25">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">厂商指导价：308.80万</p>
+                    </a>
+                    <a href="#" data-ids="26">
+                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <h4 class="nomt">龙工</h4>
+                    <p class="price">厂商指导价：308.80万</p>
+                    </a>
+                </div>
+          </div>
+        </div>
+        <div class="mask" data-side-mask data-side-close></div>
+      </aside>
+<!--end详细机械内容侧栏-->
+
+ <!--all duibi-->
+    <aside class="aside block-duibi">
         <nav class="nav-final">
-            <p class="f_c666">选择省份</p>
-            <a class="back" href="#">关闭</a>
+            <p>对比</p>
+            <a class="back" href="#"><i class="iconfont">&#xe60e;</i></a>
         </nav>
         <section class="aside-main list-ok aside-main-area">
         </section>
     </aside>
-    <aside class="aside block-area-sub">
-        <nav class="nav-final">
-            <p class="f_c666">选择城市</p>
-            <a class="back" href="#">返回</a>
-            <a class="masks" href="#">关闭</a>
-        </nav>
-        <section class="aside-main list-ok">
-        </section>
-    </aside>
-<!-- end 地区 -->
+
+
 
 <!-- 分享-->
 <section class="w-sharing j-share fn-hide"><div class="module"><ul class="method"><li><a href="#" class="share-weibo"><i class="iconfont icon-sharing icon-sharing-weibo">&#xe617;</i><strong>新浪微博</strong></a></li><li><a href="#" class="share-qzone"><i class="iconfont icon-sharing icon-sharing-qq-zone">&#xe618;</i><strong>QQ空间</strong></a></li></ul><a class="cancel" href="javascript:;">取消</a></div>
@@ -140,6 +168,13 @@
         $(function () {
             $('.js-back').on('click', function () { history.go(-1); });
 
+            /*//更多品牌
+            $('.dbpoint').on('click',function(){
+                $('#div_BrandDetailListContent h3').text("对比");
+                //内容拼接部分
+                side.brand_detail.open();
+            });*/
+
             $('#share_mod').click(function(){
                 $('html,body').css('overflow','hidden')
                 $('.j-share').removeClass('fn-hide');
@@ -147,6 +182,9 @@
             $('.j-share .cancel').click(function(){
                 $('html,body').css('overflow','')
                 $('.j-share').addClass('fn-hide');
+            });
+            $('#add_').click(function(){
+               _alert();
             })
 
         });

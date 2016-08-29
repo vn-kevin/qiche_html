@@ -1,1 +1,238 @@
-$(function(){"use strict";window.paramCompare.on("rendContentEnd",function(){function e(e,t){var o=parseInt(document.body.scrollTop,10),n=0,i=5;e=parseInt(e,10),t/=i;var r=setInterval(function(){n++,document.body.scrollTop=(e-o)/t*n+o,n>=t&&clearInterval(r)},i)}function t(e){c.each(function(e,t){var o=!0;$(t).find(".item .inner").each(function(e,t){if(!$(t).hasClass("fn-hide"))return o=!1,!1}),c.eq(e).toggleClass("fn-hide",o),f.eq(e).toggleClass("fn-hide",o),p.find(".item").eq(e).toggleClass("fn-hide",o)})}function o(){c.find(".item").each(function(e,t){$(t).find(".item-same").length&&($(t).toggleClass("fn-hide"),s.find(".main .group .item").eq(e).toggleClass("fn-hide"))})}if(window.paramScrollerCompare||window.paramScrollerDetail){$("#scroller__detail .slide").width($("#scroller__compare .slide").width());var n=document.documentElement.clientWidth;return $(".parameter-detail .detail .left .group h4").width(n),void setTimeout(function(){window.paramScrollerCompare.refresh(),window.paramScrollerDetail.refresh()},100)}if($("#scroller__compare").length&&$("#scroller__detail").length){$("#scroller__detail .slide").width($("#scroller__compare .slide").width());var i=new IScroll("#scroller__compare",{probeType:3,eventPassthrough:!0,scrollX:!0,scrollY:!1}),r=new IScroll("#scroller__detail",{probeType:3,eventPassthrough:!0,scrollX:!0,scrollY:!1});i.on("scroll",function(){r.scrollTo(this.x,0)}),r.on("scroll",function(){i.scrollTo(this.x,0)}),window.paramScrollerCompare=i,window.paramScrollerDetail=r}var a,l=$(".parameter-detail"),d=l.find("header"),s=l.find(".detail"),c=s.find(".left .group"),f=s.find(".main .group"),h=d.next(".header-stand").height(d.height()),m=d.find(".markbar strong");$(window).on("scroll.paramSticky",function(){a&&clearTimeout(a),a=setTimeout(function(){var e=document.body.scrollTop,t=d.offset(),o=t.top,n=h.offset(),i=n.top,r=n.height;e>=o&&!r?(d.addClass("sticky"),h.removeClass("fn-hide")):e<i&&(d.removeClass("sticky"),h.addClass("fn-hide"));var a=t.height;c=s.find(".left .group"),c.each(function(e,t){var o=this.getBoundingClientRect();if(o.height+o.top>=a)return m.text($(this).find("h4 strong").text()),!1})},60)});var n=document.documentElement.clientWidth;c.find("h4").width(n),$(window).on("resize.paramItemReset, orientationchange.paramItemReset",function(){n=document.documentElement.clientWidth,c.find("h4").width(n)});var p=$(".parameter-anchor"),u="";$("h4 strong",c).each(function(){u+='<span class="item">'+this.innerHTML+"</span>"}),$(p).find(".cont").html(u),p.on("touchstart",".item",function(t){t.preventDefault(),t.stopPropagation(),c=s.find(".left .group");var o=$(this).index(),n=c.eq(o).find(".item").offset().top-d.height();e(n,300)}),$(document).on("touchstart.dropdownOnly","[data-dropdown-only]",function(e){e.preventDefault(),e.stopPropagation(),$("[data-dropdown-only]").not(this).removeClass("activate").next().addClass("fn-hide"),$(document).off("touchstart.dropdownClose"),$(document).on("touchstart.dropdownClose",function(e){$(e.target).closest("[data-dropdown-close]").length||($("[data-dropdown-only]").removeClass("activate").next().addClass("fn-hide"),$(document).off("touchstart.dropdownClose"))})});var g=d.find(".compare .left input");g.on("click",[".item-null",".item-same",".item-differ"],function(e){var o=$(".column[data-specid]",d).length;if(o<=1)return e.preventDefault(),e.stopPropagation(),void(o<1&&$("#scroller__detail .slide").width(1));var n=$(this).prop("checked"),i=$(this).closest("label").index(),r=e.data[i],a=2!==i?"fn-hide":"highlight";c=s.find(".left .group"),f=s.find(".main .group"),s.find(r).toggleClass(a,n),2!==i&&t()}),$(".toggleHide").click(function(){o()})})});
+$(function () {
+    'use strict';
+
+    /**
+     * @file 车型参数配置对比
+     * @author maxingguo(maxingguo@autohome.com.cn)
+     * @update 2016.06.02
+     * 
+     * 1.对比车型左右滑动。
+     * 2.顶部跟随。（高度不定）
+     * 4.锚点定位。
+     * 3.标注栏加宽=屏幕宽。
+     * 5.左右浮层 不重叠。
+     * 6.查看车型差异
+     */
+
+    window.paramCompare.on('rendContentEnd', function () {
+
+        if (window.paramScrollerCompare || window.paramScrollerDetail) {
+            $('#scroller__detail .slide').width($('#scroller__compare .slide').width());
+            var docWidth = document.documentElement.clientWidth;
+            $('.parameter-detail .detail .left .group h4').width(docWidth);
+            setTimeout(function () {
+                window.paramScrollerCompare.refresh();
+                window.paramScrollerDetail.refresh();
+            }, 100);
+            return;
+        }
+
+        /**
+         * 1.对比车型左右滑动。
+         */
+        if ($('#scroller__compare').length && $('#scroller__detail').length) {
+            $('#scroller__detail .slide').width($('#scroller__compare .slide').width());
+
+            var paramScrollerCompare = new IScroll('#scroller__compare', {
+                // snap: '.slide .column',
+                // snap: true,
+                probeType: 3,
+                eventPassthrough: true,
+                scrollX: true,
+                scrollY: false
+            });
+
+            var paramScrollerDetail = new IScroll('#scroller__detail', {
+                // snap: '.slide .inner',
+                // snap: true,
+                probeType: 3,
+                eventPassthrough: true,
+                scrollX: true,
+                scrollY: false
+            });
+
+            paramScrollerCompare.on('scroll', function () {
+                paramScrollerDetail.scrollTo(this.x, 0);
+            });
+
+            paramScrollerDetail.on('scroll', function () {
+                paramScrollerCompare.scrollTo(this.x, 0);
+            });
+
+            window.paramScrollerCompare = paramScrollerCompare;
+            window.paramScrollerDetail = paramScrollerDetail;
+        }
+
+        /**
+         * 2.顶部跟随。（高度不定）
+         */
+        var $paramCars = $('.parameter-detail');
+        var $paramHeader = $paramCars.find('header');
+        var $paramDetail = $paramCars.find('.detail');
+        var $paramItem = $paramDetail.find('.left .group');
+        var $paramGroup = $paramDetail.find('.main .group');
+        var $paramHeaderStand = $paramHeader.next('.header-stand').height($paramHeader.height());
+        var $paramMarkbar = $paramHeader.find('.markbar strong');
+
+        var timerScroll;
+        $(window).on('scroll.paramSticky', function () {
+            if (timerScroll) {
+                clearTimeout(timerScroll);
+            }
+
+            timerScroll = setTimeout(function () {
+                var docScrollTop = document.body.scrollTop;
+                var paramHeaderRect = $paramHeader.offset();
+                var paramHeaderTop = paramHeaderRect.top;
+                var paramHeaderStandRect = $paramHeaderStand.offset();
+                var paramHeaderStandRectTop = paramHeaderStandRect.top;
+                var paramHeaderStandRectHeight = paramHeaderStandRect.height;
+
+                if (docScrollTop >= paramHeaderTop && !paramHeaderStandRectHeight) {
+                    $paramHeader.addClass('sticky');
+                    $paramHeaderStand.removeClass('fn-hide');
+                } else if (docScrollTop < paramHeaderStandRectTop) {
+                    $paramHeader.removeClass('sticky');
+                    $paramHeaderStand.addClass('fn-hide');
+                }
+
+                var paramHeaderHeight = paramHeaderRect.height;
+                $paramItem = $paramDetail.find('.left .group'); // dom 变更后需重新获取节点
+                $paramItem.each(function (index, item) {
+                    var clientRect = this.getBoundingClientRect();
+                    if (clientRect.height + clientRect.top >= paramHeaderHeight) {
+                        $paramMarkbar.text($(this).find('h4 strong').text());
+                        return false;
+                    }
+                });
+            }, 60);
+        });
+
+        /**
+         * 3.标注栏加宽=屏幕宽。
+         */
+        var docWidth = document.documentElement.clientWidth;
+        $paramItem.find('h4').width(docWidth);
+
+        $(window).on('resize.paramItemReset, orientationchange.paramItemReset', function () {
+            docWidth = document.documentElement.clientWidth;
+            $paramItem.find('h4').width(docWidth);
+        });
+
+        /**
+         * 4.锚点定位。
+         */
+        var $paramAnchor = $('.parameter-anchor');
+        var paramAnchorHTML = '';
+        $('h4 strong', $paramItem).each(function () {
+            paramAnchorHTML += '<span class="item">' + this.innerHTML + '</span>';
+        });
+        $($paramAnchor).find('.cont').html(paramAnchorHTML);
+
+        $paramAnchor.on('touchstart', '.item', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $paramItem = $paramDetail.find('.left .group'); // dom 变更后需重新获取节点
+            var anchorIndex = $(this).index();
+            var anchorTop = $paramItem.eq(anchorIndex).find('.item').offset().top - $paramHeader.height();
+
+            scroll(anchorTop, 300);
+        });
+
+        function scroll(scrollTo, time) {
+            var scrollFrom = parseInt(document.body.scrollTop, 10);
+            var i = 0;
+            var runEvery = 5; // run every 5ms
+            scrollTo = parseInt(scrollTo, 10);
+            time /= runEvery;
+            var interval = setInterval(function () {
+                i++;
+                document.body.scrollTop = (scrollTo - scrollFrom) / time * i + scrollFrom;
+                if (i >= time) {
+                    clearInterval(interval);
+                }
+            }, runEvery);
+        }
+
+        /**
+         * 5.左右浮层 不重叠。
+         */
+        $(document).on('touchstart.dropdownOnly', '[data-dropdown-only]', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            $('[data-dropdown-only]').not(this)
+              .removeClass('activate')
+              .next().addClass('fn-hide');
+
+            $(document).off('touchstart.dropdownClose');
+            $(document).on('touchstart.dropdownClose', function (e) {
+                if (!$(e.target).closest('[data-dropdown-close]').length) {
+                    $('[data-dropdown-only]')
+                      .removeClass('activate')
+                      .next().addClass('fn-hide');
+                    $(document).off('touchstart.dropdownClose');
+                }
+            });
+        });
+
+        /**
+         * 6.查看车型差异
+         */
+        var $paramHeaderChecks = $paramHeader.find('.compare .left input');
+
+        $paramHeaderChecks.on('click', ['.item-null', '.item-same', '.item-differ'], function (e) {
+            var columnLen = $('.column[data-specid]', $paramHeader).length;
+            if (columnLen <= 1) {
+                e.preventDefault();
+                e.stopPropagation();
+                if (columnLen < 1) {
+                    $('#scroller__detail .slide').width(1);
+                }
+                return;
+            }
+
+            var isChecked = $(this).prop('checked');
+            var checkIndex = $(this).closest('label').index();
+            var checkClass = e.data[checkIndex];
+            var classState = checkIndex !== 2 ? 'fn-hide' : 'highlight';
+
+            $paramItem = $paramDetail.find('.left .group'); // dom 变更后需重新获取节点
+            $paramGroup = $paramDetail.find('.main .group');
+            $paramDetail.find(checkClass).toggleClass(classState, isChecked);
+
+            if (checkIndex !== 2) {
+                paramToggle();
+            }
+        });
+        $('.toggleHide').click(function(){
+            paramToggles();
+        });
+        function paramToggle(checkClass) {
+            $paramItem.each(function (index, group) {
+                var isItemSame = true;
+
+                $(group).find('.item .inner').each(function (index, item) {
+                    if (!$(item).hasClass('fn-hide')) {
+                        isItemSame = false;
+                        return false;
+                    }
+                });
+                $paramItem.eq(index).toggleClass('fn-hide', isItemSame);
+                $paramGroup.eq(index).toggleClass('fn-hide', isItemSame);
+                $paramAnchor.find('.item').eq(index).toggleClass('fn-hide', isItemSame);
+            });
+        }
+        function paramToggles(){
+            $paramItem.find('.item').each(function(index,item){
+                if($(item).find('.item-same').length){
+                    $(item).toggleClass('fn-hide');
+                    $paramDetail.find('.main .group .item').eq(index).toggleClass('fn-hide');
+                }
+            });
+        }
+
+    });
+
+});

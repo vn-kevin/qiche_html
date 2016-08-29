@@ -1,1 +1,910 @@
-!function(e){function t(t,a){side.brand_detail.open(),e("#div_BrandDetailListContent h3").text(a)}function a(e){side.brand.open()}var i=function(t){this.config=e.extend({},this.defaultOption,t),this._EventHandle=e({}),this.init()};i.prototype={defaultOption:{seriesId:"145",ids:[19250],seriesName:"POLO",type:0},defaultParam:{sereisStateLoad:!1,brandStateLoad:!1,historyStateLoad:!1,currData:[],compareItems:[]},init:function(){this.config.ids=this.config.ids.filter(function(e){return e>0}),this.getData(this.config.ids)},on:function(){this._EventHandle.on.apply(this._EventHandle,arguments)},off:function(){this._EventHandle.off.apply(this._EventHandle,arguments)},trigger:function(){this._EventHandle.trigger.apply(this._EventHandle,arguments)},onEvent:function(){var i=this;e("i.reduce").on("click",function(){var t=parseInt(e(this).attr("data-specId")),a=i.config.ids.indexOf(e(this).data("specid"));i.config.ids.splice(a,1),i.removeData(t),i.renderView(),i.controlPopItem("remove",t),i.otherDeal()}),e("#compare_ul").on("click","span.added i.icon-cross",function(){var t=parseInt(e(this).attr("data-specId"));i.controlPopItem("remove",t)}),e("i.added").on("click",function(e){a(e)}),e("#div_BrandListContent").on("click",".series a",function(a){var s=e(this).find("h4").text();t(i,"品牌 > "+s)}),e("#div_BrandDetailListContent").off("click","a"),e("#div_BrandDetailListContent").on("click","a",function(){var t=e(this).attr("data-ids");i.config.ids.push(t),alert("已选中"+i.config.ids),i.getData(i.config.ids),side.brand.close(),side.brand_detail.close()}),e("span[data-comid]").on("click",function(){var t=e(this),a=t.attr("data-comid"),s=t.attr("data-name"),o=l.Compare.updateDate({specid:parseInt(a),specname:s,seriesname:""});if(i.controlPopItem("add",a),0!=o){var r=l.Compare.getCompareCount();return 4!=r?AutoMsgBox("ok","已加入对比框中<br />您还可以继续添加","fn-hide"):AutoMsgBox("ok","已加入对比框中","fn-hide"),l.Compare.setCompareSpecCookie(a),t.addClass("disabled").html("已加入"),!1}})},getData:function(t){var a=this;if(!t||0==t.length)return void a.renderEmptyView();var i=o+t;e.getJSON(i,function(e){null!=e&&void 0!=e&&null!=e.param&&void 0!=e.param&&null!=e.config&&void 0!=e.config&&(a.defaultParam.currData=[],a.defaultParam.currData=e.param.concat(e.config),a.renderView())})},setHistory:function(t){var a="ComparedSpecList",i=e.getCookie("ComparedSpecList",""),s=6,o=[],r=0;if(""==i)e.setCookie(a,t,{expireHours:720});else{o=i.split(","),r=o.length>=s?s:o.length;for(var n=0;n<r;n++)if(o[n]==t)return;o.unshift(t),o.length=o.length>=s?s:o.length,e.setCookie(a,o.join(","),{expireHours:720})}},renderView:function(){this.renderTitle(),this.rendContent(),this.onEvent(),this.rendTailContent(),this.otherDeal()},renderEmptyView:function(){this.renderTitle(),this.onEvent()},renderTitle:function(){var t=this,a=t.defaultParam.currData,i=a.length>0?t.getTitleItems(a):[],s=(a.length>0?t.getPriceItems(a):[],"");if(i)if(1==t.config.type)i[0]&&0!=i[0].specid&&(s+='<div class="column" data-specid="'+i[0].specid+'">',s+="<h4>"+i[0].value+"</h4>",s+='<span class="btn small" data-comid="'+i[0].specid+'" data-name="'+i[0].value+'"><i class="iconfont icon-add"></i>对比</span>',s+="</div>"),e("section.cartype").html(s);else{for(var o=0;o<i.length+1;o++)i[o]&&0!=i[o].specid?(s+='<div class="column" data-specid="'+i[o].specid+'">',s+="<h4>"+i[o].value+"</h4>",s+='<i class="cross reduce" data-specid="'+i[o].specid+'">&#xe608;</i>',s+="</div>"):o<=3&&(s+='<div class="column"><i class="iconfont add added">&#xe603;</i></div>');e("#scroller__compare>div.slide").html(s)}},rendContent:function(){var t=this,a=t.defaultParam.currData,i="",s="",o=0;for(var r in a){var n=a[r].name;if(i+='<div class="group"><h4><strong>'+n+"</strong></h4>",s+='<div class="group">',a[r].paramitems){var c=a[r].paramitems;for(var d in c){var l=c[d].name,p=c[d].valueitems,m=t.checkTypeItem(p);if("机械名称"!=l){i+='<div class="item"><span class="inner '+m+'">'+l+"</span></div>",s+='<div class="item">';for(var f in p)null!==p[f]&&void 0!==p[f]&&("厂商指导价<br/>(元)"==l&&(p[f].value="<strong>"+p[f].value+"</strong>"),s+='<span class="inner '+m+'" data-specid="'+p[f].specid+'" >'+p[f].value+"</span>");s+="</div>"}}}if(a[r].configitems){var c=a[r].configitems;for(var d in c){var l=c[d].name,p=c[d].valueitems,m=t.checkTypeItem(p);i+='<div class="item"><span class="inner '+m+'">'+l+"</span></div>",s+='<div class="item">';for(var f in p)null!==p[f]&&void 0!==p[f]&&(s+='<span class="inner '+m+'" data-specid="'+p[f].specid+'" >'+p[f].value+"</span>");s+="</div>"}}s+="</div>",i+="</div>",o++}e("section.detail>div.left").html(i),e("#scroller__detail div.data").html(s),this.trigger("rendContentEnd")},rendTailContent:function(){var t=this,a=t.config.ids,i=void 0==e.getCookie("cookieCityId")?"":e.getCookie("cookieCityId");if(i=110100,e.grep(t.defaultParam.currData,function(e){return"电动机"==e.name}).length>0){var s=d.replace("$spec",a).replace("$city",100*parseInt((e.getCookie("cookieCityId")||e.getCookie("area")||0)/100)||0);e.getJSON(s,function(t){if(t&&!(t.returncode>0)&&0!=t.result.specitems.length)for(var a in t.result.specitems){var i=t.result.specitems[a];(i.countrysubsidy>0||i.citysubsidy>0)&&(e('.js-subsidy [data-specid="'+i.id+'"]').html((i.countrysubsidy>0?(i.countrysubsidy/1e4).toFixed(2)+"万":"-")+"/"+(i.citysubsidy>0?(i.citysubsidy/1e4).toFixed(2)+"万":"-")),e(".js-subsidy").removeClass("fn-hide"))}})}},getTitleItems:function(e){for(var t in e)if("基本参数"===e[t].name)for(var a in e[t].paramitems)if("机械名称"===e[t].paramitems[a].name)return e[t].paramitems[a].valueitems;return null},getPriceItems:function(e){for(var t in e)if("基本参数"===e[t].name)for(var a in e[t].paramitems)if("厂商指导价(元)"===e[t].paramitems[a].name)return e[t].paramitems[a].valueitems;return null},removeData:function(e){var t=this.defaultParam.currData;for(var a in t){t[a].name;if(t[a].paramitems){var i=t[a].paramitems;for(var s in i){var o=(i[s].name,i[s].valueitems);for(var r in o)if(null!==o[r]&&void 0!==o[r]&&o[r].specid===e){var n=o.indexOf(o[r]);n>-1&&o.splice(n,1)}}}if(t[a].configitems){var i=t[a].configitems;for(var s in i){var o=(i[s].name,i[s].valueitems);for(var r in o)if(null!==o[r]&&void 0!==o[r]&&o[r].specid===e){var n=o.indexOf(o[r]);n>-1&&o.splice(n,1)}}}}},checkTypeItem:function(e){for(var t=!1,a=0;a<e.length;a++)e[a]&&"-"!=e[a].value&&(t=!0);if(!t)return"item-null";for(var i=0;i<e.length;i++)if(e[i+1]&&e[i].value!=e[i+1].value)return"item-differ";return"item-same"},renderPopList:function(t,a,i){var s=template(a,i);if(document.getElementById(t).innerHTML=s,1!=this.config.type)for(var o=0;o<this.config.ids.length;o++)this.controlPopItem("add",this.config.ids[o]);else{var r=e.getCookie("product_compare","");if(""===r)return;var n=r.split(",");if(4!==n.length)return;for(var o=0;o<n.length;o++)0!=n[o]&&this.controlPopItem("add",n[o])}},popEvent:function(){var t=this;e("#loadData").off("click.select"),e("#loadData").on("click.select","#common_specselect_list li a,#common_historyselect_list li a",function(){if(e(this).hasClass("w-disabled"))return!1;e("#loadSpec").hide(),e("#loadSeries").hide(),e("#compare_mark").removeClass("activate").next().addClass("fn-hide"),document.body.scrollTop=0,e(".parameter-detail header").removeClass("sticky"),e(".parameter-detail .header-stand").addClass("fn-hide"),e(".wrapper").show();var a=e(this).data("id");if(t.controlPopItem("add",a),t.config.ids.indexOf(a)>-1||t.config.ids.length>3)return!1;t.setHistory(a);var i=e(this).find("span").text().replace("(已选择)","").trim(),s="",o=e("#nav_select_list a.selected").attr("data-target");if("#common_specselect_list"==o?s=e("#divloadSeries > div.w-nav > h2").text().replace("-选择车型","").trim():"#common_brandselect_list"==o&&(s=e("#loadSeries > div.w-nav > h2").text().replace("-选择车型","").trim()),1==t.config.type){var i=e(this).find("span").text().replace("(已选择)","").trim(),s="",o=e("#nav_select_list a.selected").attr("data-target");"#common_specselect_list"==o?s=e("#divloadSeries > div.w-nav > h2").text().replace("-选择车型","").trim():"#common_brandselect_list"==o&&(s=e("#loadSeries > div.w-nav > h2").text().replace("-选择车型","").trim());l.Compare.updateDate({specid:parseInt(a),specname:i,seriesname:s})}else t.config.ids.push(a),t.getData(t.config.ids)}),e("#loadSpec").off("click.select"),e("#loadSpec").on("click.select","#nav_select_list li a",function(){e("#nav_select_list a.selected").removeClass("selected"),e(this).addClass("selected");var t=e(e(this).attr("data-target"));t.siblings().hide(),t.show()}),e("#loadSpec").on("click.select","#btn_historyselect_list",function(){var a=t.defaultParam.historyStateLoad,i=r;if(!a){var s=e.getCookie("ComparedSpecList","");""!=s?e.getJSON(i+s,function(e){t.renderPopList("common_historyselect_list","popListDataHistory",e),t.defaultParam.historyStateLoad=!0}):t.renderPopList("common_historyselect_list","popListDataHistory",{SpecList:[]})}}),e("#loadSpec").on("click.select","#btn_brandselect_list",function(){var a=t.defaultParam.brandStateLoad;if(!a){var i=n;e.getJSON(i+"0",function(e){t.renderPopList("common_brand_list","popListDataBrand",e)}),t.defaultParam.brandStateLoad=!0}}),e("#loadSpec").on("click.select","#common_brandselect_list .w-sift-letter-content a",function(){var a=n,i=e(this);e.getJSON(a+i.text(),function(e){t.renderPopList("common_brand_list","popListDataBrand",e),i.siblings(".w-btn-selected").removeClass("w-btn-selected"),i.addClass("w-btn-selected")})}),e("#loadSpec").on("click.select","a.js-branditem",function(){var a=c,i=e(this).closest("li"),s=e(this).attr("data-brandid"),o=i.index()>e("#common_seriesselect_items").index()?i.index()-1:i.index(),r=i.offset().left,n=e("li.item",i.parent()),d=n.length;e.getJSON(a+s,function(a){if(t.renderPopList("common_seriesselect_items","popListDataSeriesList",a),e("#common_seriesselect_items").show(),i.siblings(".item-current").removeClass("item-current"),i.addClass("item-current"),o+1<d){for(var s=o+1;s<d;s++)if(e(n[s]).offset().left<=r){e(n[s]).before(e("#common_seriesselect_items"));break}}else i.after(e("#common_seriesselect_items"))})}),e("#loadSpec").on("click.select","#common_seriesselect_items a",function(){if(e(this).hasClass("disabled"))return!1;var a=s,i=e(this).data("seriesid");e.ajax({url:a,data:{seriesId:i,state:4,v:1},dataType:"jsonp",success:function(a){t.renderPopList("loadSeries","popListDataSeries",a),e("#loadSpec").hide(),e("#loadSeries").show(),e("#compare_mark").removeClass("activate").next().addClass("fn-hide"),document.body.scrollTop=0,e(".parameter-detail header").removeClass("sticky"),e(".parameter-detail .header-stand").addClass("fn-hide")}})})},controlPopItem:function(t,a){var i=e("#loadData").find('[data-id="'+a+'"]'),s=i.find(".caption");"remove"==t?(i.removeClass("w-disabled"),s.text()&&s.text(s.text().replace(/\(已选择\)/g,""))):(i.addClass("w-disabled"),s.each(function(t,a){var i=e(a);i.text().indexOf("(已选择)")>-1||i.text(i.text()+"(已选择)")}))},otherDeal:function(){l.Compare.updateCompareUI(!0),this.config.type||e(".compare .left input").each(function(t,a){"chkHL"==e(a).attr("id")?(e(a)[0].checked=!1,e(a).click()):e(a)[0].checked&&(e(a)[0].checked=!1,e(a).click())})}};var s="json/add.json",o="json/data.json?ids=",r="json/HistoryComSpecNew.json?",n="json/pinpai.json?",c="/ashx/spec/GetSeriesListByBrandIdNew.ashx?brandid=",d="http://car.interface.autohome.com.cn/Car/GetSpecElectricSubsidy.ashx?_callback=?&speclist=$spec&cityid=$city";e(function(){e("#loadData").on("click",".w-nav-mini-btn",function(){return e(this).siblings(".w-nav-mini-pop").toggleClass("w-fn-hide"),!1}).on("click",".first-w-nav-back",function(){return e("#loadSpec").hide(),e(".wrapper").show(),e("#compare_mark").removeClass("activate").next().addClass("fn-hide"),document.body.scrollTop=0,e(".parameter-detail header").removeClass("sticky"),e(".parameter-detail .header-stand").addClass("fn-hide"),!1}).on("click",".second-w-nav-back",function(){return e("#loadSeries").hide(),e("#loadSpec").show(),!1})}),window.compareList=i;var l=l||{};l.Compare={compare_area:e("#compare_area"),compare_body:e("#compare_body"),lis:e("#compare_ul li"),compare_no:e("#compare_no"),compare_mark:e("#compare_mark"),compare_clear:e("#compare_clear"),data:[],onremovedate:function(){},CompareCount:4,StateObj:{},reset:function(){for(var e=0;e<this.CompareCount;e++)this.data[e]&&0!=this.data[e].specid&&(this.onremovedate(this.data[e].specid),window.compareList.prototype.controlPopItem("remove",this.data[e].specid)),this.data[e]={specid:0,specname:"",seriesname:""}},getCompareCount:function(){for(var e=0,t=0;t<this.CompareCount;t++)this.data[t].specid>0&&e++;return e},updateDate:function(e,t,a){var i=this.getCompareCount();if(i==this.CompareCount&&0!=e.specid)return AutoMsgBox(Config.msgboxClass,"抱歉，只能对比四款车型","fn-hide"),!1;if(void 0!=t)return 0!=this.data[t].specid&&this.onremovedate(this.data[t].specid),this.data[t]=e,this.updateCompareUI(a),!0;for(var s=0;s<this.CompareCount;s++)if(0==this.data[s].specid)return this.data[s]=e,this.updateCompareUI(a),!0;return!1},updateCompareUI:function(t){var a=this.getCompareCount();this.compare_mark.html(" 对比<br />("+a+")"),this.compare_no.html(""+a),1==a&&setTimeout(function(){l.Compare.compare_area.removeClass("fn-hide"),1!=t&&(l.Compare.compare_body.removeClass("fn-hide"),l.Compare.compare_mark.addClass("activate"))},1e3);for(var i=0;i<this.data.length;i++)if(0==this.data[i].specid)e(this.lis[i]).html('<span class="item null reduce"><i class="iconfont icon-add"></i><i class="iconfont icon-cross"></i></span>');else{e(this.lis[i]).html('<span class="item added">'+this.data[i].seriesname+" "+this.data[i].specname+'<i class="iconfont icon-add"></i><i class="iconfont icon-cross" data-itemclear=true data-specId='+this.data[i].specid+"></i></span>");var s=e("span[data-comid='"+this.data[i].specid+"']");s.length>0&&s.addClass(Config.ClassNameDis).html("已加入")}l.Compare.UpdateProductCompare()},setCompareSpecCookie:function(t){var a=e.getCookie("ComparedSpecList",""),i=[],s=0;if(""==a)e.setCookie("ComparedSpecList",t,{expireHours:720,domain:".autohome.com.cn"});else{i=a.split(","),s=i.length>=this.CompareCount?this.CompareCount:i.length;for(var o=0;o<s;o++)if(i[o]==t)return;i.unshift(t),i.length=i.length>=this.CompareCount?this.CompareCount:i.length,e.setCookie("ComparedSpecList",i.join(","),{expireHours:720,domain:".autohome.com.cn"})}},SelectedSpec:function(){var t=e("#loadSpec");currCompareScrollTop=e(window).scrollTop();for(var a=l.Compare.data,i={},s=0;s<a.length;s++)a[s].specid>0&&(i[a[s].specid]=!0);this.StateObj.loadSelectSpec&&(specSelect.show(Config.SeriesId,Config.SeriesName,i),t.show(),e("#loadImg").addClass("fn-hide"))},HandleSelectSpec:function(t){var a=e(".wrapper"),i=e("#loadSpec");l.Compare.setCompareSpecCookie(t.id),t.seriesName?specName=t.seriesName+" "+t.name:specName=t.name;var s=parseInt(e("#compare_ul").attr("selectindex"));l.Compare.updateDate({specid:t.id,specname:specName,seriesname:""},s),a.show(),i.hide(),window.scrollTo(0,currCompareScrollTop)},CutOffWord:function(e,t){var a=e.substr(0,t),i=a.replace(/[^\x00-\xff]/g,"\r\n").split("");t="\r"==i[t-1]?t-2:t-1;var s=i.slice(0,t).join("").replace(/\r\n/g,"*").length+1;return a.substr(0,s)}},l.Compare.ProductCompare=function(){var t=e.getCookie("product_compare","");if(""!==t){var a=t.split(","),i=[];if(4===a.length){for(var s=0;s<a.length;s++)0!=a[s]&&i.push(a[s]);0!=i.length&&e.get("/Ashx/car/LoadHistoryComSpec.ashx?speclist="+i.join(","),function(e){for(var t=0;t<a.length;t++)for(var i=0;i<e.length;i++)a[t]==e[i].Id&&l.Compare.updateDate({specid:e[i].Id,specname:e[i].Name,seriesname:e[i].SeriesName},t,!0)})}}},l.Compare.UpdateProductCompare=function(){for(var t=l.Compare.data,a=[0,0,0,0],i=0;i<t.length;i++)a[i]=t[i].specid;var s=a.join(",");e.setCookie("product_compare",s,{expireHours:720,domain:".autohome.com.cn"})},l.Compare.onremovedate=function(t){var a=e("span[data-comid='"+t+"']");a.length>0&&a.removeClass(Config.ClassNameDis).html(Config.DuibuString)},l.Compare.init=function(){this.reset();var t=this;this.lis.on("click","i[data-itemclear]",function(){var a=e(this).parent().parent();t.updateDate({specid:0,specname:"",seriesname:""},a.attr("index"))}),this.compare_clear.on("click",function(){t.reset(),t.updateCompareUI()}),e("#compare_go").on("click",function(){var e=t.getCompareCount();if(e<1)return void AutoMsgBox(Config.msgboxClass,"抱歉，对比至少一款车型","fn-hide");for(var a=[],i=0;i<t.data.length;i++)a.push(t.data[i].specid);location.href="http://car.m.autohome.com.cn/"+Config.SeriesId+"/duibi/"+a.join("-")+"#pvareaid=103155"}),t.compare_mark.on("click",function(){var e=t.getCompareCount();e<1?(l.Compare.compare_area.addClass("fn-hide"),l.Compare.compare_body.addClass("fn-hide")):(l.Compare.compare_body.toggleClass("fn-hide"),l.Compare.compare_mark.toggleClass("activate"))}),l.Compare.ProductCompare()},l.Compare.init()}(Zepto),$(function(){function e(e,i,s){var o=t().replace("{title}",i).replace("{type}",e).replace("{class}",s);a.html(o),"fn-hide"==s&&a.popAlert(1e3)}function t(){return'<div class="alert">                    <div class="info"><i class="iconfont icon-{type}"></i>{title}</div>                    <div class="handle {class}"><span class="btn primary small"><em class="fn-oneword"></em>确定<em class="fn-oneword"></em></span></div>                </div>                <div class="mask"></div>'}var a=$("#alert_box");window.AutoMsgBox=e});
+(function($) {
+  /*生成列表*/
+  var compareList = function(config) {
+    this.config = $.extend({}, this.defaultOption, config);
+    this._EventHandle = $({});
+    this.init();
+  };
+ function displayList(e,n){
+    var _this=e;
+    side.brand_detail.open();
+    $('#div_BrandDetailListContent h3').text(n);
+ }
+  function displaySpec(e) {
+    side.brand.open();
+   /* var html='';
+        html+="<div class=\'Bd_search\'>";
+        html+="  <i class=\'Bd_i iconfont\'>&#xe600;</i>";
+        html+="    <input type=\'text\' class=\'Bd_t\' placeholder=\'请输入品牌名称\'>";
+        html+="    <a href=\'javascript:SeachAll({type:1})\' class=\'Bd_b\' >搜索</a>";
+        html+="</div>";
+
+        html+='<div class="series">';
+        html+='</div>';
+    $('#div_BrandListContent').html(html);*/
+  }
+
+  compareList.prototype = {
+    defaultOption: {
+      seriesId: "145",
+      ids: [19250],
+      seriesName: "POLO",
+      type: 0
+    },
+    defaultParam: {
+      sereisStateLoad: false,
+      brandStateLoad: false,
+      historyStateLoad: false,
+      currData: [],
+      compareItems: []
+    },
+    init: function() {
+      this.config.ids = this.config.ids.filter(function(item) {
+        return item > 0;
+      })
+      this.getData(this.config.ids);
+    },
+    on: function() {
+      this._EventHandle.on.apply(this._EventHandle, arguments);
+    },
+    off: function() {
+      this._EventHandle.off.apply(this._EventHandle, arguments);
+    },
+    trigger: function() {
+      this._EventHandle.trigger.apply(this._EventHandle, arguments);
+    },
+    onEvent: function() {
+      var _this = this;
+      //减少
+      $('i.reduce').on("click", function() {
+        var specId = parseInt($(this).attr('data-specId'));
+        var arrWz = _this.config.ids.indexOf($(this).data('specid'));
+        _this.config.ids.splice(arrWz, 1);
+        _this.removeData(specId);
+        _this.renderView();
+        _this.controlPopItem('remove', specId);
+        //触发高亮显示
+        _this.otherDeal();
+      });
+      $('#compare_ul').on("click", "span.added i.icon-cross", function() {
+        var specId = parseInt($(this).attr('data-specId'));
+        _this.controlPopItem('remove', specId);
+      });
+      //添加
+      $('i.added').on("click", function(evt) {
+        displaySpec(evt);
+      });
+      //选择品牌
+      //$('#div_BrandListContent').off("click",'.series a');
+      $('#div_BrandListContent').on("click",'.series a',function(evt) {
+        var name=$(this).find('h4').text();
+        displayList(_this,'品牌 > '+name);
+      });
+      $('#div_BrandDetailListContent').off('click','a')
+      $('#div_BrandDetailListContent').on('click','a',function() {
+        var nid = $(this).attr('data-ids');
+        _this.config.ids.push(nid);
+
+        alert('请求JSON 文件内容 : json/data.jsp?ids='+_this.config.ids);
+        PATH_DATA='json/data2.json?ids=';
+        _this.getData(_this.config.ids);
+        side.brand.close();
+        side.brand_detail.close();
+
+      });
+
+      //对比               
+      $("span[data-comid]").on("click", function() {
+        var jNode = $(this),
+          specId = jNode.attr("data-comid"),
+          specName = jNode.attr("data-name");
+        var b = Auto.Compare.updateDate({
+          specid: parseInt(specId),
+          specname: specName,
+          seriesname: ""
+        });
+        _this.controlPopItem('add', specId);
+        if (b == false) return;
+        var count = Auto.Compare.getCompareCount();
+        if (count != 4) {
+          AutoMsgBox("ok", '已加入对比框中<br />您还可以继续添加', 'fn-hide'); //已加入对比框中<br />您还可以继续添加
+        } else {
+          AutoMsgBox("ok", '已加入对比框中', 'fn-hide');
+        }
+        Auto.Compare.setCompareSpecCookie(specId); //记录对比cookie                        
+        jNode.addClass("disabled").html('已加入');
+        return false;
+      });
+    },
+    getData: function(ids) {
+      var _this = this;
+      if ((!ids) || ids.length == 0) {
+        _this.renderEmptyView();
+        return;
+      }
+      var url = PATH_DATA + ids;
+      $.getJSON(url, function(d) {
+        if (d == null || d == undefined || d.param == null || d.param == undefined || d.config == null || d.config == undefined) {
+          return;
+        }
+        _this.defaultParam.currData = [];
+        //参数
+        _this.defaultParam.currData = d.param.concat(d.config);
+        _this.renderView();
+      });
+    },
+    setHistory: function(specId) {
+      var cname = "ComparedSpecList",
+        hs = $.getCookie("ComparedSpecList", ""),
+        maxhl = 6,
+        hsL = [],
+        len = 0;
+      if (hs == "") {
+        $.setCookie(cname, specId, {
+          expireHours: 24 * 30
+        });
+      } else {
+        hsL = hs.split(",");
+        len = hsL.length >= maxhl ? maxhl : hsL.length;
+        for (var i = 0; i < len; i++) {
+          if (hsL[i] == specId) {
+            return;
+          }
+        }
+        hsL.unshift(specId);
+        hsL.length = hsL.length >= maxhl ? maxhl : hsL.length;
+        $.setCookie(cname, hsL.join(","), {
+          expireHours: 24 * 30
+        });
+      }
+    },
+    renderView: function() {
+      //加载标题
+      this.renderTitle();
+      //加载表格内容
+      this.rendContent();
+      //加载绑定事件
+      this.onEvent();
+      // 后加载内容
+      this.rendTailContent();
+      // 其他处理
+      this.otherDeal();
+    },
+    renderEmptyView: function() {
+      //加载标题
+      this.renderTitle();
+      //加载绑定事件
+      this.onEvent();
+    },
+    renderTitle: function() {
+      var _this = this,
+        d = _this.defaultParam.currData,
+        valueItems = d.length > 0 ? _this.getTitleItems(d) : [],
+        valuePriceItems = d.length > 0 ? _this.getPriceItems(d) : [],
+        html = '';
+
+        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'auto';
+
+      if (valueItems) {
+        if (_this.config.type == 1) {
+          if (valueItems[0] && valueItems[0].specid != 0) {
+            html += '<div class="column" data-specid="' + valueItems[0].specid + '" style="width:'+cw+'">';
+            html += '<h4>' + valueItems[0].value + "</h4>";
+            //html += '<p class="price">厂家指导价：<strong>' + valuePriceItems[0].value + "</strong></p>";
+            html += '<span class="btn small" data-comid="' +
+              valueItems[0].specid +
+              '" data-name="' +
+              valueItems[0].value +
+              '"><i class="iconfont icon-add" ></i>对比</span>';
+            html += '</div>';
+          }
+          $("section.cartype").html(html);
+        } else {
+          for (var i = 0; i < valueItems.length + 1; i++) {
+            if (valueItems[i] && valueItems[i].specid != 0) {
+              html += '<div class="column" data-specid="' + valueItems[i].specid + '" style="width:'+cw+'">';
+              html += '<h4>' + valueItems[i].value + "</h4>";
+              //html += '<p class="price">' + valuePriceItems[i].value + "</p>";
+              html += '<i class="cross reduce" data-specid="' + valueItems[i].specid + '">&#xe608;</i>';
+              html += '</div>';
+            } else {
+              if (i <= 8) {
+                html += '<div class="column" style="width:'+cw+'"><i class="iconfont add added">&#xe603;</i></div>';
+              }
+            }
+          }
+          $("#scroller__compare>div.slide").html(html);
+        }
+      }
+    },
+    rendContent: function() {
+      //生成对比参数表格
+      var _this = this,
+        d = _this.defaultParam.currData,
+        titleHtml = '',
+        html = '',
+        count = 0,
+        valueItems = d.length > 0 ? _this.getTitleItems(d) : [];
+        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'auto';
+
+      for (var i in d) {
+        var groupName = d[i].name;
+        //添加vs标题信息
+        titleHtml += '<div class="group"><h4><strong>' + groupName + '</strong></h4>';
+        //添加表格内容
+        html += '<div class="group">';
+        if (d[i].paramitems) {
+          var groupItems = d[i].paramitems;
+          for (var j in groupItems) {
+            var itemName = groupItems[j].name;
+            var items = groupItems[j].valueitems;
+            var classType = _this.checkTypeItem(items);
+            if (itemName == "机械名称") {
+              continue;
+            }
+            //添加vs标题信息
+            titleHtml += '<div class="item"><span class="inner ' + classType + '">' + itemName + '</span></div>';
+            html += '<div class="item">';
+            for (var k in items) {
+              if (items[k] !== null && items[k] !== undefined) {
+                if (itemName == "厂商指导价<br/>(元)") {
+                  items[k].value = "<strong>" + items[k].value + "</strong>";
+                }
+                html += '<span class="inner ' + classType + '" data-specid="' + items[k].specid + '"  style="width:'+cw+'">' + items[k].value + '</span>';
+              }
+            }
+            html += '</div>';
+          }
+        }
+        if (d[i].configitems) {
+          var groupItems = d[i].configitems;
+          for (var j in groupItems) {
+            var itemName = groupItems[j].name;
+            var items = groupItems[j].valueitems;
+            var classType = _this.checkTypeItem(items);
+
+            //添加vs标题信息
+            titleHtml += '<div class="item"><span class="inner ' + classType + '">' + itemName + '</span></div>';
+            html += '<div class="item">';
+            for (var k in items) {
+              if (items[k] !== null && items[k] !== undefined) {
+                html += '<span class="inner ' + classType + '" data-specid="' + items[k].specid + '" style="width:'+cw+'">' + items[k].value + '</span>';
+              }
+            }
+            html += '</div>';
+          }
+        }
+        html += "</div>";
+        titleHtml += "</div>";
+        count++;
+      }
+      $("section.detail>div.left").html(titleHtml);
+      $("#scroller__detail div.data").html(html);
+
+      this.trigger('rendContentEnd');
+    },
+    rendTailContent: function() {
+      var _this = this,
+        ids = _this.config.ids,
+        cityid = $.getCookie('cookieCityId') == undefined ? '' : $.getCookie('cookieCityId');
+      cityid = 110100;
+
+      if ($.grep(_this.defaultParam.currData, function(n) {
+          return n.name == '电动机';
+        }).length > 0) {
+        var url = PATH_SUBSIDY.replace('$spec', ids).replace('$city', parseInt(($.getCookie('cookieCityId') || $.getCookie('area') || 0) / 100) * 100 || 0);
+        $.getJSON(url, function(d) {
+          if (!d || d.returncode > 0 || d.result.specitems.length == 0) {
+            return;
+          }
+          for (var i in d.result.specitems) {
+            var item = d.result.specitems[i];
+            if (item.countrysubsidy > 0 || item.citysubsidy > 0) {
+              $('.js-subsidy [data-specid="' + item.id + '"]').html((item.countrysubsidy > 0 ? ((item.countrysubsidy / 10000).toFixed(2) + '万') : '-') +
+                '/' +
+                (item.citysubsidy > 0 ? ((item.citysubsidy / 10000).toFixed(2) + '万') : '-'));
+              $('.js-subsidy').removeClass('fn-hide');
+            }
+          }
+        });
+      }
+    },
+    getTitleItems: function(d) {
+      var titleItems = [];
+      for (var p in d) {
+        if (d[p].name === "基本参数") {
+          for (var pItem in d[p].paramitems) {
+            if (d[p].paramitems[pItem].name === "机械名称") {
+              return d[p].paramitems[pItem].valueitems;
+            }
+          }
+        }
+      }
+      return null;
+    },
+    getPriceItems: function(d) {
+      var titleItems = [];
+      for (var p in d) {
+        if (d[p].name === "基本参数") {
+          for (var pItem in d[p].paramitems) {
+            if (d[p].paramitems[pItem].name === "厂商指导价(元)") {
+              return d[p].paramitems[pItem].valueitems;
+            }
+          }
+        }
+      }
+      return null;
+    },
+    removeData: function(id) {
+      var data = this.defaultParam.currData;
+      for (var i in data) {
+        var groupName = data[i].name;
+        if (data[i].paramitems) {
+          var groupItems = data[i].paramitems;
+          for (var j in groupItems) {
+            var itemName = groupItems[j].name;
+            var items = groupItems[j].valueitems;
+            for (var k in items) {
+              if (items[k] !== null && items[k] !== undefined && items[k].specid === id) {
+
+                var index = items.indexOf(items[k]);
+                if (index > -1) {
+                  items.splice(index, 1);
+                }
+              }
+            }
+          }
+        }
+        if (data[i].configitems) {
+          var groupItems = data[i].configitems;
+          for (var j in groupItems) {
+            var itemName = groupItems[j].name;
+            var items = groupItems[j].valueitems;
+            for (var k in items) {
+              if (items[k] !== null && items[k] !== undefined && items[k].specid === id) {
+
+                var index = items.indexOf(items[k]);
+                if (index > -1) {
+                  items.splice(index, 1);
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    checkTypeItem: function(data) {
+      var hasValue = false;
+      for (var j = 0; j < data.length; j++) {
+        if (data[j] && data[j].value != "-") {
+          hasValue = true;
+        }
+      }
+
+      if (hasValue) {
+        for (var i = 0; i < data.length; i++) {
+          if (data[i + 1] && (data[i].value != data[i + 1].value)) {
+            return "item-differ";
+          }
+        }
+      } else {
+        return "item-null";
+      }
+      return "item-same";
+    },
+    renderPopList: function(id, templateId, json) {
+      var html = template(templateId, json);
+      document.getElementById(id).innerHTML = html;
+
+      if (this.config.type == 1) {
+        var ids = $.getCookie("product_compare", "");
+        if (ids === "") return;
+        var arr = ids.split(','),
+          arg = [];
+
+        if (arr.length !== 4) return;
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i] != 0) {
+            this.controlPopItem('add', arr[i]);
+          }
+        }
+        return;
+      }
+      for (var i = 0; i < this.config.ids.length; i++) { //渲染默认选中得ID的项目
+        this.controlPopItem('add', this.config.ids[i]);
+      }
+    },
+    popEvent: function() {
+      var self = this;
+      $('#loadData').off('click.select');
+      $('#loadData').on('click.select', '#common_specselect_list li a,#common_historyselect_list li a', function() {
+        if ($(this).hasClass('w-disabled')) { //选中过得不在可选
+          return false;
+        }
+        $('#loadSpec').hide();
+        $('#loadSeries').hide();
+
+        $('#compare_mark').removeClass('activate').next().addClass('fn-hide');
+        document.body.scrollTop = 0;
+        $('.parameter-detail header').removeClass('sticky');
+        $('.parameter-detail .header-stand').addClass('fn-hide');
+
+        $('.wrapper').show();
+        var oId = $(this).data('id')
+        self.controlPopItem('add', oId)
+        if (self.config.ids.indexOf(oId) > -1 || self.config.ids.length > 3) { //判断是否用重复ID 和 是否已经4个元素
+          return false;
+        }
+        self.setHistory(oId); // 加入对比历史
+
+        var specName = $(this).find("span").text().replace("(已选择)", "").trim();
+        var seriesName = "";
+        var selVal = $("#nav_select_list a.selected").attr("data-target");
+        if (selVal == "#common_specselect_list") {
+          seriesName = $("#divloadSeries > div.w-nav > h2").text().replace("-选择车型", "").trim();
+        } else if (selVal == "#common_brandselect_list") {
+          seriesName = $("#loadSeries > div.w-nav > h2").text().replace("-选择车型", "").trim();
+        }
+
+        if (self.config.type == 1) {
+          //GetSeriesBySpecId
+          var specName = $(this).find("span").text().replace("(已选择)", "").trim();
+          var seriesName = "";
+          var selVal = $("#nav_select_list a.selected").attr("data-target");
+          if (selVal == "#common_specselect_list") {
+            seriesName = $("#divloadSeries > div.w-nav > h2").text().replace("-选择车型", "").trim();
+          } else if (selVal == "#common_brandselect_list") {
+            seriesName = $("#loadSeries > div.w-nav > h2").text().replace("-选择车型", "").trim();
+          }
+
+          var b = Auto.Compare.updateDate({
+            specid: parseInt(oId),
+            specname: specName,
+            seriesname: seriesName
+          });
+        } else {
+          self.config.ids.push(oId);
+          self.getData(self.config.ids);
+        }
+      });
+
+      $('#loadSpec').off('click.select');
+      $('#loadSpec').on('click.select', '#nav_select_list li a', function() {
+        $('#nav_select_list a.selected').removeClass('selected');
+        $(this).addClass('selected');
+
+        var $div = $($(this).attr('data-target'));
+        $div.siblings().hide();
+        $div.show();
+      });
+
+      $('#loadSpec').on('click.select', '#btn_historyselect_list', function() {
+        var stateLoad = self.defaultParam.historyStateLoad,
+          url = PATH_HISTORY;
+        if (!stateLoad) {
+          var specItems = $.getCookie("ComparedSpecList", "");
+          if (specItems != "") {
+            $.getJSON(url + specItems, function(data) {
+              self.renderPopList('common_historyselect_list', 'popListDataHistory', data);
+              self.defaultParam.historyStateLoad = true;
+            });
+          } else {
+            self.renderPopList('common_historyselect_list', 'popListDataHistory', {
+              SpecList: []
+            });
+          }
+        }
+      });
+      $('#loadSpec').on('click.select', '#btn_brandselect_list', function() {
+        var stateLoad = self.defaultParam.brandStateLoad;
+        if (!stateLoad) {
+          var url = PATH_BRAND;
+          $.getJSON(url + "0", function(data) {
+            self.renderPopList('common_brand_list', 'popListDataBrand', data);
+          });
+          self.defaultParam.brandStateLoad = true;
+        }
+      });
+      $('#loadSpec').on('click.select', '#common_brandselect_list .w-sift-letter-content a', function() {
+        var url = PATH_BRAND,
+          $this = $(this);
+        $.getJSON(url + $this.text(), function(data) {
+          self.renderPopList('common_brand_list', 'popListDataBrand', data);
+          $this.siblings('.w-btn-selected').removeClass('w-btn-selected');
+          $this.addClass('w-btn-selected');
+        });
+      });
+
+      $('#loadSpec').on('click.select', 'a.js-branditem', function() {
+        var url = PATH_SERIES,
+          $li = $(this).closest('li'),
+          id = $(this).attr('data-brandid'),
+          index = ($li.index() > $('#common_seriesselect_items').index() ? ($li.index() - 1) : $li.index()),
+          left = $li.offset().left,
+          lis = $('li.item', $li.parent()),
+          len = lis.length;
+        $.getJSON(url + id, function(data) {
+          self.renderPopList('common_seriesselect_items', 'popListDataSeriesList', data);
+          $('#common_seriesselect_items').show();
+          $li.siblings('.item-current').removeClass('item-current');
+          $li.addClass('item-current');
+          if (index + 1 < len) {
+            for (var i = index + 1; i < len; i++) {
+              if ($(lis[i]).offset().left <= left) {
+                $(lis[i]).before($('#common_seriesselect_items'));
+                break;
+              }
+            }
+          } else {
+            $li.after($('#common_seriesselect_items'));
+          }
+        });
+      });
+      $('#loadSpec').on('click.select', '#common_seriesselect_items a', function() {
+        if ($(this).hasClass('disabled'))
+          return false;
+        var url = PATH_LIST;
+        var seriesId = $(this).data('seriesid');
+        $.ajax({
+          url: url,
+          data: {
+            seriesId: seriesId,
+            state: 4,
+            v: 1
+          },
+          dataType: "jsonp",
+          success: function(data) {
+            self.renderPopList('loadSeries', 'popListDataSeries', data);
+            $('#loadSpec').hide();
+            $('#loadSeries').show();
+
+            $('#compare_mark').removeClass('activate').next().addClass('fn-hide');
+            document.body.scrollTop = 0;
+            $('.parameter-detail header').removeClass('sticky');
+            $('.parameter-detail .header-stand').addClass('fn-hide');
+          }
+        });
+      });
+    },
+    controlPopItem: function(ctrl, specId) {
+      var $nowIt = $('#loadData').find('[data-id="' + specId + '"]');
+      var $caption = $nowIt.find('.caption');
+      if (ctrl == 'remove') {
+        $nowIt.removeClass('w-disabled')
+        $caption.text() && $caption.text($caption.text().replace(/\(已选择\)/g, ''));
+      } else {
+        $nowIt.addClass('w-disabled')
+        $caption.each(function(i, item) {
+          var $item = $(item);
+          $item.text().indexOf('(已选择)') > -1 || $item.text($item.text() + '(已选择)');
+        });
+      }
+    },
+    otherDeal: function() {
+      // 更新对比框
+      Auto.Compare.updateCompareUI(true);
+        //触发高亮显示
+      if (!this.config.type) {
+          $(".compare .left input").each(function (i, obj) {
+              if ($(obj).attr("id") == "chkHL") {
+                  $(obj)[0].checked = false;
+                  $(obj).click();
+              } else if ($(obj)[0].checked) {
+                  $(obj)[0].checked = false;
+                  $(obj).click();
+              }
+          });
+      }
+    }
+  };
+
+  //数据接口
+  var PATH_LIST = "json/add.json",
+    PATH_DATA = 'json/data.json?ids=',
+    //PATH_HISTORY = 'json/HistoryComSpecNew.json?',
+    PATH_BRAND = 'json/pinpai.json?';
+    //PATH_SERIES = '/ashx/spec/GetSeriesListByBrandIdNew.ashx?brandid=',
+    ///PATH_PRICE = "http://car.interface.autohome.com.cn/dealer/LoadDealerPrice.ashx?type=4&_callback=?&specid=",
+    //PATH_SUBSIDY = "http://car.interface.autohome.com.cn/Car/GetSpecElectricSubsidy.ashx?_callback=?&speclist=$spec&cityid=$city";
+  $(function() {
+      $(window).scroll(function(e){
+        var stop = $(this).scrollTop();
+        if(stop>=55){
+          if(stop<=70){
+            $('header').css({'top':stop-55, 'position': 'absolute'});
+          }else{
+             $('header').css({'top':0, 'position': 'fixed'});
+          }
+        }else{
+          $('header').css({'top':0, 'position': ''});
+        }
+      })
+  });
+
+  window.compareList = compareList;
+
+
+  //对比弹出层
+  var Auto = Auto || {};
+  Auto.Compare = {
+    compare_area: $('#compare_area'),
+    compare_body: $('#compare_body'),
+    lis: $('#compare_ul li'),
+    compare_no: $('#compare_no'),
+    compare_mark: $('#compare_mark'),
+    compare_clear: $('#compare_clear'),
+    data: [],
+    onremovedate: function() {},
+    CompareCount: 4,
+    StateObj: {},
+    reset: function() { //重置；清楚；
+      for (var i = 0; i < this.CompareCount; i++) {
+        if (this.data[i] && this.data[i].specid != 0) {
+          this.onremovedate(this.data[i].specid);
+          window.compareList.prototype.controlPopItem('remove', this.data[i].specid);
+        }
+        this.data[i] = {
+          specid: 0,
+          specname: '',
+          seriesname: ''
+        };
+      }
+    },
+    getCompareCount: function() { //获取对比个数。
+      var no = 0;
+      for (var i = 0; i < this.CompareCount; i++) {
+        if (this.data[i]['specid'] > 0) no++;
+      }
+      return no;
+    },
+    updateDate: function(d, index, defshow) { // 更新数据，同时更新页面显示;
+      var count = this.getCompareCount();
+      if (count == this.CompareCount && d.specid != 0) {
+        AutoMsgBox(Config.msgboxClass, '抱歉，只能对比四款车型', 'fn-hide'); //抱歉，只能对比两款车型 
+        return false;
+      }
+      if (index != undefined) {
+        if (this.data[index].specid != 0)
+          this.onremovedate(this.data[index].specid);
+        this.data[index] = d;
+        this.updateCompareUI(defshow);
+        return true;
+      }
+      for (var i = 0; i < this.CompareCount; i++) {
+        if (this.data[i].specid == 0) {
+          this.data[i] = d;
+          this.updateCompareUI(defshow);
+          return true;
+        }
+      }
+      return false;
+    },
+    updateCompareUI: function(defshow) { //更新页面显示对比个数
+      var No = this.getCompareCount();
+      this.compare_mark.html(' 对比<br />(' + No + ')');
+      this.compare_no.html('' + No);
+      if (No == 1) {
+        setTimeout(function() {
+            Auto.Compare.compare_area.removeClass("fn-hide");
+            if (!(defshow == true)) {
+              Auto.Compare.compare_body.removeClass("fn-hide");
+              Auto.Compare.compare_mark.addClass("activate");
+            }
+          },
+          1000);
+      }
+      for (var i = 0; i < this.data.length; i++) {
+        if (this.data[i]['specid'] == 0) {
+          $(this.lis[i])
+            .html('<span class="item null reduce"><i class="iconfont icon-add"></i><i class="iconfont icon-cross"></i></span>');
+        } else {
+          $(this.lis[i])
+            .html('<span class="item added">' +
+              this.data[i]['seriesname'] +
+              ' ' +
+              this.data[i]['specname'] +
+              '<i class="iconfont icon-add"></i><i class="iconfont icon-cross" data-itemclear=true data-specId=' + this.data[i]['specid'] + '></i></span>');
+          var node = $("span[data-comid='" + this.data[i]['specid'] + "']");
+          if (node.length > 0) {
+            node.addClass(Config.ClassNameDis).html('已加入');
+          }
+        }
+      }
+      Auto.Compare.UpdateProductCompare();
+    },
+    setCompareSpecCookie: function(specId) {
+      var self = this,
+        hs = $.getCookie("ComparedSpecList", ""),
+        hsL = [],
+        L = 0;
+      if (hs == "") {
+        $.setCookie("ComparedSpecList", specId, {
+          expireHours: 24 * 30,
+          domain: '.autohome.com.cn'
+        });
+      } else {
+        hsL = hs.split(",");
+        L = hsL.length >= this.CompareCount ? this.CompareCount : hsL.length;
+        for (var i = 0; i < L; i++) {
+          if (hsL[i] == specId) {
+            return;
+          }
+        }
+        hsL.unshift(specId);
+        hsL.length = hsL.length >= this.CompareCount ? this.CompareCount : hsL.length;
+        $
+          .setCookie("ComparedSpecList",
+            hsL.join(","), {
+              expireHours: 24 * 30,
+              domain: '.autohome.com.cn'
+            });
+      }
+    },
+    SelectedSpec: function() {
+      var specId = '',
+        loadSpecObj = $("#loadSpec");
+      currCompareScrollTop = $(window).scrollTop();
+      var d = Auto.Compare.data;
+      var dlist = {};
+      for (var i = 0; i < d.length; i++) {
+        if (d[i].specid > 0) {
+          dlist[d[i].specid] = true;
+        }
+      }
+      if (this.StateObj["loadSelectSpec"]) {
+        specSelect.show(Config.SeriesId, Config.SeriesName, dlist);
+        loadSpecObj.show();
+        $("#loadImg").addClass("fn-hide");
+      } else {
+
+      }
+    },
+    HandleSelectSpec: function(obj) {
+      var shiftObj = $(".wrapper"),
+        loadSpecObj = $("#loadSpec");
+      Auto.Compare.setCompareSpecCookie(obj.id);
+      if (obj.seriesName) {
+        specName = obj.seriesName + " " + obj.name;
+      } else {
+        specName = obj.name;
+      }
+      var index = parseInt($("#compare_ul").attr('selectindex'));
+      Auto.Compare.updateDate({
+        specid: obj.id,
+        specname: specName,
+        seriesname: ""
+      }, index);
+      shiftObj.show();
+      loadSpecObj.hide();
+      window.scrollTo(0, currCompareScrollTop);
+    },
+    CutOffWord: function(str, n) {
+      var tmpStr = str.substr(0, n);
+      var tmpCode = tmpStr.replace(/[^\x00-\xff]/g, '\r\n').split('');
+      n = (tmpCode[n - 1] == '\r') ? n - 2 : n - 1;
+      var l = tmpCode.slice(0, n).join('').replace(/\r\n/g, '*').length + 1;
+      return tmpStr.substr(0, l);
+    }
+  };
+  Auto.Compare.ProductCompare = function() {
+    var ids = $.getCookie("product_compare", "");
+    if (ids === "") return;
+    var arr = ids.split(','),
+      arg = [];
+
+    if (arr.length !== 4) return;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] != 0) {
+        arg.push(arr[i]);
+      }
+    }
+    if (arg.length == 0) return;
+    $.get("/Ashx/car/LoadHistoryComSpec.ashx?speclist=" + arg.join(','),
+      function(data) {
+        for (var j = 0; j < arr.length; j++) {
+          for (var k = 0; k < data.length; k++) {
+            if (arr[j] == data[k].Id) {
+              Auto.Compare.updateDate({
+                  specid: data[k].Id,
+                  specname: data[k].Name,
+                  seriesname: data[k].SeriesName
+                },
+                j,
+                true);
+            }
+          }
+        }
+      });
+  }
+  Auto.Compare.UpdateProductCompare = function() {
+    var data = Auto.Compare.data;
+    var arr = [0, 0, 0, 0];
+    for (var i = 0; i < data.length; i++) {
+      arr[i] = data[i].specid;
+    }
+    var ids = arr.join(',');
+    $.setCookie("product_compare", ids, {
+      expireHours: 24 * 30,
+      domain: '.autohome.com.cn'
+    });
+  }
+  Auto.Compare.onremovedate = function(specid) {
+    var node = $("span[data-comid='" + specid + "']");
+    if (node.length > 0) {
+      node.removeClass(Config.ClassNameDis).html(Config.DuibuString);
+    }
+  };
+
+  Auto.Compare.init = function() {
+    this.reset();
+    var that = this;
+    this.lis.on('click',
+      'i[data-itemclear]',
+      function() { //清楚单项事件绑定
+        var obj = $(this).parent().parent();
+        that.updateDate({
+          specid: 0,
+          specname: '',
+          seriesname: ''
+        }, obj.attr('index'));
+      });
+    this.compare_clear.on("click",
+      function() {
+        that.reset();
+        that.updateCompareUI();
+      })
+    $('#compare_go')
+      .on("click",
+        function() {
+          var No = that.getCompareCount();
+          if (No < 1) {
+            AutoMsgBox(Config.msgboxClass, '抱歉，对比至少一款车型', "fn-hide"); //抱歉，只能对比两款车型 
+            return;
+          }
+          var d = [];
+          for (var i = 0; i < that.data.length; i++) {
+            d.push(that.data[i]['specid']);
+          }
+          location.href = 'http://car.m.autohome.com.cn/' +
+            Config.SeriesId +
+            '/duibi/' +
+            d.join('-') +
+            "#pvareaid=103155";
+        })
+    that.compare_mark.on('click',
+      function() {
+        var No = that.getCompareCount();
+        if (No < 1) {
+          Auto.Compare.compare_area.addClass("fn-hide");
+          Auto.Compare.compare_body.addClass("fn-hide");
+        } else {
+          Auto.Compare.compare_body.toggleClass("fn-hide");
+          Auto.Compare.compare_mark.toggleClass("activate");
+        }
+      })
+    Auto.Compare.ProductCompare();
+  };
+  Auto.Compare.init();
+})(Zepto)
+
+$(function() {
+  var obj = $("#alert_box");
+
+  function msgbox(type, title, classname) {
+    var tep = getTemplate().replace('{title}', title).replace('{type}', type).replace('{class}', classname);
+    obj.html(tep);
+    if (classname == "fn-hide") {
+      obj.popAlert(1000);
+    }
+  };
+
+  function getTemplate() {
+    return '<div class="alert">\
+                    <div class="info"><i class="iconfont icon-{type}"></i>{title}</div>\
+                    <div class="handle {class}"><span class="btn primary small"><em class="fn-oneword"></em>确定<em class="fn-oneword"></em></span></div>\
+                </div>\
+                <div class="mask"></div>';
+    return '<div class="alert"><p><i class="iconfont icon-{type}"></i><span>{title}</span></p></div>';
+  }
+  window.AutoMsgBox = msgbox;
+});

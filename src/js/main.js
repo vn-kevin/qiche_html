@@ -1079,3 +1079,32 @@ if (window.jQuery || window.Zepto) {
 		})
 	})(window.jQuery || window.Zepto)
 };
+
+
+;(function($){
+    var _alert=function(opt){
+        var opts={}
+        $.extend(opts,opt);
+        
+        var $dom=$('#alert_box'),
+            tmp='<section class="alertbox fn-hide" id="alert_box">'+
+                '<div class="alert">'+
+                    '<div class="info"><i class="iconfont ok">&#xe613;</i>已加入对比框中<br>您还可以继续添加</div>     '+
+                    '<div class="handle fn-hide"><span class="btn primary small">'+
+                        '<em class="fn-oneword"></em>确定<em class="fn-oneword"></em></span>'+
+                    '</div>'+
+                '</div>'+
+                '<div class="mask"></div>'+
+            '</section>';
+            if(!$dom.length){
+                $('body').append(tmp);
+            }
+            $('#alert_box').removeClass('fn-hide');
+
+        setTimeout(function(){
+            $('#alert_box').addClass('fn-hide');
+        },opts.speed || 1500);
+        return this;
+    }
+    window._alert=_alert;
+})(Zepto);

@@ -40,7 +40,7 @@ gulp.task('jsmin', function (cb) {
   pump([
         gulp.src(['src/js/*.js']),
         replace('src/', ''),
-        uglify(),
+        //uglify(),
         gulp.dest('docs/js/')
     ],
     cb
