@@ -99,11 +99,11 @@
 				"specid": 123,
 				"value": "ZLB-ⅡN"
 			}]
-		},  {
+		}, {
 			"name": "工作质量<br/>(t)",
 			"valueitems": [{
 				"specid": 25379,
-				"value": "16.9"
+				"value": "10.6"
 			}, {
 				"specid": 25189,
 				"value": "10.6"

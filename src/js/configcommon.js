@@ -225,10 +225,15 @@ $(function () {
             });
         }
         function paramToggles(){
-            $paramItem.find('.item').each(function(index,item){
+            $('.detail .left .group .item').each(function(index,item){
                 if($(item).find('.item-same').length){
+                    var tit='显示相同项';
+                    if ($(item).hasClass('fn-hide')) {
+                        tit='隐藏相同项';
+                    }
+                    $('.toggleHide').text(tit);
                     $(item).toggleClass('fn-hide');
-                    $paramDetail.find('.main .group .item').eq(index).toggleClass('fn-hide');
+                    $('#scroller__detail .group .item').eq(index).find('.item-same').toggleClass('fn-hide');
                 }
             });
         }

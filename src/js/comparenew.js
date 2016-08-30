@@ -12,16 +12,6 @@
  }
   function displaySpec(e) {
     side.brand.open();
-   /* var html='';
-        html+="<div class=\'Bd_search\'>";
-        html+="  <i class=\'Bd_i iconfont\'>&#xe600;</i>";
-        html+="    <input type=\'text\' class=\'Bd_t\' placeholder=\'请输入品牌名称\'>";
-        html+="    <a href=\'javascript:SeachAll({type:1})\' class=\'Bd_b\' >搜索</a>";
-        html+="</div>";
-
-        html+='<div class="series">';
-        html+='</div>';
-    $('#div_BrandListContent').html(html);*/
   }
 
   compareList.prototype = {
@@ -72,6 +62,7 @@
       });
       //添加
       $('i.added').on("click", function(evt) {
+         $('body').scrollTop(0);
         displaySpec(evt);
       });
       //选择品牌
@@ -85,9 +76,12 @@
         var nid = $(this).attr('data-ids');
         _this.config.ids.push(nid);
 
-        alert('请求JSON 文件内容 : json/data.jsp?ids='+_this.config.ids);
-        PATH_DATA='src/json/data2.json?ids=';
+        //console.log($('#scroller__compare .column').length)
+
+        PATH_DATA='src/json/data'+$('#scroller__compare .column').length+'.json?';
         _this.getData(_this.config.ids);
+
+
         side.brand.close();
         side.brand_detail.close();
 
@@ -166,7 +160,7 @@
       //加载绑定事件
       this.onEvent();
       // 后加载内容
-      this.rendTailContent();
+      //this.rendTailContent();
       // 其他处理
       this.otherDeal();
     },
@@ -183,7 +177,7 @@
         valuePriceItems = d.length > 0 ? _this.getPriceItems(d) : [],
         html = '';
 
-        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'auto';
+        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'84px';
 
       if (valueItems) {
         if (_this.config.type == 1) {
@@ -225,7 +219,7 @@
         html = '',
         count = 0,
         valueItems = d.length > 0 ? _this.getTitleItems(d) : [];
-        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'auto';
+        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'84px';
 
       for (var i in d) {
         var groupName = d[i].name;
@@ -606,20 +600,6 @@
     //PATH_SERIES = '/ashx/spec/GetSeriesListByBrandIdNew.ashx?brandid=',
     ///PATH_PRICE = "http://car.interface.autohome.com.cn/dealer/LoadDealerPrice.ashx?type=4&_callback=?&specid=",
     //PATH_SUBSIDY = "http://car.interface.autohome.com.cn/Car/GetSpecElectricSubsidy.ashx?_callback=?&speclist=$spec&cityid=$city";
-  $(function() {
-      $(window).scroll(function(e){
-        var stop = $(this).scrollTop();
-        if(stop>=55){
-          if(stop<=70){
-            $('header').css({'top':stop-55, 'position': 'absolute'});
-          }else{
-             $('header').css({'top':0, 'position': 'fixed'});
-          }
-        }else{
-          $('header').css({'top':0, 'position': ''});
-        }
-      })
-  });
 
   window.compareList = compareList;
 
@@ -908,3 +888,21 @@ $(function() {
   }
   window.AutoMsgBox = msgbox;
 });
+
+ $(function() {
+      $(window).scroll(function(e){
+        var stop = $(this).scrollTop();
+        if(stop>=55){
+          if(stop<=60){
+            $('header').css({'top':stop-55, 'position': 'absolute'});
+            $('.header-stand').removeClass('fn-hide')
+          }else{
+             $('header').css({'top':0, 'position': 'fixed'});
+             $('.header-stand').removeClass('fn-hide')
+          }
+        }else{
+          $('header').css({'top':0, 'position': ''});
+          $('.header-stand').addClass('fn-hide')
+        }
+      })
+  });
