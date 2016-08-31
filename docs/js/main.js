@@ -239,8 +239,8 @@ var massCfg = {
 					var i = f.find(".aside-main");
 					if (i.length) {
 						if(a.attr('data-template')=='true'){
-							console.log(j)
-							template(a.attr('data-relation'),j);
+							//console.log(j)
+							//template(a.attr('data-relation'),j);
 						}else{
 							i.html(j)
 						}
@@ -258,7 +258,7 @@ var massCfg = {
 	if (a.length > 0) {
 		b.aside = new c()
 	}
-}(Zepto,'',template));
+}(Zepto));
 //tag
 (function(e, t) {
     "use strict";

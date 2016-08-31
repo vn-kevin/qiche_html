@@ -106,49 +106,29 @@
 </footer>
 
 
-<!--详细机械内容侧栏-->
-    <aside class="sidebar findcar-sidebar brandcore" data-role-side='{"container": ".sidebar-floor", "target": "brandcore", "open": "sidebar-in", "close": "sidebar-out", "delay": "true", "name": "brand_detail"}'>
-        
-          <div id="div_RightBrand" class="module" data-side-view="right">
-            <div id="yeti" style="display:none" class="brandevent"></div>
-           <div data-role="tabSwitch" data-tab-active="1"  id="div_BrandDetailListContent">
-                <h3>品牌</h3>
-                <div class="series">
-                    <a href="#" data-ids="23">
-                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：308.80万</p>
-                    </a>
-                    <a href="#" data-ids="24">
-                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：308.80万</p>
-                    </a>
-                    <a href="#" data-ids="25">
-                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：308.80万</p>
-                    </a>
-                    <a href="#" data-ids="26">
-                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：308.80万</p>
-                    </a>
-                </div>
-          </div>
-        </div>
-        <div class="mask" data-side-mask data-side-close></div>
-      </aside>
-<!--end详细机械内容侧栏-->
-
  <!--all duibi-->
-    <aside class="aside block-duibi">
+    <aside class="aside block-duibi" id="js_duibi">
         <nav class="nav-final">
-            <p>对比</p>
+            <span class="ms-right" style="color:#666">已选择 1/9</span>
             <a class="back" href="#"><i class="iconfont">&#xe60e;</i></a>
         </nav>
-        <section class="aside-main list-ok aside-main-area">
+        <section class="aside-main list-line list-ck" >
+            <ul>
+                <li class='active'><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+                <li><i class="iconfont">&#xe613;</i>型号100000</li>
+
+            </ul>
         </section>
+        <div class="foot-end">
+            <a href="car_ck.html" class="fr bt">添加</a>
+        </div>
     </aside>
 
 
@@ -183,9 +163,23 @@
                 $('html,body').css('overflow','')
                 $('.j-share').addClass('fn-hide');
             });
+
             $('#add_').click(function(){
+                $(this).addClass('noblur');
                _alert();
-            })
+               $('.dbpoint').trigger('click');
+            });
+
+            $('#js_duibi').on('click','.list-ck li',function(){
+                $(this).addClass('active');
+                var that=$(this),
+                    $dom=$('#js_duibi');
+                var ckF=function(){
+                    var i=$dom.find('li.active').length;
+                    $dom.find('.ms-right').text('已选择 '+i+'/9');
+                }
+                ckF();
+            });
 
         });
     </script>
