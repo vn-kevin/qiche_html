@@ -109,8 +109,10 @@
         PATH_DATA='json/data'+lens+'.json?';
         _this.getData(_this.config.ids);
 
-        paramScrollerCompare.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
-        paramScrollerDetail.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
+        setTimeout(function(){
+             paramScrollerCompare.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
+             paramScrollerDetail.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
+        },500);
        
         side.brand.close();
         side.brand_detail.close();
