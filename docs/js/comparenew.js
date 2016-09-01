@@ -45,6 +45,28 @@
     },
     onEvent: function() {
       var _this = this;
+
+      //dothing
+      var lens = $('#scroller__compare .column').length,
+        aleft = $('.ck_left'),
+        aright = $('.ck_right');
+
+      if (lens >= 3) {
+        if (paramScrollerCompare.x <= paramScrollerCompare.maxScrollX) {
+          aright.hide();
+        } else {
+          aright.show();
+        }
+        if (Math.abs(paramScrollerCompare.x) >= 0) {
+          aleft.hide();
+        } else {
+          aleft.show();
+        }
+      }else{
+        aleft.hide();
+        aright.hide();
+      }
+
       //减少
       $('i.reduce').on("click", function() {
         var specId = parseInt($(this).attr('data-specId'));
@@ -76,18 +98,27 @@
         var nid = $(this).attr('data-ids');
         _this.config.ids.push(nid);
 
-        //console.log($('#scroller__compare .column').length)
+        var lens=$('#scroller__compare .column').length,
+            c_w=$('#scroller__compare .column').width(),
+            aleft=$('.ck_left'),
+            aright=$('.ck_right'),
+            mwidth=0;
 
-        PATH_DATA='json/data'+$('#scroller__compare .column').length+'.json?';
+
+            if(lens>2){mwidth=(((lens+1)*c_w)-$('body').width())+(c_w-17);}
+        PATH_DATA='json/data'+lens+'.json?';
         _this.getData(_this.config.ids);
 
 
+        //paramScrollerCompare.scrollTo(-mwidth,0);
+        //paramScrollerDetail.scrollTo(-mwidth,0);
+       
         side.brand.close();
         side.brand_detail.close();
 
       });
 
-      //对比               
+    /*  //对比               
       $("span[data-comid]").on("click", function() {
         var jNode = $(this),
           specId = jNode.attr("data-comid"),
@@ -108,7 +139,7 @@
         Auto.Compare.setCompareSpecCookie(specId); //记录对比cookie                        
         jNode.addClass("disabled").html('已加入');
         return false;
-      });
+      });*/
     },
     getData: function(ids) {
       var _this = this;
@@ -177,7 +208,14 @@
         valuePriceItems = d.length > 0 ? _this.getPriceItems(d) : [],
         html = '';
 
-        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'84px';
+        var mws=Math.floor(($('body').width()-80)/3);
+        if(mws<84){
+          mws=90;
+        }
+        if(mws>120){
+          mws=120;
+        }
+        var cw=valueItems.length<=3?mws+'px':mws+'px';
 
       if (valueItems) {
         if (_this.config.type == 1) {
@@ -219,7 +257,14 @@
         html = '',
         count = 0,
         valueItems = d.length > 0 ? _this.getTitleItems(d) : [];
-        var cw=valueItems.length<=3?Math.floor(($('body').width()-80)/3)+'px':'84px';
+        var mws=Math.floor(($('body').width()-80)/3);
+        if(mws<84){
+          mws=90;
+        }
+        if(mws>120){
+          mws=120;
+        }
+        var cw=valueItems.length<=3?mws+'px':mws+'px';
 
       for (var i in d) {
         var groupName = d[i].name;
@@ -639,7 +684,7 @@
     },
     updateDate: function(d, index, defshow) { // 更新数据，同时更新页面显示;
       var count = this.getCompareCount();
-      if (count == this.CompareCount && d.specid != 0) {
+      if (count == this.CompareCount && d.specid != 0) { 
         AutoMsgBox(Config.msgboxClass, '抱歉，只能对比四款车型', 'fn-hide'); //抱歉，只能对比两款车型 
         return false;
       }
@@ -904,5 +949,50 @@ $(function() {
           $('header').css({'top':0, 'position': ''});
           $('.header-stand').addClass('fn-hide')
         }
+      });
+
+      var lens = $('#scroller__compare .column').length,
+        aleft = $('.ck_left'),
+        aright = $('.ck_right');
+
+      document.addEventListener('touchmove', function(e) {
+        var lens = $('#scroller__compare .column').length;
+        
+        if (lens >= 3) {
+          aleft.show();
+          aright.show();
+          if (paramScrollerCompare.x <= paramScrollerCompare.maxScrollX+10) {
+            aright.hide();
+          } else {
+            aright.show();
+          }
+          if (paramScrollerCompare.x >= -10) {
+            aleft.hide();
+          } else {
+            aleft.show();
+          }
+        }
+      }, false);
+
+      aleft.click(function() {
+        var q_w=Math.abs(paramScrollerCompare.x)-$('#scroller__compare .column').width();
+        if(-q_w>=10) {
+            $(this).hide();
+            aright.show();
+            return false;
+           }
+            paramScrollerCompare.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
+            paramScrollerDetail.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
+      });
+      aright.click(function() {
+        var q_w=Math.abs(paramScrollerCompare.x)+$('#scroller__compare .column').width();
+
+            if(!(q_w-10<=Math.abs(paramScrollerCompare.maxScrollX))){
+              $(this).hide();
+              aleft.show();
+              return false;
+            }
+            paramScrollerCompare.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
+            paramScrollerDetail.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
       })
   });
