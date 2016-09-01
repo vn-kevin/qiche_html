@@ -55,8 +55,8 @@
 
             <div class="contents" data-tab data-tab-a=".tags a" data-tab-b='.bk_'>
                 <div class="tags">
-                    <a href="#" class="active">图文详情</a>
-                    <a href="#">技术参数</a>
+                    <a href="javascript:void(0)" class="active">图文详情</a>
+                    <a href="javascript:void(0)">技术参数</a>
                 </div>
                 <div class="bk_">
                     <img src="src/img/a0.png">
@@ -114,20 +114,24 @@
         </nav>
         <section class="aside-main list-line list-ck" >
             <ul>
-                <li class='active'><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-                <li><i class="iconfont">&#xe613;</i>型号100000</li>
-
+                <li class='active'><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000  <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                <li><i class="iconfont oks">&#xe613;</i>型号100000 <i class="iconfont del">&#xe619;</i></li>
+                
             </ul>
+
+            
         </section>
         <div class="foot-end">
-            <a href="car_ck.html" class="fr bt">添加</a>
+            <a class="btn full primary list-ck-btn" href="car_ck.html">开始对比</a>
+
+            <a href="javascript:void(0)" class="fr bt">添加</a>
         </div>
     </aside>
 
@@ -146,6 +150,7 @@
     <script>
         //页面初始化
         $(function () {
+            
             $('.js-back').on('click', function () { history.go(-1); });
 
             /*//更多品牌
@@ -170,7 +175,15 @@
                $('.dbpoint').trigger('click');
             });
 
-            $('#js_duibi').on('click','.list-ck li',function(){
+            $('#js_duibi').on('click','.list-ck li',function(evt){
+                if($(evt.target).hasClass('del')){
+
+                     $(this).remove();
+                    /*if(!$(this).hasClass('active')){
+                        $(this).remove();
+                    }*/
+                    return;
+                }
                 $(this).addClass('active');
                 var that=$(this),
                     $dom=$('#js_duibi');

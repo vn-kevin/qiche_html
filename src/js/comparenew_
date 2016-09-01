@@ -1,5 +1,5 @@
 (function($) {
-  /*ç”Ÿæˆåˆ—è¡¨*/
+  /*Éú³ÉÁĞ±í*/
   var compareList = function(config) {
     this.config = $.extend({}, this.defaultOption, config);
     this._EventHandle = $({});
@@ -67,7 +67,7 @@
         aright.hide();
       }
 
-      //å‡å°‘
+      //¼õÉÙ
       $('i.reduce').on("click", function() {
         var specId = parseInt($(this).attr('data-specId'));
         var arrWz = _this.config.ids.indexOf($(this).data('specid'));
@@ -75,23 +75,23 @@
         _this.removeData(specId);
         _this.renderView();
         _this.controlPopItem('remove', specId);
-        //è§¦å‘é«˜äº®æ˜¾ç¤º
+        //´¥·¢¸ßÁÁÏÔÊ¾
         _this.otherDeal();
       });
       $('#compare_ul').on("click", "span.added i.icon-cross", function() {
         var specId = parseInt($(this).attr('data-specId'));
         _this.controlPopItem('remove', specId);
       });
-      //æ·»åŠ 
+      //Ìí¼Ó
       $('i.added').on("click", function(evt) {
          $('body').scrollTop(0);
         displaySpec(evt);
       });
-      //é€‰æ‹©å“ç‰Œ
+      //Ñ¡ÔñÆ·ÅÆ
       //$('#div_BrandListContent').off("click",'.series a');
       $('#div_BrandListContent').on("click",'.series a',function(evt) {
         var name=$(this).find('h4').text();
-        displayList(_this,'å“ç‰Œ > '+name);
+        displayList(_this,'Æ·ÅÆ > '+name);
       });
       $('#div_BrandDetailListContent').off('click','a')
       $('#div_BrandDetailListContent').on('click','a',function() {
@@ -109,17 +109,16 @@
         PATH_DATA='src/json/data'+lens+'.json?';
         _this.getData(_this.config.ids);
 
-        setTimeout(function(){
-             paramScrollerCompare.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
-             paramScrollerDetail.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
-        },500);
+
+        paramScrollerCompare.scrollTo(-mwidth,0);
+        paramScrollerDetail.scrollTo(-mwidth,0);
        
         side.brand.close();
         side.brand_detail.close();
 
       });
 
-    /*  //å¯¹æ¯”               
+    /*  //¶Ô±È               
       $("span[data-comid]").on("click", function() {
         var jNode = $(this),
           specId = jNode.attr("data-comid"),
@@ -133,12 +132,12 @@
         if (b == false) return;
         var count = Auto.Compare.getCompareCount();
         if (count != 4) {
-          AutoMsgBox("ok", 'å·²åŠ å…¥å¯¹æ¯”æ¡†ä¸­<br />æ‚¨è¿˜å¯ä»¥ç»§ç»­æ·»åŠ ', 'fn-hide'); //å·²åŠ å…¥å¯¹æ¯”æ¡†ä¸­<br />æ‚¨è¿˜å¯ä»¥ç»§ç»­æ·»åŠ 
+          AutoMsgBox("ok", 'ÒÑ¼ÓÈë¶Ô±È¿òÖĞ<br />Äú»¹¿ÉÒÔ¼ÌĞøÌí¼Ó', 'fn-hide'); //ÒÑ¼ÓÈë¶Ô±È¿òÖĞ<br />Äú»¹¿ÉÒÔ¼ÌĞøÌí¼Ó
         } else {
-          AutoMsgBox("ok", 'å·²åŠ å…¥å¯¹æ¯”æ¡†ä¸­', 'fn-hide');
+          AutoMsgBox("ok", 'ÒÑ¼ÓÈë¶Ô±È¿òÖĞ', 'fn-hide');
         }
-        Auto.Compare.setCompareSpecCookie(specId); //è®°å½•å¯¹æ¯”cookie                        
-        jNode.addClass("disabled").html('å·²åŠ å…¥');
+        Auto.Compare.setCompareSpecCookie(specId); //¼ÇÂ¼¶Ô±Ècookie                        
+        jNode.addClass("disabled").html('ÒÑ¼ÓÈë');
         return false;
       });*/
     },
@@ -154,7 +153,7 @@
           return;
         }
         _this.defaultParam.currData = [];
-        //å‚æ•°
+        //²ÎÊı
         _this.defaultParam.currData = d.param.concat(d.config);
         _this.renderView();
       });
@@ -185,21 +184,21 @@
       }
     },
     renderView: function() {
-      //åŠ è½½æ ‡é¢˜
+      //¼ÓÔØ±êÌâ
       this.renderTitle();
-      //åŠ è½½è¡¨æ ¼å†…å®¹
+      //¼ÓÔØ±í¸ñÄÚÈİ
       this.rendContent();
-      //åŠ è½½ç»‘å®šäº‹ä»¶
+      //¼ÓÔØ°ó¶¨ÊÂ¼ş
       this.onEvent();
-      // ååŠ è½½å†…å®¹
+      // ºó¼ÓÔØÄÚÈİ
       //this.rendTailContent();
-      // å…¶ä»–å¤„ç†
+      // ÆäËû´¦Àí
       this.otherDeal();
     },
     renderEmptyView: function() {
-      //åŠ è½½æ ‡é¢˜
+      //¼ÓÔØ±êÌâ
       this.renderTitle();
-      //åŠ è½½ç»‘å®šäº‹ä»¶
+      //¼ÓÔØ°ó¶¨ÊÂ¼ş
       this.onEvent();
     },
     renderTitle: function() {
@@ -223,12 +222,12 @@
           if (valueItems[0] && valueItems[0].specid != 0) {
             html += '<div class="column" data-specid="' + valueItems[0].specid + '" style="width:'+cw+'">';
             html += '<h4>' + valueItems[0].value + "</h4>";
-            //html += '<p class="price">å‚å®¶æŒ‡å¯¼ä»·ï¼š<strong>' + valuePriceItems[0].value + "</strong></p>";
+            //html += '<p class="price">³§¼ÒÖ¸µ¼¼Û£º<strong>' + valuePriceItems[0].value + "</strong></p>";
             html += '<span class="btn small" data-comid="' +
               valueItems[0].specid +
               '" data-name="' +
               valueItems[0].value +
-              '"><i class="iconfont icon-add" ></i>å¯¹æ¯”</span>';
+              '"><i class="iconfont icon-add" ></i>¶Ô±È</span>';
             html += '</div>';
           }
           $("section.cartype").html(html);
@@ -251,7 +250,7 @@
       }
     },
     rendContent: function() {
-      //ç”Ÿæˆå¯¹æ¯”å‚æ•°è¡¨æ ¼
+      //Éú³É¶Ô±È²ÎÊı±í¸ñ
       var _this = this,
         d = _this.defaultParam.currData,
         titleHtml = '',
@@ -269,9 +268,9 @@
 
       for (var i in d) {
         var groupName = d[i].name;
-        //æ·»åŠ vsæ ‡é¢˜ä¿¡æ¯
+        //Ìí¼Óvs±êÌâĞÅÏ¢
         titleHtml += '<div class="group"><h4><strong>' + groupName + '</strong></h4>';
-        //æ·»åŠ è¡¨æ ¼å†…å®¹
+        //Ìí¼Ó±í¸ñÄÚÈİ
         html += '<div class="group">';
         if (d[i].paramitems) {
           var groupItems = d[i].paramitems;
@@ -279,15 +278,15 @@
             var itemName = groupItems[j].name;
             var items = groupItems[j].valueitems;
             var classType = _this.checkTypeItem(items);
-            if (itemName == "æœºæ¢°åç§°") {
+            if (itemName == "»úĞµÃû³Æ") {
               continue;
             }
-            //æ·»åŠ vsæ ‡é¢˜ä¿¡æ¯
+            //Ìí¼Óvs±êÌâĞÅÏ¢
             titleHtml += '<div class="item"><span class="inner ' + classType + '">' + itemName + '</span></div>';
             html += '<div class="item">';
             for (var k in items) {
               if (items[k] !== null && items[k] !== undefined) {
-                if (itemName == "å‚å•†æŒ‡å¯¼ä»·<br/>(å…ƒ)") {
+                if (itemName == "³§ÉÌÖ¸µ¼¼Û<br/>(Ôª)") {
                   items[k].value = "<strong>" + items[k].value + "</strong>";
                 }
                 html += '<span class="inner ' + classType + '" data-specid="' + items[k].specid + '"  style="width:'+cw+'">' + items[k].value + '</span>';
@@ -303,7 +302,7 @@
             var items = groupItems[j].valueitems;
             var classType = _this.checkTypeItem(items);
 
-            //æ·»åŠ vsæ ‡é¢˜ä¿¡æ¯
+            //Ìí¼Óvs±êÌâĞÅÏ¢
             titleHtml += '<div class="item"><span class="inner ' + classType + '">' + itemName + '</span></div>';
             html += '<div class="item">';
             for (var k in items) {
@@ -330,7 +329,7 @@
       cityid = 110100;
 
       if ($.grep(_this.defaultParam.currData, function(n) {
-          return n.name == 'ç”µåŠ¨æœº';
+          return n.name == 'µç¶¯»ú';
         }).length > 0) {
         var url = PATH_SUBSIDY.replace('$spec', ids).replace('$city', parseInt(($.getCookie('cookieCityId') || $.getCookie('area') || 0) / 100) * 100 || 0);
         $.getJSON(url, function(d) {
@@ -340,9 +339,9 @@
           for (var i in d.result.specitems) {
             var item = d.result.specitems[i];
             if (item.countrysubsidy > 0 || item.citysubsidy > 0) {
-              $('.js-subsidy [data-specid="' + item.id + '"]').html((item.countrysubsidy > 0 ? ((item.countrysubsidy / 10000).toFixed(2) + 'ä¸‡') : '-') +
+              $('.js-subsidy [data-specid="' + item.id + '"]').html((item.countrysubsidy > 0 ? ((item.countrysubsidy / 10000).toFixed(2) + 'Íò') : '-') +
                 '/' +
-                (item.citysubsidy > 0 ? ((item.citysubsidy / 10000).toFixed(2) + 'ä¸‡') : '-'));
+                (item.citysubsidy > 0 ? ((item.citysubsidy / 10000).toFixed(2) + 'Íò') : '-'));
               $('.js-subsidy').removeClass('fn-hide');
             }
           }
@@ -352,9 +351,9 @@
     getTitleItems: function(d) {
       var titleItems = [];
       for (var p in d) {
-        if (d[p].name === "åŸºæœ¬å‚æ•°") {
+        if (d[p].name === "»ù±¾²ÎÊı") {
           for (var pItem in d[p].paramitems) {
-            if (d[p].paramitems[pItem].name === "æœºæ¢°åç§°") {
+            if (d[p].paramitems[pItem].name === "»úĞµÃû³Æ") {
               return d[p].paramitems[pItem].valueitems;
             }
           }
@@ -365,9 +364,9 @@
     getPriceItems: function(d) {
       var titleItems = [];
       for (var p in d) {
-        if (d[p].name === "åŸºæœ¬å‚æ•°") {
+        if (d[p].name === "»ù±¾²ÎÊı") {
           for (var pItem in d[p].paramitems) {
-            if (d[p].paramitems[pItem].name === "å‚å•†æŒ‡å¯¼ä»·(å…ƒ)") {
+            if (d[p].paramitems[pItem].name === "³§ÉÌÖ¸µ¼¼Û(Ôª)") {
               return d[p].paramitems[pItem].valueitems;
             }
           }
@@ -450,7 +449,7 @@
         }
         return;
       }
-      for (var i = 0; i < this.config.ids.length; i++) { //æ¸²æŸ“é»˜è®¤é€‰ä¸­å¾—IDçš„é¡¹ç›®
+      for (var i = 0; i < this.config.ids.length; i++) { //äÖÈ¾Ä¬ÈÏÑ¡ÖĞµÃIDµÄÏîÄ¿
         this.controlPopItem('add', this.config.ids[i]);
       }
     },
@@ -458,7 +457,7 @@
       var self = this;
       $('#loadData').off('click.select');
       $('#loadData').on('click.select', '#common_specselect_list li a,#common_historyselect_list li a', function() {
-        if ($(this).hasClass('w-disabled')) { //é€‰ä¸­è¿‡å¾—ä¸åœ¨å¯é€‰
+        if ($(this).hasClass('w-disabled')) { //Ñ¡ÖĞ¹ıµÃ²»ÔÚ¿ÉÑ¡
           return false;
         }
         $('#loadSpec').hide();
@@ -472,29 +471,29 @@
         $('.wrapper').show();
         var oId = $(this).data('id')
         self.controlPopItem('add', oId)
-        if (self.config.ids.indexOf(oId) > -1 || self.config.ids.length > 3) { //åˆ¤æ–­æ˜¯å¦ç”¨é‡å¤ID å’Œ æ˜¯å¦å·²ç»4ä¸ªå…ƒç´ 
+        if (self.config.ids.indexOf(oId) > -1 || self.config.ids.length > 3) { //ÅĞ¶ÏÊÇ·ñÓÃÖØ¸´ID ºÍ ÊÇ·ñÒÑ¾­4¸öÔªËØ
           return false;
         }
-        self.setHistory(oId); // åŠ å…¥å¯¹æ¯”å†å²
+        self.setHistory(oId); // ¼ÓÈë¶Ô±ÈÀúÊ·
 
-        var specName = $(this).find("span").text().replace("(å·²é€‰æ‹©)", "").trim();
+        var specName = $(this).find("span").text().replace("(ÒÑÑ¡Ôñ)", "").trim();
         var seriesName = "";
         var selVal = $("#nav_select_list a.selected").attr("data-target");
         if (selVal == "#common_specselect_list") {
-          seriesName = $("#divloadSeries > div.w-nav > h2").text().replace("-é€‰æ‹©è½¦å‹", "").trim();
+          seriesName = $("#divloadSeries > div.w-nav > h2").text().replace("-Ñ¡Ôñ³µĞÍ", "").trim();
         } else if (selVal == "#common_brandselect_list") {
-          seriesName = $("#loadSeries > div.w-nav > h2").text().replace("-é€‰æ‹©è½¦å‹", "").trim();
+          seriesName = $("#loadSeries > div.w-nav > h2").text().replace("-Ñ¡Ôñ³µĞÍ", "").trim();
         }
 
         if (self.config.type == 1) {
           //GetSeriesBySpecId
-          var specName = $(this).find("span").text().replace("(å·²é€‰æ‹©)", "").trim();
+          var specName = $(this).find("span").text().replace("(ÒÑÑ¡Ôñ)", "").trim();
           var seriesName = "";
           var selVal = $("#nav_select_list a.selected").attr("data-target");
           if (selVal == "#common_specselect_list") {
-            seriesName = $("#divloadSeries > div.w-nav > h2").text().replace("-é€‰æ‹©è½¦å‹", "").trim();
+            seriesName = $("#divloadSeries > div.w-nav > h2").text().replace("-Ñ¡Ôñ³µĞÍ", "").trim();
           } else if (selVal == "#common_brandselect_list") {
-            seriesName = $("#loadSeries > div.w-nav > h2").text().replace("-é€‰æ‹©è½¦å‹", "").trim();
+            seriesName = $("#loadSeries > div.w-nav > h2").text().replace("-Ñ¡Ôñ³µĞÍ", "").trim();
           }
 
           var b = Auto.Compare.updateDate({
@@ -611,19 +610,19 @@
       var $caption = $nowIt.find('.caption');
       if (ctrl == 'remove') {
         $nowIt.removeClass('w-disabled')
-        $caption.text() && $caption.text($caption.text().replace(/\(å·²é€‰æ‹©\)/g, ''));
+        $caption.text() && $caption.text($caption.text().replace(/\(ÒÑÑ¡Ôñ\)/g, ''));
       } else {
         $nowIt.addClass('w-disabled')
         $caption.each(function(i, item) {
           var $item = $(item);
-          $item.text().indexOf('(å·²é€‰æ‹©)') > -1 || $item.text($item.text() + '(å·²é€‰æ‹©)');
+          $item.text().indexOf('(ÒÑÑ¡Ôñ)') > -1 || $item.text($item.text() + '(ÒÑÑ¡Ôñ)');
         });
       }
     },
     otherDeal: function() {
-      // æ›´æ–°å¯¹æ¯”æ¡†
+      // ¸üĞÂ¶Ô±È¿ò
       Auto.Compare.updateCompareUI(true);
-        //è§¦å‘é«˜äº®æ˜¾ç¤º
+        //´¥·¢¸ßÁÁÏÔÊ¾
       if (!this.config.type) {
           $(".compare .left input").each(function (i, obj) {
               if ($(obj).attr("id") == "chkHL") {
@@ -638,7 +637,7 @@
     }
   };
 
-  //æ•°æ®æ¥å£
+  //Êı¾İ½Ó¿Ú
   var PATH_LIST = "src/json/add.json",
     PATH_DATA = 'src/json/data.json?ids=',
     //PATH_HISTORY = 'src/json/HistoryComSpecNew.json?',
@@ -650,7 +649,7 @@
   window.compareList = compareList;
 
 
-  //å¯¹æ¯”å¼¹å‡ºå±‚
+  //¶Ô±Èµ¯³ö²ã
   var Auto = Auto || {};
   Auto.Compare = {
     compare_area: $('#compare_area'),
@@ -663,7 +662,7 @@
     onremovedate: function() {},
     CompareCount: 4,
     StateObj: {},
-    reset: function() { //é‡ç½®ï¼›æ¸…æ¥šï¼›
+    reset: function() { //ÖØÖÃ£»Çå³ş£»
       for (var i = 0; i < this.CompareCount; i++) {
         if (this.data[i] && this.data[i].specid != 0) {
           this.onremovedate(this.data[i].specid);
@@ -676,17 +675,17 @@
         };
       }
     },
-    getCompareCount: function() { //è·å–å¯¹æ¯”ä¸ªæ•°ã€‚
+    getCompareCount: function() { //»ñÈ¡¶Ô±È¸öÊı¡£
       var no = 0;
       for (var i = 0; i < this.CompareCount; i++) {
         if (this.data[i]['specid'] > 0) no++;
       }
       return no;
     },
-    updateDate: function(d, index, defshow) { // æ›´æ–°æ•°æ®ï¼ŒåŒæ—¶æ›´æ–°é¡µé¢æ˜¾ç¤º;
+    updateDate: function(d, index, defshow) { // ¸üĞÂÊı¾İ£¬Í¬Ê±¸üĞÂÒ³ÃæÏÔÊ¾;
       var count = this.getCompareCount();
-      if (count == this.CompareCount && d.specid != 0) { 
-        AutoMsgBox(Config.msgboxClass, 'æŠ±æ­‰ï¼Œåªèƒ½å¯¹æ¯”å››æ¬¾è½¦å‹', 'fn-hide'); //æŠ±æ­‰ï¼Œåªèƒ½å¯¹æ¯”ä¸¤æ¬¾è½¦å‹ 
+      if (count == this.CompareCount && d.specid != 0) {
+        AutoMsgBox(Config.msgboxClass, '±§Ç¸£¬Ö»ÄÜ¶Ô±ÈËÄ¿î³µĞÍ', 'fn-hide'); //±§Ç¸£¬Ö»ÄÜ¶Ô±ÈÁ½¿î³µĞÍ 
         return false;
       }
       if (index != undefined) {
@@ -705,9 +704,9 @@
       }
       return false;
     },
-    updateCompareUI: function(defshow) { //æ›´æ–°é¡µé¢æ˜¾ç¤ºå¯¹æ¯”ä¸ªæ•°
+    updateCompareUI: function(defshow) { //¸üĞÂÒ³ÃæÏÔÊ¾¶Ô±È¸öÊı
       var No = this.getCompareCount();
-      this.compare_mark.html(' å¯¹æ¯”<br />(' + No + ')');
+      this.compare_mark.html(' ¶Ô±È<br />(' + No + ')');
       this.compare_no.html('' + No);
       if (No == 1) {
         setTimeout(function() {
@@ -732,7 +731,7 @@
               '<i class="iconfont icon-add"></i><i class="iconfont icon-cross" data-itemclear=true data-specId=' + this.data[i]['specid'] + '></i></span>');
           var node = $("span[data-comid='" + this.data[i]['specid'] + "']");
           if (node.length > 0) {
-            node.addClass(Config.ClassNameDis).html('å·²åŠ å…¥');
+            node.addClass(Config.ClassNameDis).html('ÒÑ¼ÓÈë');
           }
         }
       }
@@ -866,7 +865,7 @@
     var that = this;
     this.lis.on('click',
       'i[data-itemclear]',
-      function() { //æ¸…æ¥šå•é¡¹äº‹ä»¶ç»‘å®š
+      function() { //Çå³şµ¥ÏîÊÂ¼ş°ó¶¨
         var obj = $(this).parent().parent();
         that.updateDate({
           specid: 0,
@@ -884,7 +883,7 @@
         function() {
           var No = that.getCompareCount();
           if (No < 1) {
-            AutoMsgBox(Config.msgboxClass, 'æŠ±æ­‰ï¼Œå¯¹æ¯”è‡³å°‘ä¸€æ¬¾è½¦å‹', "fn-hide"); //æŠ±æ­‰ï¼Œåªèƒ½å¯¹æ¯”ä¸¤æ¬¾è½¦å‹ 
+            AutoMsgBox(Config.msgboxClass, '±§Ç¸£¬¶Ô±ÈÖÁÉÙÒ»¿î³µĞÍ', "fn-hide"); //±§Ç¸£¬Ö»ÄÜ¶Ô±ÈÁ½¿î³µĞÍ 
             return;
           }
           var d = [];
@@ -927,7 +926,7 @@ $(function() {
   function getTemplate() {
     return '<div class="alert">\
                     <div class="info"><i class="iconfont icon-{type}"></i>{title}</div>\
-                    <div class="handle {class}"><span class="btn primary small"><em class="fn-oneword"></em>ç¡®å®š<em class="fn-oneword"></em></span></div>\
+                    <div class="handle {class}"><span class="btn primary small"><em class="fn-oneword"></em>È·¶¨<em class="fn-oneword"></em></span></div>\
                 </div>\
                 <div class="mask"></div>';
     return '<div class="alert"><p><i class="iconfont icon-{type}"></i><span>{title}</span></p></div>';
@@ -957,17 +956,15 @@ $(function() {
         aright = $('.ck_right');
 
       document.addEventListener('touchmove', function(e) {
-        var lens = $('#scroller__compare .column').length;
-        
         if (lens >= 3) {
           aleft.show();
           aright.show();
-          if (paramScrollerCompare.x <= paramScrollerCompare.maxScrollX+10) {
+          if (paramScrollerCompare.x <= paramScrollerCompare.maxScrollX) {
             aright.hide();
           } else {
             aright.show();
           }
-          if (paramScrollerCompare.x >= -10) {
+          if (Math.abs(paramScrollerCompare.x) >= 0) {
             aleft.hide();
           } else {
             aleft.show();
@@ -982,8 +979,8 @@ $(function() {
             aright.show();
             return false;
            }
-            paramScrollerCompare.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
-            paramScrollerDetail.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
+            paramScrollerCompare.scrollTo(-q_w,0);
+            paramScrollerDetail.scrollTo(-q_w,0);
       });
       aright.click(function() {
         var q_w=Math.abs(paramScrollerCompare.x)+$('#scroller__compare .column').width();
@@ -993,7 +990,7 @@ $(function() {
               aleft.show();
               return false;
             }
-            paramScrollerCompare.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
-            paramScrollerDetail.scrollTo(-q_w,0,500, IScroll.utils.ease.circular);
+            paramScrollerCompare.scrollTo(-q_w,0);
+            paramScrollerDetail.scrollTo(-q_w,0);
       })
   });
