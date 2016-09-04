@@ -1,7 +1,7 @@
 $(function() {
-    FastClick.attach(document.body);
+    //alert('123')
+    //FastClick.attach(document.body);
 });
-
 
 var massCfg = {
 	tap: "touchstart",
@@ -1085,12 +1085,21 @@ if (window.jQuery || window.Zepto) {
     var _alert=function(opt){
         var opts={}
         $.extend(opts,opt);
-        
+        var ico='',
+            disC='fn-hide';
+        if(opts.isOk){
+            if(opts.isOk==1) {ico='<i class="iconfont ok">&#xe613;</i>';}else if(opts.isOk==2){
+                ico=ico='<i class="iconfont icon-cross">&#xe608;</i>';
+            }
+        }
+        if(opts.handle){
+            disC='';
+        }
         var $dom=$('#alert_box'),
             tmp='<section class="alertbox fn-hide" id="alert_box">'+
                 '<div class="alert">'+
-                    '<div class="info"><i class="iconfont ok">&#xe613;</i>已加入对比框中<br>您还可以继续添加</div>     '+
-                    '<div class="handle fn-hide"><span class="btn primary small">'+
+                    '<div class="info">'+ico+''+opts.title+'</div>     '+
+                    '<div class="handle '+disC+'"><span class="btn primary small">'+
                         '<em class="fn-oneword"></em>确定<em class="fn-oneword"></em></span>'+
                     '</div>'+
                 '</div>'+
@@ -1100,9 +1109,11 @@ if (window.jQuery || window.Zepto) {
                 $('body').append(tmp);
             }
             $('#alert_box').removeClass('fn-hide');
-
+            $('#alert_box .btn.primary').click(function(){
+                $('#alert_box').remove();
+            })
         setTimeout(function(){
-            $('#alert_box').addClass('fn-hide');
+           $('#alert_box').remove();
         },opts.speed || 1500);
         return this;
     }

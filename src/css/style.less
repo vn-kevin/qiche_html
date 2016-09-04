@@ -231,7 +231,7 @@ a{
     box-sizing: border-box;
     z-index: 10001;
     -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d
+    -webkit-transform-style: preserve-3d;
 }
 
 .aside .aside-main {
@@ -635,12 +635,24 @@ a{
 .sidebar h3{
 	border-bottom: 1px solid #eee;
 	padding: .6rem 0 .6rem .6rem;
+	font-size: .9rem;
 }
 .sidebar-floor {
     height: 100%;
     overflow: hidden
 }
-
+.brand_save{
+		.posR-d{
+			position: absolute;
+			right: 1rem;
+			top: 50%;
+			margin-top: -.5rem;
+			display: inline-block;
+			width: 1rem;
+			height: 1rem;
+			color: #e95d5d;
+		}
+}
 .findcar-sidebar .series a {
     position: relative;
     display: block;
@@ -669,9 +681,9 @@ a{
 }
 
 .findcar-sidebar .series .price {
-    margin-top: .6rem;
+    margin-top: .8rem;
     color: #e95d5d;
-    font-size: .9rem;
+    font-size: .8rem;
 }
 
 .findcar-sidebar .series .price em {
@@ -762,6 +774,8 @@ a{
 			.js-more{
 				 .fr;
 				 display: inline-block;
+				 color:#757575;
+				 margin-top: -2px;
 				 i{
 				 	position: relative;
 				 	top: -1px;
@@ -956,9 +970,9 @@ a{
 	    }
 	}
 	.series .price {
-	    margin-top: .6rem;
+	    margin-top: .8rem;
 	    color: #e95d5d;
-	    font-size: .9rem;
+	    font-size: .8rem;
 	}
 	.series .price em {
 	    font-size: 0.75rem
@@ -988,12 +1002,13 @@ a{
 	    overflow: hidden;
 	    box-sizing: border-box
 	}
-	.filter-bread span {
+	.filter-bread a {
 	    display: inline-block;
 	    position: relative;
 	    text-align: center;
 	    padding: 0.8125rem 0;
 	    width: 33%;
+	    color:#717886;
 	    &:not(:nth-child(1)) {
 		    margin-left: -0.1875rem
 		}
@@ -1140,17 +1155,26 @@ a{
 	}
 	ul{
 		padding: .575rem .8rem;
-		display: flex;
+		overflow: hidden;
 		li{
-			flex:1;
 			font-size: .7rem;
 			color:#757575;
 			text-align: center;
 			white-space: nowrap;
+			float: left;
 			span{
 				color:#e43333
 			}
 			&:nth-child(1){
+				width: 35%;
+				text-align: left;
+			}
+			&:nth-child(2){
+				width: 35%;
+			}
+			&:nth-child(3){
+				width: 30%;
+				text-align: right;
 			}
 		}
 	}
@@ -1164,8 +1188,8 @@ a{
 			flex:1;
 			color:#5584dd;
 			text-align: center;
-			font-size: 1rem;
-			padding: .4rem 0 .9rem;
+			font-size: .95rem;
+			padding: .5rem 0 .9rem;
 			&.noblur{
 				color:#999;
 			}
@@ -1178,10 +1202,10 @@ a{
 			.iconfont{
 				display: inline-block;
 				margin-right: .5rem;
-				font-size: 1.8rem;
+				font-size: 1.6rem;
 				font-weight: 100;
 				position: relative;
-				top: .2rem
+				top: .2rem;
 			}
 		}
 	}
@@ -1192,7 +1216,7 @@ a{
 		padding: 1rem 0;
 		position: relative;
 		.tags{
-			padding: 0 1rem;
+			padding: 0 1rem 1px;
 			a{
 				border-bottom: 3px solid #fff;
 				display: inline-block;
