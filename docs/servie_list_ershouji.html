@@ -1,251 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>二手机</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+  <meta charset="UTF-8">
+  <title>二手机</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no" />
     
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/parameter.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1471877132_8487236.css">
-    <style>
-     html,body{background-color: #fff}
-     .masks{
-          position: fixed;
-          left: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          background: rgba(0,0,0,0.2);
-          opacity: 0;
-          z-index: 10000;
-          -webkit-backface-visibility: hidden;
-          -webkit-transform-style: preserve-3d;
-     }
-    </style>
+   
 </head>
 <body>
-	<section class="wrapper search-box">
-     <nav class="nav-final" style="border-bottom: 0">
-            <div class="Bd_search">
-                <i class="Bd_i iconfont">&#xe600;</i>
-                <input type="text" class="Bd_t" placeholder='请输入产品名称'>
-            </div>
-            <a class="ms-right js-back" href="javascript:void(0)">取消</a>
+  <section class="wrapper search-box">
 
-            <div class="search-result fn-hide">
-              <div class="result-list">
-                  <ul class="result-hot">
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                    <li>
-                      <a href="javascript:void(0)"><span>丰田 兰德酷路泽(进口)</span></a>
-                    </li>
-                  </ul>
-              </div>
-            </div>
-     </nav>
-     <div class="filter">
+     <nav class="nav-final">
+          <p>二手机</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+          <div class="final-right">
+            <span>
+                <a href="servie_add_qiuzu.html" class="fr f_blue">发布二手机</a>
+            </span>
+          </div>
+    </nav>
+
+     <div class="filter" data-tab data-tab-a=".filter-bread a" data-tab-b=".filter-cont" data-tab-ds='true'>
        <div class="filter-bread">
-         <a href="javascript:void(0)" data-relation="block-pinpai" data-url="json/pinpai.js" data-role="aside">全部品牌<i class="iconfont icon-jiantou-copy4"></i></a>
-         <a href="javascript:void(0)" data-relation="block-type" data-role="aside">全部价格<i class="iconfont icon-jiantou-copy4"></i></a>
-         <a href="javascript:void(0)" data-relation="block-sortT" data-role="aside">全部吨位<i class="iconfont icon-jiantou-copy4"></i></a>
+         <a href="javascript:void(0)">所在地<i class="iconfont">&#xe610;</i></a>
+         <a href="javascript:void(0)">机械类型<i class="iconfont">&#xe610;</i></a>
+         <a href="javascript:void(0)">状态<i class="iconfont">&#xe610;</i></a>
        </div>
+
+       <div class="filter-cont" id="all_city">
+         <ul class="list-line w_50 tit">
+           <li data-v="1">海南</li>
+           <li data-v="2">河南</li>
+           <li data-v="3">湖北</li>
+           <li data-v="4">湖南</li>
+           <li data-v="5">广东</li>
+           <li data-v="6">黑龙江</li>
+         </ul>
+         <ul class="list-line w_50 bg">
+          
+         </ul>
+       </div>
+
+       <div class="filter-cont" id="all_type">
+         <ul class="list-line w_50 tit">
+           <li data-v="all" class="active">全部</li>
+           <li data-v="1">土方机械</li>
+           <li data-v="2">路面机械</li>
+           <li data-v="3">起重机械</li>
+           <li data-v="4">混泥土机械</li>
+           <li data-v="5">桩工机械</li>
+         </ul>
+         <ul class="list-line w_50 bg">
+          
+         </ul>
+       </div>
+       <div class="filter-cont" id="all_stats">
+         <ul class="list-line">
+           <li data-title="1">已出售</li>
+           <li data-title="2">待出售</li>
+         </ul>
+       </div>
+       <div class="filter-mask"></div>
      </div>
 
-     <div class="series">
-                    <a href="car_detail.html" data-ids="23">
-                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：30万</p>
-                    <i class="iconfont">&#xe60f;</i>
+     <section class="home-main">
+      <div class="servie_list">
+            <ul>
+                <li>
+                    <a href="servie_detail_ershouji.html">
+                        <div class="tit">
+                          <h3>求租挖掘机一求租挖掘机一台求租挖掘机一台台</h3> <span class="doing">待出售</span>
+                          <div class="pos-r">
+                            <span class="js-btn"><i class="iconfont">&#xe61c;</i>置顶</span>
+                            <span class="js-btn"><i class="iconfont">&#xe61e;</i>编辑</span>
+                          </div>
+                        </div>
+                        <p class="conts">本人需要租挖掘机一台，本人需要租挖掘机一台，有意请与本人联系！</p>
+                       <div class="clearfix t_imgs">
+                          <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                           <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                           <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                        </div>
+                        <div class="clearfix others">
+                            <span class="fl"><i class="iconfont">&#xe61b;</i> 长沙</span>
+                            <span class="fr"><i class="iconfont">&#xe61f;</i> 121</span>
+                        </div>
                     </a>
-                    <a href="car_detail.html" data-ids="24">
-                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：30万</p>
-                    <i class="iconfont">&#xe60f;</i>
+                </li>
+
+                <li>
+                    <a href="servie_detail_ershouji.html">
+                        <div class="tit">
+                          <h3>求租挖掘机一台</h3> <span class="overing">已出售</span>
+                          <div class="pos-r">
+                            <span class="js-btn"><i class="iconfont">&#xe61c;</i>置顶</span>
+                            <span class="js-btn"><i class="iconfont">&#xe61e;</i>编辑</span>
+                          </div>
+                        </div>
+                        <p class="conts">本人需要租挖掘机一台，本人需要租挖掘机一台，有意请与本人联系！</p>
+                        <div class="clearfix t_imgs">
+                          <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                           <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                           <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                        </div>
+                        <div class="clearfix others">
+                            <span class="fl"><i class="iconfont">&#xe61b;</i> 长沙</span>
+                            <span class="fr"><i class="iconfont">&#xe61f;</i> 121</span>
+                        </div>
                     </a>
-                    <a href="car_detail.html" data-ids="25">
-                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：30万</p>
-                    <i class="iconfont">&#xe60f;</i>
-                    </a>
-                    <a href="car_detail.html" data-ids="26">
-                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">厂商指导价：30万</p>
-                    <i class="iconfont">&#xe60f;</i>
-                    </a>
-    </div>
+                </li>
+                
+            </ul>
+        </div>
+     </section>
+   
   
-	</section>
-
-  <!--排序-->
-    <aside class="aside block-pinpai">
-        <nav class="nav-final">
-            <p>品牌</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-        <section class="aside-main list-ok aside-main-area">
-        </section>
-    </aside>
-
-    <aside class="aside block-type">
-        <nav class="nav-final">
-            <p>全部价格</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-      <section class="aside-main list-ok">
-            <a href="javascript:void(0)" class="item active">
-                <span>全部价格</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>50万以下</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>50-100万</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>100-200万</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>200万以上</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-        </section>
-    </aside>
-
-    <aside class="aside block-sortT">
-        <nav class="nav-final">
-            <p>全部吨位</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-      <section class="aside-main list-ok">
-            <a href="javascript:void(0)" class="item active">
-                <span>全部吨位</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>6T以下</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>6T-10T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>10T-20T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>20T-30T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>30T-40T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>40T以上</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-        </section>
-    </aside>
+  </section>
+  
 
     <script src="js/zepto-1.2.min.js"></script>
-<!--     <script src="js/fastclick.min.js"></script> -->
-    <script src="js/template-native.js"></script>
-    <script src="js/searchAll.js"></script>
+    <script src="js/fastclick.min.js"></script>
     <script src="js/main.js"></script>
     <script>
       $(function(){
-        $('.js-back').on('click', function () { 
-          if(!$('.search-result').hasClass('fn-hide')){
-            $bk.addClass('fn-hide')
+        $('.js-back').on('click', function() {
+          history.go(-1);
+        });
+
+        //列表编辑 删除
+        $('.home-main').on('click','.servie_list a',function(evt){
+          var tag=$(evt.target);
+          if(tag.hasClass('js-btn')){
+            var index=$(evt.target).index();
+            if(index==0){
+              _alert({isOk:1,title:'已置顶'});
+               return false;
+            }else if(index==1){
+               location.href="servie_detail_ershouji.html";
+            }
             return false;
           }
-          history.go(-1);
-           });
-
-        var searchs=function(){
-          var $dom=$('.Bd_search') 
-              $input=$dom.find('.Bd_t'),
-              $bk=$('.search-result');
-               $input.click(function(){
-                  $bk.removeClass('fn-hide')
-               });
-
-               $(document).click(function(evt){
-                 if(!$(evt.target).parents('.nav-final').length){
-                   $bk.addClass('fn-hide')
-                 }
-               })
-        }();
-
-        //品牌
-        $('.block-pinpai').on('click','.series a',function(){
-             $.aside.closeAll()
         });
-        //品牌
-        $('.block-type').on('click','.list-ok a',function(){
-            $('[data-relation=block-type]').html($(this).text()+'<i class="iconfont icon-jiantou-copy4"></i>');
-            $(this).addClass('active').siblings('a').removeClass('active');
-            $.aside.closeAll()
+
+        var clearAll=function(){
+          $('#all_city,#all_type,#all_stats,.filter-mask').hide();
+          $('.filter-bread a').removeClass('active');
+        }
+        var dos = function(opts) {
+          $(opts.id).on('click', '.tit li', function() {
+            var _this = $(this);
+            _this.addClass('active').siblings().removeClass('active');
+            $.ajax({
+              url: opts.url + $(this).attr('data-v'),
+              type: 'get',
+              dataType: "html",
+              success: function(data) {
+                $(opts.id+'>.bg').css({
+                  left: '50%'
+                }).html(data).scrollTop(0)
+              }
+            });
+          });
+          $(opts.id).on('click', '.bg li', function() {
+            $(this).addClass('on').siblings().removeClass('on');
+            clearAll();
+          });
+        }
+        //所在地 选择分类
+        dos({
+          id:'#all_city',
+          url:'/json/citys.js?id='
         });
-        //品牌
-        $('.block-sortT').on('click','.list-ok a',function(){
-            $('[data-relation=block-sortT]').html($(this).text()+'<i class="iconfont icon-jiantou-copy4"></i>');
-            $(this).addClass('active').siblings('a').removeClass('active');
-            $.aside.closeAll()
+        //机械类型
+        dos({
+          id:'#all_type',
+          url:'/json/jxlx.json?id='
+        });
+        //状态
+        $('#all_stats').on('click','li',function(){
+          $(this).addClass('on').siblings().removeClass('on');
+          clearAll();
+        });
+        $('.filter-mask').click(function(){
+          clearAll();
         });
 
       });

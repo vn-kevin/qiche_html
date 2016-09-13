@@ -1,6 +1,6 @@
 $(function() {
-    //alert('123')
-    //FastClick.attach(document.body);
+    ;typeof(FastClick) =='function' && FastClick.attach(document.body);
+    
 });
 
 var massCfg = {
@@ -10,23 +10,39 @@ var massCfg = {
 };
 //tab
 ;(function($){
-    var dom=$('[data-tab]');
-    
-    dom.each(function(){
-        var t=$(this),
-            a=t.attr('data-tab-a'),
-            b=t.attr('data-tab-b');
-            
-        var init=function(){
+    var dom = $('[data-tab]');
+    dom.each(function() {
+        var t = $(this),
+            a = t.attr('data-tab-a'),
+            b = t.attr('data-tab-b'),
+            c = t.attr('data-tab-ds');
+
+        var init = function() {
             t.find(a).eq(0).addClass('active');
             t.find(b).eq(0).show();
         };
-        init();
-            t.on('click',a,function(){
+        var dbody=function(t){
+           $('.filter-mask')[t]();
+        }
+        if (!c) {
+            init();
+            t.on('click', a, function() {
                 $(this).addClass('active').siblings().removeClass('active');
                 t.find(b).eq($(this).index()).show().siblings(b).hide();
             });
-
+        } else {
+            t.on('click', a, function() {
+                dbody('show');
+                if($(this).hasClass('active')){
+                    $(this).removeClass('active');
+                    t.find(b).eq($(this).index()).hide();
+                    dbody('hide');
+                }else{
+                    $(this).addClass('active').siblings().removeClass('active');
+                    t.find(b).eq($(this).index()).show().siblings(b).hide();
+                }
+            });
+        }
     });
 })(Zepto);
 //aside

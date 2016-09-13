@@ -10,22 +10,42 @@
 
     <link rel="stylesheet" href="src/css/style.css">
     <style>
-         ul,li{ }
+         ul,li{
+            list-style: none;
+            padding-left: 10px;
+         }
          li{
-            padding: 5px 0;
+            padding: 5px 0 5px 20px;
+            font-size: 12px;
+         }
+         .pl20{
+            font-size: 14px;
+            padding: 10px;
+            padding-left: 0;
+
          }
          a{color:#666; text-decoration: none;}
     </style>
 </head>
 <body>
     <ul>
-        <li><a href="home.html">首页</a></li>
-        <li><a href="car_ck.html">对比页面</a></li>
-        <li><a href="car_home.html">栏目首页</a></li>
-        <li><a href="car_detail.html">详细</a></li>
+        <li class="pl20">选机</li>
+        <li><a href="home.html">机选首页</a></li>
+        <li><a href="car_ck.html">机选对比页面</a></li>
+        <li><a href="car_home.html">机选栏目首页</a></li>
+        <li><a href="car_detail.html">机选详细</a></li>
 
-        <li>服务页面</li>
-        <li><a href="servie.html">服务</a></li>
+        <li class="pl20">服务页面</li>
+        <li><a href="servie.html">服务首页</a></li>
+        <li><a href="servie_list_qiuzu.html">服务-求租列表</a></li>
+        <li><a href="servie_add_qiuzu.html">服务-新增求租</a></li>
+        <li><a href="servie_detail_qiuzu.html">服务-求租详细</a></li>
+        
+        <li><a href="servie_list_ershouji.html">服务-二手机列表</a></li>
+        <li><a href="servie_add_ershouji.html">服务-新增二手机</a></li>
+        <li><a href="servie_detail_ershouji.html">服务-二手机详细</a></li>
+
+        
     </ul>
 </body>
 </html>

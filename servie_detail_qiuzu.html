@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>求租详情</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/parameter.css">
+</head>
+<body>
+	<section class="wrapper search-box">
+
+     <nav class="nav-final">
+          <p>求租详情</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+    </nav>
+
+     <div class="detail_info filter">
+        <div class="tit">
+            <h3>求租挖掘机一求租挖掘机一台求租挖掘机一台台</h3> <span class="doing">求租中</span>
+            <div class="pos-r">
+                <span class="fr"><i class="iconfont">&#xe61f;</i> 121</span>
+            </div>
+        </div>
+        <div class="price">面议</div>
+        <div class="ntit">
+        <span class="f_c666">发布时间: 2016-09-22</span>
+          <div class="pos-r">
+                  <span class="js-btn"><i class="iconfont">&#xe61c;</i>置顶</span>
+                  <span class="js-btn"><i class="iconfont ">&#xe61e;</i>编辑</span>
+              </div>
+          </div>
+     </div>
+
+     <section class="home-main">
+     <div class="detail_info_nr">
+        <ul>
+          <li>
+            <span class="tit">施工地点</span>
+            湖南长沙
+          </li>
+          <li>
+            <span class="tit">机械类型</span>
+            挖掘机
+          </li>
+          <li>
+            <span class="tit">规格要求</span>
+            龙工650
+          </li>
+          <li>
+            <span class="tit">数  量</span>
+            1台
+          </li>
+          <li>
+            <span class="tit">工  期</span>
+            90天
+          </li>
+          <li>
+            <span class="tit">最迟进场</span>
+            2015-07-20
+          </li>
+          <li><span class="tit">结款方式</span>
+            协商付款
+          </li>
+          <li><span class="tit">详情描述</span>
+            本人需要一台挖掘机器，本人需要一台挖掘机器，本人需要一台挖掘机器，本人需要一台挖掘机器，本人需要一台挖掘机器，本人需要一台挖掘机器，本人需要一台挖掘机器，本人需要一台挖掘机器，
+          </li>
+        </ul>
+        </div>
+     </section>
+	</section>
+  <footer class="fixed-footer">
+    <div class="item item-sss">
+        <span>李先生</span>
+        135*****00
+    </div>
+    <a href="tel:1351713000" class="item item-calls"><i class="iconfont">&#xe607;</i>电话联系</a>
+    <a href="tel:1351713000" class="item item-calls"><i class="iconfont">&#xe61d;</i>发送短信</a>
+</footer>
+
+    <script src="src/js/zepto-1.2.min.js"></script>
+    <script src="src/js/fastclick.min.js"></script>
+    <script src="src/js/main.js"></script>
+    <script>
+      $(function(){
+        $('.js-back').on('click', function() {
+          history.go(-1);
+        });
+
+        //列表编辑 删除
+        $('.wrapper').on('click','.js-btn',function(evt){
+          var tag=$(evt.target);
+          if(tag.hasClass('js-btn')){
+            var index=$(evt.target).index();
+            if(index==0){
+              _alert({isOk:1,title:'已置顶'});
+               return false;
+            }else if(index==1){
+              //tag.parents('li').remove();
+            }
+            return false;
+          }
+        });
+
+      });
+    </script>
+</body>
+</html>

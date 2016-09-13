@@ -10,7 +10,6 @@
     
     <link rel="stylesheet" href="src/css/style.css">
     <link rel="stylesheet" href="src/css/parameter.css">
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_1471877132_8487236.css">
    
 </head>
 <body>
@@ -21,29 +20,64 @@
           <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
           <div class="final-right">
             <span>
-                <a href="javascript:void(0)" class="fr f_blue">发布求租</a>
+                <a href="servie_add_qiuzu.html" class="fr f_blue">发布求租</a>
             </span>
           </div>
     </nav>
 
-     <div class="filter">
+     <div class="filter" data-tab data-tab-a=".filter-bread a" data-tab-b=".filter-cont" data-tab-ds='true'>
        <div class="filter-bread">
-         <a href="javascript:void(0)" data-url="src/json/city.js" data-template="false" data-role="aside" data-title="所在地" data-relation="block-area">所在地<i class="iconfont icon-jiantou-copy4"></i></a>
-         <a href="javascript:void(0)" data-relation="block-type" data-role="aside">机械类型<i class="iconfont icon-jiantou-copy4"></i></a>
-         <a href="javascript:void(0)" data-relation="block-sortT" data-role="aside">状态<i class="iconfont icon-jiantou-copy4"></i></a>
+         <a href="javascript:void(0)">所在地<i class="iconfont">&#xe610;</i></a>
+         <a href="javascript:void(0)">机械类型<i class="iconfont">&#xe610;</i></a>
+         <a href="javascript:void(0)">状态<i class="iconfont">&#xe610;</i></a>
        </div>
+
+       <div class="filter-cont" id="all_city">
+         <ul class="list-line w_50 tit">
+           <li data-v="1">海南</li>
+           <li data-v="2">河南</li>
+           <li data-v="3">湖北</li>
+           <li data-v="4">湖南</li>
+           <li data-v="5">广东</li>
+           <li data-v="6">黑龙江</li>
+         </ul>
+         <ul class="list-line w_50 bg">
+          
+         </ul>
+       </div>
+
+       <div class="filter-cont" id="all_type">
+         <ul class="list-line w_50 tit">
+           <li data-v="all" class="active">全部</li>
+           <li data-v="1">土方机械</li>
+           <li data-v="2">路面机械</li>
+           <li data-v="3">起重机械</li>
+           <li data-v="4">混泥土机械</li>
+           <li data-v="5">桩工机械</li>
+         </ul>
+         <ul class="list-line w_50 bg">
+          
+         </ul>
+       </div>
+       <div class="filter-cont" id="all_stats">
+         <ul class="list-line">
+           <li data-title="1">求租中</li>
+           <li data-title="2">已完工</li>
+         </ul>
+       </div>
+       <div class="filter-mask"></div>
      </div>
 
      <section class="home-main">
       <div class="servie_list">
             <ul>
                 <li>
-                    <a href="servie_detail.html">
+                    <a href="servie_detail_qiuzu.html">
                         <div class="tit">
                           <h3>求租挖掘机一求租挖掘机一台求租挖掘机一台台</h3> <span class="doing">求租中</span>
                           <div class="pos-r">
                             <span class="js-btn"><i class="iconfont">&#xe61c;</i>置顶</span>
-                            <span class="js-btn"><i class="iconfont del">&#xe619;</i>删除</span>
+                            <span class="js-btn"><i class="iconfont">&#xe61e;</i>编辑</span>
                           </div>
                         </div>
                         <p class="conts">本人需要租挖掘机一台，本人需要租挖掘机一台，有意请与本人联系！</p>
@@ -53,18 +87,18 @@
                         </div>
                         <div class="clearfix others">
                             <span class="fl"><i class="iconfont">&#xe61b;</i> 长沙</span>
-                            <span class="fr"><i class="iconfont">&#xe61a;</i> 121</span>
+                            <span class="fr"><i class="iconfont">&#xe61f;</i> 121</span>
                         </div>
                     </a>
                 </li>
 
                 <li>
-                    <a href="servie_detail.html">
+                    <a href="servie_detail_qiuzu.html">
                         <div class="tit">
                           <h3>求租挖掘机一台</h3> <span class="overing">已完工</span>
                           <div class="pos-r">
                             <span class="js-btn"><i class="iconfont">&#xe61c;</i>置顶</span>
-                            <span class="js-btn"><i class="iconfont del">&#xe619;</i>删除</span>
+                            <span class="js-btn"><i class="iconfont">&#xe61e;</i>编辑</span>
                           </div>
                         </div>
                         <p class="conts">本人需要租挖掘机一台，本人需要租挖掘机一台，有意请与本人联系！</p>
@@ -74,7 +108,7 @@
                         </div>
                         <div class="clearfix others">
                             <span class="fl"><i class="iconfont">&#xe61b;</i> 长沙</span>
-                            <span class="fr"><i class="iconfont">&#xe61a;</i> 121</span>
+                            <span class="fr"><i class="iconfont">&#xe61f;</i> 121</span>
                         </div>
                     </a>
                 </li>
@@ -86,48 +120,17 @@
   
 	</section>
   
-  <!--所在地-->
-   <aside class="aside block-area">
-        <nav class="nav-final">
-            <p class="f_c666">选择城市</p>
-            <a class="masks" href="javascript:void(0)">关闭</a>
-        </nav>
-        <section class="aside-main list-ok aside-main-area">
-        </section>
-    </aside>
-    <!--状态-->
-    <aside class="aside block-sortT">
-        <nav class="nav-final">
-            <p>求租状态</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-      <section class="aside-main list-ok">
-            <a href="javascript:void(0)" class="item">
-                <span>求租中</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>已完工</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-        </section>
-    </aside>
 
     <script src="src/js/zepto-1.2.min.js"></script>
-    <script src="src/js/template-native.js"></script>
-    <script src="src/js/searchAll.js"></script>
+    <script src="src/js/fastclick.min.js"></script>
     <script src="src/js/main.js"></script>
     <script>
       $(function(){
-
         $('.js-back').on('click', function() {
-          if (!$('.search-result').hasClass('fn-hide')) {
-            $bk.addClass('fn-hide')
-            return false;
-          }
           history.go(-1);
         });
 
+        //列表编辑 删除
         $('.home-main').on('click','.servie_list a',function(evt){
           var tag=$(evt.target);
           if(tag.hasClass('js-btn')){
@@ -136,16 +139,54 @@
               _alert({isOk:1,title:'已置顶'});
                return false;
             }else if(index==1){
-              tag.parents('li').remove();
+              location.href="servie_detail_qiuzu.html";
+              //tag.parents('li').remove();
             }
             return false;
           }
         });
 
-        $('.block-sortT').on('click','.list-ok a',function(){
-            $('[data-relation=block-sortT]').html($(this).text()+'<i class="iconfont icon-jiantou-copy4"></i>');
-            $(this).addClass('active').siblings('a').removeClass('active');
-            $.aside.closeAll()
+        var clearAll=function(){
+          $('#all_city,#all_type,#all_stats,.filter-mask').hide();
+          $('.filter-bread a').removeClass('active');
+        }
+        var dos = function(opts) {
+          $(opts.id).on('click', '.tit li', function() {
+            var _this = $(this);
+            _this.addClass('active').siblings().removeClass('active');
+            $.ajax({
+              url: opts.url + $(this).attr('data-v'),
+              type: 'get',
+              dataType: "html",
+              success: function(data) {
+                $(opts.id+'>.bg').css({
+                  left: '50%'
+                }).html(data).scrollTop(0)
+              }
+            });
+          });
+          $(opts.id).on('click', '.bg li', function() {
+            $(this).addClass('on').siblings().removeClass('on');
+            clearAll();
+          });
+        }
+        //所在地 选择分类
+        dos({
+          id:'#all_city',
+          url:'/src/json/citys.js?id='
+        });
+        //机械类型
+        dos({
+          id:'#all_type',
+          url:'/src/json/jxlx.json?id='
+        });
+        //状态
+        $('#all_stats').on('click','li',function(){
+          $(this).addClass('on').siblings().removeClass('on');
+          clearAll();
+        });
+        $('.filter-mask').click(function(){
+          clearAll();
         });
 
       });

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>发布二手机信息</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parameter.css">
+   
+</head>
+<body>
+	<section class="wrapper search-box">
+     <nav class="nav-final">
+          <p>发布二手机信息</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+    </nav>
+    <section class="form-main">
+     <div class="bk_">
+        <div class="form-skip">
+            <span class="skip-tt">施工地点</span>          
+            <a id="workAdd" class="siftdd brand" href="javascript:;" data-relation="block-brand" data-role="aside" data-url="" data-title="所在的城市" bid="0" sid="0" specid="0" letter="" yearname="">请选择您所在的城市
+                <i class="iconfont">&#xe60f;</i>
+            </a>        
+        </div>
+        <div class="form-skip">
+            <span class="skip-tt">机械类型</span>          
+            <a id="workType" class="siftdd brand" href="javascript:;" data-relation="block-brand" data-role="aside" data-url="" data-title="机械类型" bid="0" sid="0" specid="0" letter="" yearname="">请选择您机械类型
+                <i class="iconfont">&#xe60f;</i>
+            </a>        
+        </div>
+        <div class="form-input">
+          <span class="input-tt">品牌型号</span>
+          <input id="wordGg" type="text" placeholder="请填写机械品牌及型号">
+        </div>
+        <div class="form-input">
+          <span class="input-tt">出厂年份</span>
+          <input type="text" placeholder="请选择出厂年份">
+          <strong class="unit">年</strong>
+        </div>
+        <div class="form-input">
+          <span class="input-tt">使用小时</span>
+          <input type="text" placeholder="请填写使用小时">
+          <strong class="unit">小时</strong>
+        </div>
+        <div class="form-skip">
+            <span class="skip-tt">手续资料</span>          
+            <a id="workType" class="siftdd brand" href="javascript:;" data-relation="block-brand" data-role="aside" data-url="" data-title="机械类型" bid="0" sid="0" specid="0" letter="" yearname="">请选择您手续资料
+                <i class="iconfont">&#xe60f;</i>
+            </a>        
+        </div>
+      </div>
+      <div class="bk_">
+        <div class="form-input">
+              <span class="input-tt">出售价格</span>          
+              <input type="text" placeholder="请填写价格，不填写默认面议">
+              <strong class="unit">万元</strong>     
+          </div>
+          <div class="form-skip">
+              <span class="skip-tt">结款方式</span>          
+              <a id="workType" class="siftdd brand" href="javascript:;" data-relation="block-brand" data-role="aside" data-url="" data-title="结款方式" bid="0" sid="0" specid="0" letter="" yearname="">请选择结款方式
+                  <i class="iconfont">&#xe60f;</i>
+              </a>        
+          </div>
+          <div class="form-input">
+              <span class="input-tt fast_tit">状  态</span>
+              <div class="fast">
+                <button class="btn primary ">待出售</button>
+                <button class="btn loading">已出售</button>
+              </div>
+          </div>
+          <div class="form-input">
+              <span class="input-tt">详情描述</span>
+              <div class="fast div" contenteditable="true" >请简单介绍一下您的一些需求,以方便别人更快向您提供设备</div>
+
+              <div class="clearfix t_imgs">
+                          <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                           <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+                           <span class="is">
+                            <img src="img/img.png" width="100%">
+                           </span>
+              </div>
+          </div>
+          
+
+      </div>
+      <div class="bk_">
+          <div class="form-input">
+            <span class="input-tt">联 系 人</span>
+            <input type="text"  placeholder="请填写您的姓名">
+          </div>
+          <div class="form-input">
+            <span class="input-tt">手 机 号</span>
+            <input type="tel" id="mobile" maxlength="11" placeholder="请填写常用手机号">
+          </div>
+        </div>
+
+      <button class="btn full primary mbtn">一键发布</button>
+    </section>
+  </section>
+
+    <script src="js/zepto-1.2.min.js"></script>
+    <script src="js/fastclick.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      $(function(){
+        $('.js-back').on('click', function() {
+          history.go(-1);
+        });
+      });
+    </script>
+</body>
+</html>
