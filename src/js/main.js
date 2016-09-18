@@ -177,10 +177,13 @@ var massCfg = {
 	};
 	c.prototype.close = function() {
 		var e = this;
-		b.mCfg.$document.on("click", ".masks, .aside-close", function(f) {
+		b.mCfg.$document.on("click", ".masks, .aside-close, .okmasks", function(f) {
 			f.preventDefault();
 			e.cfg.timer = b(this).data("time") || e.cfg.timer;
-			e.closeAll()
+			e.closeAll();
+            if($(f.target).hasClass('okmasks')){
+                console.log(123)
+            }
 		});
 		b.mCfg.$document.on("click", ".aside .back, .aside-back", function(h) {
 			h.stopPropagation();

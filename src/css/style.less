@@ -245,7 +245,18 @@ a{
 
     }
 }
-
+.masks{
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0,0,0,0.2);
+          opacity: 0;
+          z-index: 10000;
+          -webkit-backface-visibility: hidden;
+          -webkit-transform-style: preserve-3d;
+}
 .aside .aside-main {
 	z-index: 10;
     position: relative;
@@ -1753,14 +1764,39 @@ a{
 .t_imgs{
 	width: 100%;
 	display: flex;
+	margin-bottom: .5rem;
 	.is{
 		flex:1;
 		-webkit-box-flex:1.0;
-		padding: 0 .2rem;
+		margin: 0 .2rem;
 		overflow: hidden;
 		display: inline-block;
 		max-height: 120px;
-		min-height: 90px;
+		height: 115px;
+		position: relative;
+		.add{
+			display: block;
+			text-align: center;
+			max-height: 120px;
+    		height: 115px;
+    		background-color: #d8d8d8;
+    		 top: 0 !important;
+			 right: .2rem !important;
+			 width: 100%;
+			 font-size: 3.5rem;
+			 line-height: 105px;
+			 color:#fff !important;
+		}
+		.del{
+			    position: absolute;
+			    top: 0 !important;
+			    right: .3rem !important;
+			    z-index: 10;
+			    width: 1.425rem;
+			    height: 1.425rem;
+			    background: url(../images/xiangqing_icon_del_defs.png) no-repeat right top;
+			    background-size: 100%;
+		}
 	}
 }
 //form-main
@@ -1788,7 +1824,7 @@ a{
 	    background-color: #fff
 	}
 
-	.form-skip .skip-tt,.form-skip>a {
+	.form-skip .skip-tt,.form-skip>a,.form-skip span.js {
 	    display: block;
 	    white-space: nowrap;
 	    padding: 0.9375rem
@@ -1804,7 +1840,7 @@ a{
 	    padding-left: .4rem;
 	}
 
-	.form-skip>a {
+	.form-skip>a,.form-skip span.js {
 	    width: 100%;
 	    color: #999;
 	    padding-left:5rem;
@@ -1813,7 +1849,19 @@ a{
 	    padding-bottom: 1rem;
 	    box-sizing: border-box
 	}
-
+	.form-skip span.js{
+		select{
+			width: 100%;
+			z-index: 2;
+			position: relative;
+			background-color: none;
+		}
+		.iconfont{
+			position: absolute;
+			right:.7rem;
+			z-index: 1;
+		}
+	}
 	.form-skip>a:visited {
 	    color: #999
 	}
@@ -1858,7 +1906,14 @@ a{
 	    position: relative;
 	    font-size: 0.875rem;
 	    border-bottom: 1px solid #dddee3;
-	    background-color: #fff
+	    background-color: #fff;
+	    label{
+	    	color:#828282;
+	    	position: absolute;
+	    	width: 100%;
+	    	top: 1.1rem;
+	    	left: 5rem;
+	    }
 	}
 
 	.form-input .input-tt,.form-input input,.form-input .fast {
@@ -1870,7 +1925,7 @@ a{
 	    padding-left: .4rem;
 	}
 
-	.form-input .input-tt {
+	.form-input .input-tt,.form-skip .skip-tt {
 	    position: absolute;
 	    left: 0;
 	    color: #141823;
@@ -1879,7 +1934,7 @@ a{
 	    text-align-last:justify;
 		white-space:normal;
 		vertical-align: middle;
-
+		height: 44px;
 	    &:after{
 			display:inline-block;
 			content:'';
@@ -2030,4 +2085,13 @@ a{
 		width: 96%;
 		margin:1rem auto;
 	}
+}
+.date-input{
+	border: none;
+    width: 150px;
+    font-size: 1rem;
+    padding: 0;
+    text-align: left;
+    -webkit-appearance: none;
+    font-size: .9rem;
 }

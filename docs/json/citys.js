@@ -10,3 +10,5 @@
 <li data-v="10">岳阳</li>
 <li data-v="11">永州</li>
 <li data-v="12">株洲</li>
+
+<!--所在地JSON-->
