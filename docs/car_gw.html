@@ -12,16 +12,123 @@
     <link rel="stylesheet" href="css/parameter.css">
     
 </head>
-<body>
+<body id="app">
     <section class="wrapper search-box">
-     <nav class="nav-final">
-          <p>购机计算器</p>
-          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-    </nav>
-
+        <nav class="nav-final">
+              <p>购机计算器</p>
+              <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+        </nav>
+        <div class="gw_jsq">
+            <div class="gw_head">
+                <div class="hd">
+                    <h4>预计花费总额(元)</h4>
+                    <div class="prices"><i>￥</i> <input type="text" v-model="initCount | currency '' ''" readonly></div>
+                </div>
+                <div class="md">
+                    <span class="cols">
+                        <h4>首付车款(元)</h4>
+                        <i>￥</i> <input type="text" v-model="initPrice | currency '' ''" readonly>
+                    </span>
+                    <span class="cols">
+                        <h4>首付合计(元)</h4>
+                        <i>￥</i><input type="text" v-model="initSumPrice | currency '' '' " readonly>
+                    </span>
+                    <span class="cols">
+                        <h4>月供金额(元)</h4>
+                        <i>￥</i><input type="text" v-model="initMoths | currency '' '' " readonly>
+                    </span>
+                </div>
+            </div>
+            <div class="gw_ck_list">
+                <ul>
+                    <li>
+                        <i class="iconfont jx">&#xe60b;</i>
+                        龙工650
+                    </li>
+                    <li>
+                        <i class="rmb">￥</i>
+                        <input type="text" v-model="initSum" maxLength="9">
+                        <i class="iconfont posr">&#xe60f;</i>
+                    </li>
+                </ul>
+            </div>
+            <div class="gw_ck_btn">
+                <ul>
+                    <li data-relation="block-sfbl" data-role="aside" data-title="首付比例">
+                        <h4>首付比例</h4>
+                        <span class="txt">{{initSfbl}}0%</span>
+                        <i class="iconfont posr">&#xe60f;</i>
+                    </li>
+                    <li data-relation="block-years" data-role="aside" data-title="贷款年限">
+                        <h4>贷款年限</h4>
+                        <span class="txt">{{initYears.key}}年</span>
+                        <i class="iconfont posr">&#xe60f;</i>
+                    </li>
+                </ul>
+                <ul>
+                    <li data-relation="block-bxhf" data-role="aside" data-title="必须花费">
+                        <h4 >必须花费(元)</h4>
+                        <span class="txt">{{initBxHy | currency '' '1'}}</span>
+                        <i class="iconfont posr">&#xe60f;</i>
+                    </li>
+                    <li>
+                        <h4>保险费用</h4>
+                        <span class="txt">{{initBxfy | currency '' '1'}}</span>
+                    </li>
+                </ul>
+            </div>
+            <p class="C_ps">注：此结果仅供参考，实际费用以当地经销商为准 </p>
+        </div>
+    
     </section>
+    
+    <!--首付比例-->
+    <aside class="aside block-sfbl">
+        <nav class="nav-final">
+            <p class="f_c666">首付比例</p>
+            <a class="back ms-right" href="javascript:void(0)">关闭</a>
+        </nav>
+        <section class="aside-main list-ok">
+           <ul class="list-line list-ty">
+             <li v-for="key in Asfbl" @click="setSfbl(key,$event)" :class="{active:$index==0}">{{key}}0% <i class="iconfont oks">&#xe616;</i></li>
+         </ul>
+        </section>
+    </aside>
+    
+    <!--贷款年限-->
+    <aside class="aside block-years">
+        <nav class="nav-final">
+            <p class="f_c666">贷款年限</p>
+            <a class="back ms-right" href="javascript:void(0)">关闭</a>
+        </nav>
+        <section class="aside-main list-ok">
+           <ul class="list-line list-ty">
+             <li v-for="key in Ayears" @click="setYears(key,$event)" :class="{active:$index==0}">{{key.val}} <i class="iconfont oks">&#xe616;</i></li>
+         </ul>
+        </section>
+    </aside>
+
+    <!--必须花费-->
+    <aside class="aside block-bxhf">
+        <nav class="nav-final">
+            <p class="f_c666">必须花费</p>
+            <a class="back ms-right" href="javascript:void(0)">关闭</a>
+        </nav>
+        <section class="aside-main list-ok">
+           <ul class="list-line list-ty">
+             <li>融资管理费 <span class="pr">{{initBxHy_a1 | currency '' '1'}}</span></li>
+             <li>合同公证费 <span class="pr">{{initBxHy_a2 | currency '' '1'}}</span></li>
+             <li>资信调查费 <span class="pr">{{initBxHy_a3 | currency '' '1'}}</span></li>
+             <li>GPS管理费 <span class="pr">{{initBxHy_a4 | currency '' '1'}}</span></li>
+             <li>货款保证金 <span class="pr">{{initBxHy_a5 | currency '' '1'}}</span></li>
+         </ul>
+        </section>
+    </aside>
+
+
     <script src="js/zepto-1.2.min.js"></script>
     <script src="js/fastclick.min.js"></script>
+    <script src="js/vue.min.js"></script>
     <script src="js/main.js"></script>
 
     <script>
@@ -29,6 +136,167 @@
              $('.js-back').on('click', function() {
                  history.go(-1);
              });
+             new Vue({
+                el:'#app',
+                data:function(){
+                    return {
+                        //必须花费 -费率和
+                        initPI:0.015,
+                        //总价格
+                        initCount:0,
+                        //初始裸车价格
+                        initSum:42000,
+                        //初始首付比例
+                        initSfbl:2,
+                        //首付车款
+                        initPrice:0,
+                        //首付合计
+                        initSumPrice:0,
+                        //初始贷款年限
+                        initYears:{
+                            key:.5,
+                            val:'半年'
+                        },
+                        //初始月供金额
+                        initMoths:10000,
+                        //必须花费
+                        initBxHy:0,
+                        //融资管理费
+                        initBxHy_a1:0,
+                        //合同公证费 1500 
+                        initBxHy_a2:1500,
+                        //资信调查费 1500 
+                        initBxHy_a3:1500,
+                        //GPS管理费
+                        initBxHy_a4:0,
+                        //货款保证金
+                        initBxHy_a5:0,
+
+                        //保险费用
+                        initBxfy:0,
+                        //首付比例
+                        Asfbl:[2,3,4,5,6,7,8,9,10],
+                        //贷款年限
+                        Ayears:[{
+                            key:.5,
+                            val:'半年'
+                        },{
+                            key:1,
+                            val:'一年'
+                        },{
+                            key:1.5,
+                            val:'一年半'
+                        },{
+                            key:2,
+                            val:'两年'
+                        },{
+                            key:2.5,
+                            val:'两年半'
+                        },{
+                            key:3,
+                            val:'三年'
+                        },{
+                            key:3.5,
+                            val:'三年半'
+                        },{
+                            key:4,
+                            val:'四年'
+                        }]
+                    }
+                },
+                ready:function(){
+                    var that=this;
+
+                    //计算 首付车款
+                    var cf1=function(){
+                        that.initPrice=that.initSum*that.initSfbl*0.1;
+                        
+                    }
+                    //计算 保险费用
+                    var cf2=function(){
+                        that.initBxfy=that.initSum*0.012*that.initYears.key;
+                    }
+                    //计算 首付合计
+                    var cf3=function(){
+                        that.initSumPrice=that.initBxHy+that.initPrice;
+                    }
+
+                    //计算 融资管理费
+                    var cf4=function(){
+                        that.initBxHy_a1=(that.initSum-that.initPrice)*that.initPI*that.initYears.key;
+                    }
+                    //计算 GPS管理费
+                    var cf5=function(){
+                        that.initBxHy_a4=5000*that.initYears.key;
+                    }
+                    //计算 货款保证金
+                    var cf6=function(){
+                        that.initBxHy_a5=(that.initSum-that.initPrice)*0.05;
+                    }
+                    //计算 必须花费
+                    var cf7=function(){
+                        that.initBxHy=that.initBxHy_a1+that.initBxHy_a2+that.initBxHy_a3+that.initBxHy_a4+that.initBxHy_a5;
+
+                        cf3();
+                    }
+
+                    //计算总金额
+                    var cf8=function(){
+                        that.initCount=that.initSumPrice+that.initMoths*that.initYears.key-that.initBxHy_a5;
+                    }
+
+                    cf1();
+                    cf2();
+                    cf4();
+                    cf5();
+                    cf6();
+                    cf7();
+                    cf8();
+
+                    this.$watch('initSfbl',function(){
+                        cf1();
+                        cf2();
+                        cf4();
+                        cf5();
+                        cf6();
+                        cf7();
+                        cf8();
+                    });
+                    this.$watch('initSum',function(){
+                        cf1();
+                        cf2();
+                        cf4();
+                        cf5();
+                        cf6();
+                        cf7();
+                        cf8();
+                    });
+                    this.$watch('initYears',function(){
+                        cf1();
+                        cf2();
+                        cf4();
+                        cf5();
+                        cf6();
+                        cf7();
+                        cf8();
+                    });
+                    
+                },
+                methods:{
+                    //选择首付比例
+                    setSfbl:function(key,evt){
+                       $(evt.target).addClass('active').siblings('li').removeClass('active')
+                        this.initSfbl=key;
+                        $.aside.closeAll();
+                    },
+                    //选择贷款年限
+                    setYears:function(key,evt){
+                       $(evt.target).addClass('active').siblings('li').removeClass('active')
+                        this.initYears=key;
+                        $.aside.closeAll();
+                    }
+                }
+             })
          })
     </script>
 </body>

@@ -48,7 +48,7 @@
                 <a href="javascript:void(0)" id="add_">
                     <i class="iconfont">&#xe611;</i>添加对比
                 </a>
-                <a href="javascript:alert('添加中')">
+                <a href="car_gw.html">
                     <i class="iconfont">&#xe602;</i>购机计算器
                 </a>
             </div>
@@ -169,10 +169,9 @@
             })
 
             $('#add_').click(function(){
-                $('.aside').off('click');
-
+                //$('.aside').off('click');
                 $(this).addClass('noblur');
-                _alert({
+               _alert({
                     isOk: 1,
                     title: '已加入对比框中<br>您还可以继续添加'
                 });
@@ -182,6 +181,7 @@
             });
 
             $('#js_duibi').on('click','.list-ck a',function(evt){
+
                 if($(evt.target).hasClass('del')){
                      $(this).parent('li').remove();
                     return;

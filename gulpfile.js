@@ -49,7 +49,7 @@ gulp.task('jsmin', function (cb) {
 
 gulp.task('cssmin', function (cb) {
   pump([
-        gulp.src(['src/css/*.css']),
+        gulp.src(['src/css/*/*.*','src/css/*.*','!src/css/*.less']),
         gulp.dest('docs/css/')
     ],
     cb
