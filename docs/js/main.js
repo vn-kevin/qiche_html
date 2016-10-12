@@ -1138,3 +1138,21 @@ if (window.jQuery || window.Zepto) {
     }
     window._alert=_alert;
 })(Zepto);
+;(function($){
+    var loads=function(){
+        var bd_dom=$('body'),
+            dom=bd_dom.find('#Main_loads');
+        if(!dom.length){
+            bd_dom.append('<div id="Main_loads"><div class="ico ico1"></div><div class="ico ico2"></div><span class="bk"></span></div>');
+        }else{
+            dom.show();
+        }
+    }
+    var hideloads=function(){
+        $('#Main_loads').remove();
+    }
+    window.loads={
+        show:loads,
+        hide:hideloads
+    };
+})(Zepto);
