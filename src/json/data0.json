@@ -1,0 +1,1688 @@
+{
+    "param": [
+        {
+            "name": "主要参数",
+            "paramitems": [
+                {
+                    "name": "厂商指导价万元",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "81"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "84"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "121.50"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "129"
+                        }
+                    ]
+                },
+                {
+                    "name": "国家/地区补贴万元",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "-"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "-"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "-"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "-"
+                        }
+                    ]
+                },
+                {
+                    "name": "市场参考价万元",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "76"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "79"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "114.5"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "121.5"
+                        }
+                    ]
+                },
+                {
+                    "name": "操作重量kg",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "12800"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "13000"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "20700"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "21200"
+                        }
+                    ]
+                },
+                {
+                    "name": "标准挖斗容量m³",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "0.52"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "0.57"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "0.8{0.93}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "1"
+                        }
+                    ]
+                },
+                {
+                    "name": "挖斗挖掘力KN｛tf｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "90.1{9.2}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "90.1{9.2}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "143{14.6}/157{16.0}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "143{14.6}/157{16.0}"
+                        }
+                    ]
+                },
+                {
+                    "name": "接地比压kpa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "40.0{0.41}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "39.0{0.40}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "600-46{0.47}/800-36{0.37}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "600-44{0.45}/800-34{0.35}"
+                        }
+                    ]
+                },
+                {
+                    "name": "小臂挖掘力KN｛tf｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "64.4{6.6}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "64.4{6.6}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "102{10.4}/112{11.4}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "102{10.4}/112{11.4}"
+                        }
+                    ]
+                },
+                {
+                    "name": "官方油耗L/h",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "整机质保",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "1年不限小时"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "1年不限小时"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "1年不限小时"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "1年不限小时"
+                        }
+                    ]
+                },
+                {
+                    "name": "机械名称",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "神钢SK130-8（进口）"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "神钢SK140LC-8（进口）"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "神钢SK200-10（进口）"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "神钢SK210LC-10（进口）"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "发动机",
+            "paramitems": [
+                {
+                    "name": "缸桶数",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "4"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "4"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "内径*冲程mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "102mm*130mm"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "102mm*130mm"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "额定功率KW｛PS｝/min-1",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "74KW/2000"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "74KW/2000"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "118KW/2000"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "118KW/2000"
+                        }
+                    ]
+                },
+                {
+                    "name": "最大扭矩N.m/min-1",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "375/1600"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "375/1600"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "592/1600"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "592/1600"
+                        }
+                    ]
+                },
+                {
+                    "name": "排气量L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "4.249"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "4.249"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "5.123"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "5.123"
+                        }
+                    ]
+                },
+                {
+                    "name": "型式",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "4程水冷 4汽缸 直喷式排气 涡轮增压装置（含中冷器）"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "4程水冷 4汽缸 直喷式排气 涡轮增压装置（含中冷器）"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "直喷 水冷 四冲程 涡轮增压 内置中冷"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "直喷 水冷 四冲程 涡轮增压 内置中冷"
+                        }
+                    ]
+                },
+                {
+                    "name": "型号",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "三菱 D04FR"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "三菱 D04FR"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "日野 J05ETA-KSSE"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "日野 J05ETA-KSSE"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "液压装置",
+            "paramitems": [
+                {
+                    "name": "控制回路最大压力MPa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "5.0{50}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "5.0{50}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "旋转回路最大压力MPa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "28.0{285}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "28.0{285}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "行走回路最大压力MPa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "挖斗最大压力MPa｛kgf/cm?｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "小臂最大压力MPa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "液压泵型式*数量",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "可变容量轴向柱塞式2个+齿轮式1个"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "可变容量轴向柱塞式2个+齿轮泵1个"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "双联可变排量轴向柱塞泵+先导齿轮泵"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "双联可变排量轴向柱塞泵+先导齿轮泵"
+                        }
+                    ]
+                },
+                {
+                    "name": "液压油冷却器型式",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "气冷式"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "气冷式"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "控制阀型式",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "滑阀式*8联1个"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "滑阀式*8联1个"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "先导控制泵型式",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "齿轮式"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "齿轮式"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "液压泵最大排量L/min",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2*130  1*20"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2*130  1*20"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "液压泵设定压力Mpa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "34.3{350}/37.8{385}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "34.3{350}/37.8{385}"
+                        }
+                    ]
+                },
+                {
+                    "name": "大臂最大压力MPa｛kgf/cm²｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "34.3{350}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "旋转系统",
+            "paramitems": [
+                {
+                    "name": "前端回转半径mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2620"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2620"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "3550"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "3550"
+                        }
+                    ]
+                },
+                {
+                    "name": "后端回转半径mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2190"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2190"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2900"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2900"
+                        }
+                    ]
+                },
+                {
+                    "name": "旋转速度min-1｛rpm｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "11"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "11"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "13.3"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "13.3"
+                        }
+                    ]
+                },
+                {
+                    "name": "旋转马达",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "轴向活塞泵马达（1个）"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "轴向活塞泵马达（1个）"
+                        }
+                    ]
+                },
+                {
+                    "name": "制动器",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "液压制动，手柄处于中立时自动制动"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "液压制动，手柄处于中立时自动制动"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "停车制动器",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "液压盘式制动器"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "液压盘式制动器"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "行走系统",
+            "paramitems": [
+                {
+                    "name": "履带板（块）",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "44*2"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "46*2"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "拖链轮数量",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "支重轮数量",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "爬坡能力%｛°｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "70{35}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "70{35}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "70{35}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "70{35}"
+                        }
+                    ]
+                },
+                {
+                    "name": "行走马达",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "两组两档变速柱塞式马达"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "两组两档变速柱塞式马达"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "可变容量轴向活塞马达（2个）"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "可变容量轴向活塞马达（2个）"
+                        }
+                    ]
+                },
+                {
+                    "name": "行走速度（高速/低速）km/h",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "5.6/3.4"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "5.6/3.4"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "6.0{3.6}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "6.0{3.6}"
+                        }
+                    ]
+                },
+                {
+                    "name": "停车制动器",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "制动器",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "液压盘式制动"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "液压盘式制动"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "行走牵引力KN｛tf｝",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "139{14.2}"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "139{14.2}"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "229{23.4}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "229{23.4}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "油类容量",
+            "paramitems": [
+                {
+                    "name": "旋转减速齿轮箱L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "1.65"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "1.65"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "液压油箱L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "101"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "101"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "140"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "140"
+                        }
+                    ]
+                },
+                {
+                    "name": "液压系统L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "172"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "172"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "244"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "244"
+                        }
+                    ]
+                },
+                {
+                    "name": "行走减速齿轮箱L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2*2.1"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2*2.1"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "燃油箱容积L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "275"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "275"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "320"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "320"
+                        }
+                    ]
+                },
+                {
+                    "name": "冷却系统L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "14"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "14"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "发动机油L",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "18.5"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "18.5"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "工作范围",
+            "paramitems": [
+                {
+                    "name": "水平挖掘距离mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "4210"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "4210"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "5270"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "5270"
+                        }
+                    ]
+                },
+                {
+                    "name": "最大垂直挖掘深度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "4880"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "4880"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "6160"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "6160"
+                        }
+                    ]
+                },
+                {
+                    "name": "最小卸载高度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2230"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2230"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2430"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2430"
+                        }
+                    ]
+                },
+                {
+                    "name": "最大卸载高度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "6090"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "6090"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "6910"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "6910"
+                        }
+                    ]
+                },
+                {
+                    "name": "大臂长度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "最大挖掘深度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "5520"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "5520"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "6700"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "6700"
+                        }
+                    ]
+                },
+                {
+                    "name": "最大挖掘半径mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "8340"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "8340"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "9900"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "9900"
+                        }
+                    ]
+                },
+                {
+                    "name": "小臂长度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2380"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2380"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2940"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2940"
+                        }
+                    ]
+                },
+                {
+                    "name": "最大挖掘高度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "8500"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "8500"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "9720"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "9720"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "整机尺寸",
+            "paramitems": [
+                {
+                    "name": "履带长度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "3580"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "3750"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "4170"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "4450"
+                        }
+                    ]
+                },
+                {
+                    "name": "履带轨距mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "1990"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "1990"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2200"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2390"
+                        }
+                    ]
+                },
+                {
+                    "name": "履带轴距mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2870"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "3040"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "3370"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "3660"
+                        }
+                    ]
+                },
+                {
+                    "name": "履带总宽mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2490"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2490"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2800"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2990"
+                        }
+                    ]
+                },
+                {
+                    "name": "履带板宽度（标准/选配）mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "500"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "500"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "600{800}"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "600{800}"
+                        }
+                    ]
+                },
+                {
+                    "name": "运输总高mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2870"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2870"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2980"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2980"
+                        }
+                    ]
+                },
+                {
+                    "name": "运输总宽mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2490"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2490"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2800"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2990"
+                        }
+                    ]
+                },
+                {
+                    "name": "运输总长mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "7790"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "7790"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "9600"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "9600"
+                        }
+                    ]
+                },
+                {
+                    "name": "斗齿数",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "5"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "5"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "5"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "5"
+                        }
+                    ]
+                },
+                {
+                    "name": "挖斗油缸mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "95*903"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "95*903"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "小臂油缸mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "115*1120"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "115*1120"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "大臂油缸mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "100*1092"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "100*1092"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "配重离地高度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "910"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "910"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "910"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "910"
+                        }
+                    ]
+                },
+                {
+                    "name": "最小离地间隙mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "440"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "440"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "450"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "450"
+                        }
+                    ]
+                },
+                {
+                    "name": "上车架宽度mm",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "2490"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "2490"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "2710"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "2710"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "其他     标配  ●      选配  ◎     无  -",
+            "paramitems": [
+                {
+                    "name": "推土板",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                },
+                {
+                    "name": "N&B配管",
+                    "valueitems": [
+                        {
+                            "specid": 13,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 14,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 15,
+                            "value": "--"
+                        },
+                        {
+                            "specid": 16,
+                            "value": "--"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "config": []
+}

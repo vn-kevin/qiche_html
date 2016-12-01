@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登录</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/parameter.css">
+   
+</head>
+<body>
+	<section class="wrapper search-box">
+     <nav class="nav-final">
+          <p>登录</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+          <a class="final-right" href="user_reg_lg.html">注册</a>
+    </nav>
+    <section class="form-main">
+     <div class="bk_">
+        
+        <div class="form-input">
+          <input type="text" placeholder='手机号' style="margin:0 1rem">
+        </div>
+        <div class="form-input">
+          <input type="password" placeholder="密码" style="margin:0 1rem">
+        </div>
+        
+      </div>
+      <button class="btn full primary mbtn">登录</button>
+
+      <div class="bk">
+        <p class="clearfix"><a href="#" class="fr">忘记密码</a></p>
+        
+        <div class="vb"><span class="dos">还可以使用以下账号登录</span></div>
+        <div class="lg_ba">
+          <a href="#" class="wx">微信登录</a>
+          <a href="#" class="qq">QQ登录</a>
+          <a href="#" class="wb">微博登录</a>
+        </div>
+      </div>
+
+    </section>
+  </section>
+    <script src="src/js/zepto-1.2.min.js"></script>
+    <script src="src/js/fastclick.min.js"></script>
+    <script>
+      $(function(){
+          $('.js-back').on('click', function() {
+            history.go(-1);
+          });
+
+      });
+    </script>
+</body>
+</html>

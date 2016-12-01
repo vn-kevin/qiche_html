@@ -16,10 +16,12 @@
 
   compareList.prototype = {
     defaultOption: {
-      seriesId: "145",
-      ids: [19250],
-      seriesName: "POLO",
-      type: 0
+      seriesId: "",
+      ids: [],
+      seriesName: "",
+      type: 0,
+      mtype: 1,
+      cityId:1
     },
     defaultParam: {
       sereisStateLoad: false,
@@ -104,10 +106,9 @@
             aright=$('.ck_right'),
             mwidth=0;
 
-
             if(lens>2){mwidth=(((lens+1)*c_w)-$('body').width())+(c_w-17);}
-        PATH_DATA='json/data'+lens+'.json?';
-        _this.getData(_this.config.ids);
+
+            _this.getData(_this.config.ids);
 
         setTimeout(function(){
              paramScrollerCompare.scrollTo(-mwidth,0,500, IScroll.utils.ease.circular);
@@ -142,21 +143,51 @@
         return false;
       });*/
     },
+    getNativeId:function(id){
+      var _this=this;
+      var isOks=function(){
+        var lens=$('#scroller__compare .column').length,
+            c_w=$('#scroller__compare .column').width(),
+            aleft=$('.ck_left'),
+            aright=$('.ck_right'),
+            mwidth=0;
+        if(lens>2){mwidth=(((lens+1)*c_w)-$('body').width())+(c_w-17);}
+        _this.config.ids.push(id);
+          _this.getData(_this.config.ids);
+          setTimeout(function() {
+            paramScrollerCompare.scrollTo(-mwidth, 0, 500, IScroll.utils.ease.circular);
+            paramScrollerDetail.scrollTo(-mwidth, 0, 500, IScroll.utils.ease.circular);
+          }, 500);
+      }
+      if(!_this.config.ids.length){
+        isOks();
+      }else{
+        for(var i=0,len=_this.config.ids.length;i<len;i++){
+          if(_this.config.ids[i]==id){
+            alert('该数据已经在对比数据中,请重新添加。');
+            return false;
+          }
+        }
+        isOks();
+      }
+    },
     getData: function(ids) {
       var _this = this;
       if ((!ids) || ids.length == 0) {
         _this.renderEmptyView();
         return;
       }
-      var url = PATH_DATA + ids;
+      
+      var url = PATH_DATA + ids + "&mtype=" + this.config.mtype+"&cityId="+this.config.cityId;
       $.getJSON(url, function(d) {
-        if (d == null || d == undefined || d.param == null || d.param == undefined || d.config == null || d.config == undefined) {
+          if (d == null || d == undefined || d.param == null || d.param == undefined || d.config == null || d.config == undefined) {
           return;
         }
         _this.defaultParam.currData = [];
         //参数
         _this.defaultParam.currData = d.param.concat(d.config);
         _this.renderView();
+        loads.hide();
       });
     },
     setHistory: function(specId) {
@@ -352,7 +383,7 @@
     getTitleItems: function(d) {
       var titleItems = [];
       for (var p in d) {
-        if (d[p].name === "基本参数") {
+        if (d[p].name === "主要参数") {
           for (var pItem in d[p].paramitems) {
             if (d[p].paramitems[pItem].name === "机械名称") {
               return d[p].paramitems[pItem].valueitems;
@@ -365,9 +396,9 @@
     getPriceItems: function(d) {
       var titleItems = [];
       for (var p in d) {
-        if (d[p].name === "基本参数") {
+        if (d[p].name === "主要参数") {
           for (var pItem in d[p].paramitems) {
-            if (d[p].paramitems[pItem].name === "厂商指导价(元)") {
+              if (d[p].paramitems[pItem].name === "厂商指导价 (万元）") {
               return d[p].paramitems[pItem].valueitems;
             }
           }
@@ -416,11 +447,10 @@
     checkTypeItem: function(data) {
       var hasValue = false;
       for (var j = 0; j < data.length; j++) {
-        if (data[j] && data[j].value != "-") {
+        if (data[j] && data[j].value != "&") {
           hasValue = true;
         }
       }
-
       if (hasValue) {
         for (var i = 0; i < data.length; i++) {
           if (data[i + 1] && (data[i].value != data[i + 1].value)) {
@@ -640,7 +670,8 @@
 
   //数据接口
   var PATH_LIST = "json/add.json",
-    PATH_DATA = 'json/data.json?ids=',
+     // PATH_DATA = '../App/GetProductsInfo/?ids=',
+     PATH_DATA = 'json/data0.json?ids=',
     //PATH_HISTORY = 'json/HistoryComSpecNew.json?',
     PATH_BRAND = 'json/pinpai.json?';
     //PATH_SERIES = '/ashx/spec/GetSeriesListByBrandIdNew.ashx?brandid=',
@@ -648,6 +679,7 @@
     //PATH_SUBSIDY = "http://car.interface.autohome.com.cn/Car/GetSpecElectricSubsidy.ashx?_callback=?&speclist=$spec&cityid=$city";
 
   window.compareList = compareList;
+
 
 
   //对比弹出层

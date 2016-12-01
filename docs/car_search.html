@@ -77,12 +77,42 @@
               </div>
             </div>
      </nav>
-     <div class="filter">
+     <div class="filter" data-tab data-tab-a=".filter-bread a" data-tab-b=".filter-cont" data-tab-ds='true'>
        <div class="filter-bread">
-         <a href="javascript:void(0)" data-relation="block-pinpai" data-url="json/pinpai.js" data-role="aside">全部品牌<i class="iconfont icon-jiantou-copy4"></i></a>
-         <a href="javascript:void(0)" data-relation="block-type" data-role="aside">全部价格<i class="iconfont icon-jiantou-copy4"></i></a>
-         <a href="javascript:void(0)" data-relation="block-sortT" data-role="aside">全部吨位<i class="iconfont icon-jiantou-copy4"></i></a>
+         <a href="javascript:void(0)">全部系列<i class="iconfont">&#xe610;</i></a>
+         <a href="javascript:void(0)">全部价格<i class="iconfont">&#xe610;</i></a>
+         <a href="javascript:void(0)">全部吨位<i class="iconfont">&#xe610;</i></a>
        </div>
+       <div class="filter-cont" id="all_city">
+         <ul class="list-line w_50 tit">
+           <li data-v="0" class="active">全部</li>
+           <li data-v="1">国产</li>
+           <li data-v="2">韩系</li>
+           <li data-v="3">欧美</li>
+           <li data-v="4">日本</li>
+         </ul>
+       </div>
+       <div class="filter-cont" id="all_type">
+         <ul class="list-line w_50 tit">
+           <li data-v="0" class="active">全部价格</li>
+           <li data-v="1">50万以下</li>
+           <li data-v="2">50-100万</li>
+           <li data-v="3">100-200万</li>
+           <li data-v="4">200万以上</li>
+         </ul>
+       </div>
+       <div class="filter-cont" id="all_stats">
+         <ul class="list-line">
+           <li data-title="0" class="active">全部吨位</li>
+           <li data-title="1">6T以下</li>
+           <li data-title="2">6T-10T</li>
+           <li data-title="3">10T-20T</li>
+           <li data-title="4">20T-30T</li>
+           <li data-title="5">30T-40T</li>
+           <li data-title="6">40T以上</li>
+         </ul>
+       </div>
+       <div class="filter-mask"></div>
      </div>
 
      <div class="series">
@@ -115,80 +145,7 @@
 	</section>
 
   <!--排序-->
-    <aside class="aside block-pinpai">
-        <nav class="nav-final">
-            <p>品牌</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-        <section class="aside-main list-ok aside-main-area">
-        </section>
-    </aside>
-
-    <aside class="aside block-type">
-        <nav class="nav-final">
-            <p>全部价格</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-      <section class="aside-main list-ok">
-            <a href="javascript:void(0)" class="item active">
-                <span>全部价格</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>50万以下</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>50-100万</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>100-200万</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>200万以上</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-        </section>
-    </aside>
-
-    <aside class="aside block-sortT">
-        <nav class="nav-final">
-            <p>全部吨位</p>
-            <a class="back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
-        </nav>
-      <section class="aside-main list-ok">
-            <a href="javascript:void(0)" class="item active">
-                <span>全部吨位</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>6T以下</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>6T-10T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>10T-20T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>20T-30T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>30T-40T</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-            <a href="javascript:void(0)" class="item">
-                <span>40T以上</span>
-                <i class="iconfont icon-ok"></i>
-            </a>
-        </section>
-    </aside>
+    
 
     <script src="js/zepto-1.2.min.js"></script>
     <script src="js/fastclick.min.js"></script>
@@ -219,22 +176,25 @@
                  }
                })
         }();
-
-        //品牌
-        $('.block-pinpai').on('click','.series a',function(){
-             $.aside.closeAll()
+        
+        var clearAll=function(){
+          $('#all_city,#all_type,#all_stats,.filter-mask').hide();
+          $('.filter-bread a').removeClass('active');
+        }
+        $('#all_city').on('click','li',function(){
+          $(this).addClass('active').siblings().removeClass('active');
+          clearAll();
         });
-        //品牌
-        $('.block-type').on('click','.list-ok a',function(){
-            $('[data-relation=block-type]').html($(this).text()+'<i class="iconfont icon-jiantou-copy4"></i>');
-            $(this).addClass('active').siblings('a').removeClass('active');
-            $.aside.closeAll()
+        $('#all_type').on('click','li',function(){
+          $(this).addClass('active').siblings().removeClass('active');
+          clearAll();
         });
-        //品牌
-        $('.block-sortT').on('click','.list-ok a',function(){
-            $('[data-relation=block-sortT]').html($(this).text()+'<i class="iconfont icon-jiantou-copy4"></i>');
-            $(this).addClass('active').siblings('a').removeClass('active');
-            $.aside.closeAll()
+        $('#all_stats').on('click','li',function(){
+          $(this).addClass('active').siblings().removeClass('active');
+          clearAll();
+        });
+        $('.filter-mask').click(function(){
+          clearAll();
         });
 
       });

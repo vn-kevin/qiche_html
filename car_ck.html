@@ -77,13 +77,13 @@
                     <a href="javascript:SeachAll({type:1})" class="Bd_b" >搜索</a>
                 </div>
                 <h3>品牌</h3>
-                <div class="series">
-                    <a >
-                    <img src="src/img/lg.jpg">
-                    <h4>龙工</h4>
+                <div class="series pinpai">
+                    <a href="javascript:void(0)">
+                    <img src="src/img/c20161120171137.jpg"  >
+                    <h4>龙工1</h4>
                     </a>
-                    <a >
-                    <img src="src/img/lg.jpg">
+                    <a href="javascript:void(0)">
+                    <img src="src/img/c20161120171137.jpg" >
                     <h4>龙工</h4>
                     </a>
                 </div>
@@ -103,22 +103,17 @@
                     <a data-ids="23">
                     <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
                     <h4 class="nomt">龙工</h4>
-                    <p class="price">308.80万</p>
+                    <p class="price">厂商指导价：30万</p>
                     </a>
-                    <a data-ids="24">
-                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
-                    <h4 class="nomt">龙工</h4>
-                    <p class="price">308.80万</p>
-                    </a>
-                    <a  data-ids="25">
+                    <a data-ids="23">
                     <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
                     <h4 class="nomt">龙工</h4>
-                    <p class="price">308.80万</p>
+                    <p class="price">厂商指导价：30万</p>
                     </a>
-                    <a  data-ids="26">
-                    <img src="http://resource.lonking.cn/images/201604/20160425181848474.jpg">
+                    <a data-ids="23">
+                    <img src="http://resource.lonking.cn/images/201605/2016052010001554.jpg">
                     <h4 class="nomt">龙工</h4>
-                    <p class="price">308.80万</p>
+                    <p class="price">厂商指导价：30万</p>
                     </a>
                 </div>
           </div>
@@ -142,7 +137,9 @@
         //页面初始化
         $(function () {
             //对比列表添加以及数据操作
-           var paramCompare = new compareList();
+           var paramCompare = new compareList({
+            ids:[]
+           });
             $('.js-back').on('click', function () { history.go(-1); });
 
             window.paramCompare = paramCompare;

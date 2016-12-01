@@ -191,8 +191,9 @@ html {
     font-size: 0.875rem;
 
     &.list-ck{
-        background-color: #e9e9e9;
-        
+            background-color: #e9e9e9;
+            padding-bottom: 0;
+           
         li{
             position: relative;
             background-color: #f8f8f8;
@@ -255,16 +256,6 @@ html {
             }
         }
     }
-}
-
-.list-ck-btn{
-            position: absolute;
-            width: 96%; 
-            left: 2%;
-            bottom: 3.5rem;
-            margin: 2rem 0 .5rem;
-            padding: .7rem .9375rem;
-            height: 2.65rem;
 }
 
 .list-line.list-line-logo li {
@@ -403,7 +394,11 @@ html {
 .btn.primary:visited {
     //color: #fffffe
 }
-
+.btn.danger{
+    color: #fff;
+     background-color: #f85858;
+    border-color: #f85858
+}
 .btn.primary .icon-mobile {
     margin-right: 0.3125rem
 }
@@ -727,7 +722,13 @@ html {
     border-bottom: 1px solid #dddee3;
     background-color: #f7f7f7;
     height: 3rem;
-    z-index: 10000
+    z-index: 10000;
+
+    &.nofinal{
+        background: none;
+        border-bottom: 1px solid #eee;
+        height: auto;
+    }
 }
 
 .nav-final .back,.nav-final .masks,.nav-final .ms-right {
@@ -1974,12 +1975,12 @@ html {
     text-align: center;
     vertical-align: middle;
     white-space: normal;
-    border-top: solid #d7d7d7 1px
+    border-top: solid #d7d7d7 1px;
 }
 
 .parameter-detail .detail .group .item .inner:empty {
-    background-color: transparent !important;
-    border-bottom: 0
+    //background-color: transparent !important;
+    //border-bottom: 0
 }
 
 .parameter-detail .detail .group .item .inner.highlight {

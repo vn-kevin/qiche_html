@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>注册</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/parameter.css">
+   
+</head>
+<body>
+	<section class="wrapper search-box">
+     <nav class="nav-final">
+          <p>注册</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+    </nav>
+    <section class="form-main">
+     <div class="bk_">
+        
+        <div class="form-input">
+          <span class="input-tt" style="left:auto;right:10px;padding-left:0;padding-right:0;text-align: left;"><a href="#">获取验证码</a></span>
+          <input type="text" placeholder='手机号' value="1351234567" style="margin:0 1rem">
+        </div>
+        <div class="form-input">
+          <input type="text" placeholder="请输入短信验证码" style="margin:0 1rem">
+        </div>
+        
+      </div>
+      <button class="btn full primary mbtn">下一步</button>
+      <div class="bk">
+        <p class="xuser clearfix"><i class="iconfont">&#xe620;</i>同意<a href="user_txt_lg.html" >用户服务协议</a></p>
+      </div>
+
+    </section>
+  </section>
+    
+   
+
+    <script src="js/zepto-1.2.min.js"></script>
+    <script src="js/fastclick.min.js"></script>
+    <script>
+      $(function(){
+          $('.js-back').on('click', function() {
+            history.go(-1);
+          });
+          $('.xuser .iconfont').click(function(){
+            $(this).toggleClass('active');
+          })
+      });
+    </script>
+</body>
+</html>

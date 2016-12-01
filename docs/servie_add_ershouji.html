@@ -22,26 +22,21 @@
      <div class="bk_">
         <div class="form-skip">
             <span class="skip-tt">所 在 地</span>          
-            <a id="workAdd" class="siftdd brand" href="javascript:;" data-role="aside"  data-url="json/add_city.js" data-relation="block-area" data-title="所在的城市">请选择您所在的城市
+            <a id="workAdd" class="siftdd brand" href="javascript:;" >请选择您所在的城市
                 <i class="iconfont">&#xe60f;</i>
-            </a>        
+            </a> 
         </div>
         <div class="form-skip">
             <span class="skip-tt">机械类型</span>          
-            <a id="workType" class="siftdd brand" href="javascript:;" data-relation="block-brands" data-role="aside" data-title="机械类型" >请选择您机械类型
+            <a id="workType" class="siftdd brand" href="javascript:;" >请选择您机械类型
                 <i class="iconfont">&#xe60f;</i>
-            </a>        
+            </a>
+            
         </div>
         <div class="form-input">
           <span class="input-tt">品牌型号</span>
           <input id="wordGg" type="text" placeholder="请填写机械品牌及型号">
         </div>
-
-        <!-- <div class="form-input">
-          <span class="input-tt">出厂年份</span>
-          <input type="text" placeholder="请选择出厂年份">
-          <strong class="unit">年</strong>
-        </div> -->
 
         <div class="form-input">
           <span class="input-tt">出厂年份</span>
@@ -100,15 +95,8 @@
               <div class="fast div" contenteditable="true" >请简单介绍一下您的一些需求,以方便别人更快向您提供设备</div>
 
                <div class="clearfix t_imgs">
-                          <span class="is">
-                            <img src="img/img.png" width="100%">
-                             <i class="iconfont del"></i>
-                           </span>
-                           <span class="is">
-                            <img src="img/img.png" width="100%">
-                            <i class="iconfont del"></i>
-                           </span>
-                           <span class="is ">
+                           <span class="is endis" >
+                            <input type="file" class="files" accept=".gif,.jpg,.jpeg,.png" id="btnupload">
                              <i class="iconfont add">&#xe603;</i>
                            </span>
               </div>
@@ -125,41 +113,43 @@
           </div>
         </div>
       <button class="btn full primary mbtn">一键发布</button>
+
+      <div class="filter-cont" id="all_workAdd">
+               <ul class="list-line w_50 tit">
+                 <li data-v="1">海南</li>
+                 <li data-v="2">河南</li>
+                 <li data-v="3">湖北</li>
+                 <li data-v="4">湖南</li>
+                 <li data-v="5">广东</li>
+                 <li data-v="6">黑龙江</li>
+                 <li data-v="1">海南</li>
+                 <li data-v="2">河南</li>
+                 <li data-v="3">湖北</li>
+                 <li data-v="4">湖南</li>
+                 <li data-v="5">广东</li>
+                 <li data-v="6">黑龙江</li>
+               </ul>
+               <ul class="list-line w_50 bg">
+               </ul>
+      </div>
+      <div class="filter-cont" id="all_workType">
+               <ul class="list-line w_50 tit">
+                 <li data-v="all" class="active">全部</li>
+                 <li data-v="1">土方机械</li>
+                 <li data-v="2">路面机械</li>
+                 <li data-v="3">起重机械</li>
+                 <li data-v="4">混泥土机械</li>
+                 <li data-v="5">桩工机械</li>
+               </ul>
+               <ul class="list-line w_50 bg">
+               </ul>
+       </div>
+      <div class="filter-mask"></div>
     </section>
   </section>
     
-    <aside class="aside block-brands">
-        <nav class="nav-final">
-            <p class="f_c666">机械类型</p>
-        </nav>
-        <section class="aside-main list-ok">
-           <ul class="list-line list-ty">
-             <li data-v="1" data-role="aside" data-url="json/add_types.js" data-relation="block-brands-cont">土方机械 </li>
-             <li data-v="2" data-role="aside" data-url="json/add_types.js" data-relation="block-brands-cont">路面机械 </li>
-             <li data-v="3" data-role="aside" data-url="json/add_types.js" data-relation="block-brands-cont">起重机械 </li>
-             <li data-v="4" data-role="aside" data-url="json/add_types.js" data-relation="block-brands-cont">混泥土机械 </li>
-             <li data-v="5" data-role="aside" data-url="json/add_types.js" data-relation="block-brands-cont">桩工机械</li>
-         </ul>
-        </section>
-    </aside>
 
-    <!--所在城市-->
-    <aside class="aside block-area">
-        <nav class="nav-final">
-            <p class="f_c666">所在城市</p>
-        </nav>
-        <section class="aside-main list-ok">
-        </section>
-    </aside>
-    <!--机械类型-->
-     <aside class="aside block-brands-cont">
-        <nav class="nav-final">
-             <a class="back" href="javascript:void(0)">返回</a>
-            <p class="f_c666">机械类型</p>
-        </nav>
-        <section class="aside-main list-ok">
-        </section>
-    </aside>
+  
 
     <script src="js/zepto-1.2.min.js"></script>
     <script src="js/fastclick.min.js"></script>
@@ -189,6 +179,73 @@
           $('#workAdd').html($(this).text().split(' ')[0]+'<i class="iconfont">&#xe60f;</i>')
           $.aside.closeAll()
         });
+
+
+        //选择所在地&&机械类型
+         var clearAll=function(){
+          $('#all_workAdd,#all_workType,.filter-mask').hide();
+          $('body').removeAttr('style')
+          $('#all_workType').removeAttr('style')
+          $('#all_workAdd').removeAttr('style')
+          $('.form-skip').removeAttr('style')
+        }
+        var dos = function(opts) {
+          $(opts.id).on('click', '.tit li', function() {
+            var _this = $(this);
+            _this.addClass('active').siblings().removeClass('active');
+            $.ajax({
+              url: opts.url + $(this).attr('data-v'),
+              type: 'get',
+              dataType: "html",
+              success: function(data) {
+                $(opts.id+'>.bg').css({
+                  left: '50%'
+                }).html(data).scrollTop(0)
+              }
+            });
+          });
+          $(opts.id).on('click', '.bg li', function() {
+            $(this).addClass('on').siblings().removeClass('on');
+            $('#'+opts.id.split('_')[1]).text($(this).text());
+            clearAll();
+          });
+        }
+        dos({
+          id:'#all_workAdd',
+          url:'/json/citys.js?id='
+        });
+        dos({
+          id:'#all_workType',
+          url:'/json/jxlx.json?id='
+        });
+        $('#workAdd').click(function(){
+          $(this).parents('.form-skip').css('z-index',4);
+          $('#all_workAdd').css('top',$(this).offset().top+$(this).height()).show();
+          $('.filter-mask').show();
+          $('body').css('overflow','hidden')
+        });
+        $('#workType').click(function(){
+          $(this).parents('.form-skip').css('z-index',4);
+          $('#all_workType').css('top',$(this).offset().top+$(this).height()).show();
+          $('.filter-mask').show();
+          $('body').css('overflow','hidden')
+        });
+
+        //上传
+        document.getElementById('btnupload').addEventListener('change',readFile,false);
+          function readFile(){
+               var file = this.files[0];
+               var reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = function(e){
+                    $('.endis').before('<span class="is"><img src="'+this.result+'" width="100%"><i class="iconfont del"></i></span>')
+                }
+          };
+          $(document).on('click','.t_imgs .del',function(){
+              $(this).parents('.is').remove();
+          });
+
+
       });
     </script>
 </body>

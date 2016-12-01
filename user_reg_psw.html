@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置密码</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1.0,user-scalable=no"/>  
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no" />
+    
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/parameter.css">
+   
+</head>
+<body>
+	<section class="wrapper search-box">
+     <nav class="nav-final">
+          <p>设置密码</p>
+          <a class="back js-back" href="javascript:void(0)"><i class="iconfont">&#xe60e;</i></a>
+    </nav>
+    <section class="form-main">
+     <div class="bk_">
+        
+        <div class="form-input">
+          <input type="password" placeholder='请输入您的密码'  style="margin:0 1rem">
+        </div>
+        <div class="form-input">
+          <input type="password" placeholder="确认密码" style="margin:0 1rem">
+        </div>
+        <div class="form-input">
+          <input type="text" placeholder="请输入推荐码(没有好友推荐可不填)" style="margin:0 1rem">
+        </div>
+        
+      </div>
+      <button class="btn full primary mbtn">完成</button>
+
+    </section>
+  </section>
+
+    <script src="src/js/zepto-1.2.min.js"></script>
+    <script src="src/js/fastclick.min.js"></script>
+    <script>
+      $(function(){
+          $('.js-back').on('click', function() {
+            history.go(-1);
+          });
+         
+      });
+    </script>
+</body>
+</html>
