@@ -89,10 +89,10 @@ $(function () {
                 var paramHeaderStandRectHeight = paramHeaderStandRect.height;
 
                 if (docScrollTop >= paramHeaderTop && !paramHeaderStandRectHeight) {
-                    $paramHeader.addClass('sticky');
+                    //$paramHeader.addClass('sticky');
                     $paramHeaderStand.removeClass('fn-hide');
                 } else if (docScrollTop < paramHeaderStandRectTop) {
-                    $paramHeader.removeClass('sticky');
+                    //$paramHeader.removeClass('sticky');
                     $paramHeaderStand.addClass('fn-hide');
                 }
 
