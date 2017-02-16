@@ -3,8 +3,6 @@ $(function () {
 
     /**
      * @file 车型参数配置对比
-     * @author maxingguo(maxingguo@autohome.com.cn)
-     * @update 2016.06.02
      * 
      * 1.对比车型左右滑动。
      * 2.顶部跟随。（高度不定）
@@ -88,13 +86,13 @@ $(function () {
                 var paramHeaderStandRectTop = paramHeaderStandRect.top;
                 var paramHeaderStandRectHeight = paramHeaderStandRect.height;
 
-                if (docScrollTop >= paramHeaderTop && !paramHeaderStandRectHeight) {
-                    $paramHeader.addClass('sticky');
+                /*if (docScrollTop >= paramHeaderTop && !paramHeaderStandRectHeight) {
+                    //$paramHeader.addClass('sticky');
                     $paramHeaderStand.removeClass('fn-hide');
                 } else if (docScrollTop < paramHeaderStandRectTop) {
-                    $paramHeader.removeClass('sticky');
+                    //$paramHeader.removeClass('sticky');
                     $paramHeaderStand.addClass('fn-hide');
-                }
+                }*/
 
                 var paramHeaderHeight = paramHeaderRect.height;
                 $paramItem = $paramDetail.find('.left .group'); // dom 变更后需重新获取节点
