@@ -86,7 +86,11 @@ $(function () {
                 var paramHeaderStandRectTop = paramHeaderStandRect.top;
                 var paramHeaderStandRectHeight = paramHeaderStandRect.height;
 
+<<<<<<< HEAD
                 /*if (docScrollTop >= paramHeaderTop && !paramHeaderStandRectHeight) {
+=======
+                if (docScrollTop >= paramHeaderTop && !paramHeaderStandRectHeight) {
+>>>>>>> f6e6b3b17aeef7cf69004745f1ce3e454533e2f7
                     //$paramHeader.addClass('sticky');
                     $paramHeaderStand.removeClass('fn-hide');
                 } else if (docScrollTop < paramHeaderStandRectTop) {
