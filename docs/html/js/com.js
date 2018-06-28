@@ -1,3 +1,4 @@
+var imgdom;
 $.isMobile = function (type) {
     var reg = [];
     var any = {
@@ -17,16 +18,17 @@ $.openModel = function (_t, type, callback) {
         $body = _t.parents('.w');
     var temp;
     if (ty == 1) {
-        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascriipt:void(0)"></a><div class="content">' + _t.html() + '</div></div>'
+        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascript:void(0)"></a><div class="content">' + _t.html() + '</div></div>'
     } else if (ty == 2) {
         var imgs = '',
             imgs1 = '';
         imgdom.each(function (e, i) {
+            console.log($(i))
             var d = $(i);
             imgs += '<div class="swiper-slide"><div class="img" style="background-image:url(' + d.find('img').attr('src') + ')"> </div><p class="pc">' + d.find('.txt').text() + '</p></div>'
             imgs1 += '<div class="swiper-slide ' + (e == 0 ? 'active-nav' : '') + '"><img src="' + d.find('img').attr('src') + '"></div>'
         })
-        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascriipt:void(0)"></a><div class="content">' +
+        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascript:void(0)"></a><div class="content">' +
             '<div class="pc-slide">' +
             '<div class="view">' +
             '<div class="swiper-container">' +
@@ -49,105 +51,20 @@ $.openModel = function (_t, type, callback) {
             '</div>' +
             '</div>' +
             '</div></div>'
+    } else if (ty == 3) {
+        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascript:void(0)"></a><div class="content">' + _t.find('.modelContent').html() + '</div></div>'
     } else if (ty == 4) {
-        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascriipt:void(0)"></a><div class="content">' + _t.find('.modelContent').html() + '</div></div>'
+        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascript:void(0)"></a><div class="content">' + _t.find('.modelContent').html() + '</div></div>'
     } else if (ty == 5) {
-        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascriipt:void(0)"></a><div class="content">' + _t.find('.modelContent').html() + '</div></div>'
+        temp = '<div class="model openModel' + ty + '"><a class="close" href="javascript:void(0)"></a><div class="content">' + _t.find('.modelContent').html() + '</div></div>'
     }
     $body.append(temp);
     typeof (callback) == 'function' && callback();
 }
 
 
-var imgdom;
-$(function () {
-    imgdom = $('.layout2 .img_ .swiper-slide');
-    // swiper 层叠轮播示例，没用到可以不拷贝
-    var modify = 0;
-    var opts = {
-        watchSlidesProgress: true,
-        slidesPerView: 'auto',
-        centeredSlides: true,
-        loop: true,
-        loopedSlides: 7,
-        autoplay: false,
-        navigation: {
-            nextEl: '.m-slide-certify .swiper-button-next',
-            prevEl: '.m-slide-certify .swiper-button-prev',
-        },
-        on: {
-            progress: function (progress) {
-                for (i = 0; i < this.slides.length; i++) {
-                    var slide = this.slides.eq(i);
-                    var slideProgress = this.slides[i].progress;
 
-                    if (Math.abs(slideProgress) > 1) {
-                        modify = (Math.abs(slideProgress) - 1) * 0.4 + 1;
-                    }
-                    translate = slideProgress * modify * 75 + 'px';
-                    scale = 1 - Math.abs(slideProgress) / 7;
-                    zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
-                    slide.transform('translateX(' + translate + ') scale(' + scale + ')');
-                    slide.css('zIndex', zIndex);
-                    slide.css('opacity', scale);
-                    if (Math.abs(slideProgress) > 5) {
-                        slide.css('opacity', 0);
-                    }
-                }
-            },
-            setTransition: function (transition) {
-                for (var i = 0; i < this.slides.length; i++) {
-                    var slide = this.slides.eq(i)
-                    slide.transition(transition);
-                }
-            }
-        }
-    };
-    //移动配置
-    if($.isMobile()){
-        opts = {
-            watchSlidesProgress: true,
-            slidesPerView: 'auto',
-            centeredSlides: true,
-            loop: true,
-            loopedSlides: 3,
-            autoplay: false,
-            navigation: {
-                nextEl: '.m-slide-certify .swiper-button-next',
-                prevEl: '.m-slide-certify .swiper-button-prev',
-            },
-            on: {
-                progress: function (progress) {
-                    for (i = 0; i < this.slides.length; i++) {
-                        var slide = this.slides.eq(i);
-                        var slideProgress = this.slides[i].progress;
-    
-                        if (Math.abs(slideProgress) > 1) {
-                            modify = (Math.abs(slideProgress) - 1) * 0.4 + 1;
-                        }
-                        translate = slideProgress * modify * 50 + 'px';
-                        scale = 1 - Math.abs(slideProgress) / 3;
-                        zIndex = 999 - Math.abs(Math.round(10 * slideProgress));
-                        slide.transform('translateX(' + translate + ') scale(' + scale + ')');
-                        slide.css('zIndex', zIndex);
-                        slide.css('opacity', scale);
-                        if (Math.abs(slideProgress) > 1) {
-                            slide.css('opacity', 0);
-                        }
-                    }
-                },
-                setTransition: function (transition) {
-                    for (var i = 0; i < this.slides.length; i++) {
-                        var slide = this.slides.eq(i)
-                        slide.transition(transition);
-                    }
-                }
-            }
-        }
-    }
 
-    var certifySwiper = new Swiper('.m-slide-certify .swiper-container', opts);
-});
 
 $(function () {
     $('html').addClass($.isMobile() ? 'mobile' : 'desktop');
@@ -172,6 +89,10 @@ $(function () {
                 $('body').css('overflow', 'hidden')
             }
         });
+        nav.find('li a').click(function () {
+            nav.removeClass('active')
+            $('body').css('overflow', 'auto')
+        })
 
         var domss = $('#a1 .li');
         $('#a1 .swiper-wrapper').html(domss);
@@ -179,126 +100,105 @@ $(function () {
 
         setTimeout(function () {
             var swiper = new Swiper('#a1 .cont', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                pagination: {
-                    el: '#a1 .swiper-pagination',
-                    clickable: true,
-                },
+                pagination: '#a1 .swiper-pagination',
+                loop: true,
+                autoplay: 2000,
+                grabCursor: true,
+                paginationClickable: true
             });
         })
 
     } else {
+        var swiper = new Swiper('#a1 .cont', {
+            pagination: '#a1 .swiper-pagination',
+            loop: true,
+            grabCursor: true,
+            paginationClickable: true
+        });
+
         //layout1
         $('.layout1 .li')[evts](function (e) {
             $.openModel($(this));
         });
-
-        var swiper = new Swiper('#a1 .cont', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            pagination: {
-                el: '#a1 .swiper-pagination',
-                clickable: true,
-            },
-        });
     }
 
-    //layout2
-    $('.layout2 .swiper-slide')[evts](function (e) {
-        console.log(123)
-        $.openModel($(this), 2, function () {
-            function updateNavPosition() {
-                $('.preview .active-nav').removeClass('active-nav')
-                var activeNav = $('.preview .swiper-slide').eq(viewSwiper.activeIndex).addClass('active-nav')
-                if (!activeNav.hasClass('swiper-slide-visible')) {
-                    if (activeNav.index() > previewSwiper.activeIndex) {
-                        var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
-                        previewSwiper.slideTo(activeNav.index() - thumbsPerNav)
-                    } else {
-                        previewSwiper.slideTo(activeNav.index())
-                    }
-                }
-            }
-            var viewSwiper = new Swiper('.view .swiper-container', {
-                on: {
-                    slideChangeTransitionStart: function () {
-                        updateNavPosition()
-                    }
-                }
-            })
-            $('.view .arrow-left,.preview .arrow-left').on('click', function (e) {
-                e.preventDefault()
-                if (viewSwiper.activeIndex == 0) {
-                    viewSwiper.slideTo(viewSwiper.slides.length - 1, 1000);
-                    return
-                }
-                viewSwiper.slidePrev()
-            })
-            $('.view .arrow-right,.preview .arrow-right').on('click', function (e) {
-                e.preventDefault()
-                if (viewSwiper.activeIndex == viewSwiper.slides.length - 1) {
-                    viewSwiper.slideTo(0, 1000);
-                    return
-                }
-                viewSwiper.slideNext()
-            })
-            var previewSwiper = new Swiper('.preview .swiper-container', {
-                //visibilityFullFit: true,
-                slidesPerView: 'auto',
-                allowTouchMove: false,
-                on: {
-                    tap: function () {
-                        viewSwiper.slideTo(previewSwiper.clickedIndex)
-                    }
-                }
-            })
-
-
-        });
-    });
-
-    //相册
     (function () {
-        var tmp = '';
-        $('#photos .jsimg_r img').each(function () {
-            var $this = $(this);
-            tmp += '<li><img src="' + $this.attr('src') + '"><h6>' + $this.attr('alt') + '</h6></li>'
-        })
-        $('#photos .banner ul').html(tmp);
-
-        setTimeout(function () {
-            var di = -1;
-            $('.atBanner .banner').unslider({
-                fluid: true,
-                dots: true
-            });
-            var ds = $('#photos .banner').unslider({
-                fluid: true,
-                dots: true,
-                autoplay: false,
-                complete: function (i, t) {
-                    $ps.find('.jsimg_r a').eq(t).addClass('active').siblings().removeClass('active')
-                },
-            });
-
-            //相册
-            var $ps = $('#photos');
-            if ($ps.length) {
-                var $psR = $ps.find('.jsimg_r a');
-                $psR.mouseenter(function () {
-                    di = $(this).index()
-                    $(this).addClass('active').siblings().removeClass('active');
-                    ds.data('unslider').move(di)
-                });
-                $ps.hover(function () {
-                    ds.data('unslider').stop();
-                }, function () {
-                    ds.data('unslider').start();
-                });
+        // swiper 层叠轮播示例，没用到可以不拷贝
+        var modify = 0;
+        var opts = {
+            slidesPerView: 3,
+            loop: true,
+            autoplay: 2000,
+            centeredSlides: true,
+            //Enable 3D Flow
+            tdFlow: {
+                rotate: 30,
+                stretch: 10,
+                depth: 150,
+                modifier: 1,
+                shadows: false
             }
-        }, 500);
+        };
+        imgdom = $('.layout2 .img_ .swiper-slide');
+        console.log(imgdom)
+        var certifySwiper = new Swiper('.m-slide-certify .swiper-container', opts);
+        $('.m-slide-certify .swiper-button-prev').on('click', function (e) {
+            e.preventDefault()
+            certifySwiper.swipePrev()
+        })
+        $('.m-slide-certify .swiper-button-next').on('click', function (e) {
+            e.preventDefault()
+            certifySwiper.swipeNext()
+        })
+    
+        //layout2
+        $('.layout2 .swiper-slide')[evts](function (e) {
+    
+    
+            $.openModel($(this), 2, function () {
+                    function updateNavPosition() {
+                        $('.preview .active-nav').removeClass('active-nav')
+                        var activeNav = $('.preview .swiper-slide').eq(viewSwiper.activeIndex).addClass('active-nav')
+                        if (!activeNav.hasClass('swiper-slide-visible')) {
+                            if (activeNav.index() > previewSwiper.activeIndex) {
+                                var thumbsPerNav = Math.floor(previewSwiper.width / activeNav.width()) - 1
+                                previewSwiper.swipeTo(activeNav.index() - thumbsPerNav, 1000, false);
+                            } else {
+                                previewSwiper.swipeTo(activeNav.index(), 1000, false);
+                            }
+                        }
+                    }
+                    // var viewSwiper = new Swiper('.view .swiper-container', {
+                    //     onSlideChangeEnd: function () {
+                    //         updateNavPosition()
+                    //     }
+                    // })
+                    // $('.view .arrow-left,.preview .arrow-left').on('click', function (e) {
+                    //     e.preventDefault()
+                    //     viewSwiper.swipePrev()
+                    // })
+                    // $('.view .arrow-right,.preview .arrow-right').on('click', function (e) {
+                    //     e.preventDefault()
+                    //     viewSwiper.swipeNext()
+                    // })
+                    // var previewSwiper = new Swiper('.preview .swiper-container', {
+                    //     //visibilityFullFit: true,
+                    //     slidesPerView: 'auto',
+                    //     allowTouchMove: false,
+                    //     onSlideClick: function (s) {
+                    //         $('.preview .swiper-slide').removeClass('active-nav').eq(previewSwiper.clickedSlideIndex).addClass('active-nav')
+                    //         viewSwiper.swipeTo(previewSwiper.clickedSlideIndex, 1000, false);
+                    //     }
+                    // })
+    
+            });
+        });
     })();
+
+    //layout3
+    $('.layout3 .jsimg_r a')[evts](function (e) {
+        $.openModel($(this), 3);
+    });
 
     //layout4
     $('.layout4 .aa')[evts](function (e) {
@@ -309,43 +209,42 @@ $(function () {
         $.openModel($(this), 5);
     });
 
-    (function () {
-        var swiper = new Swiper('#a3 .cont', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            pagination: {
-                el: '#a3 .swiper-pagination',
-                clickable: true,
-            },
-        });
-    })();
 
     //layout6
     (function () {
         var i = -1;
-        $('#a4 .pos').click(function () {
-            var index = $(this).index();
-            if($.isMobile()){
-                $('#a4 .cont > .hotPie').fadeOut().remove()
-            }else{
-                $('.hotPie').fadeOut()
-            }
-            if (i != index) {
-                i = index;
-                if($.isMobile()){
-                    $('#a4 .cont').append('<div class="hotPie">'+ $(this).find('.hotPie').html() +'</div>');
-                    $('#a4 .cont > .hotPie').fadeIn().click(function(){
-                        i = -1;
-                        $('#a4 .cont > .hotPie').fadeOut().remove()
-                    })
-                    
-                }else{
-                    $(this).find('.hotPie').fadeIn()
+        if ($.isMobile()) {
+            $('#a4 .pos').click(function () {
+                var index = $(this).index();
+                if ($.isMobile()) {
+                    $('#a4 .cont > .hotPie').fadeOut().remove()
+                } else {
+                    $('.hotPie').fadeOut()
                 }
-            }else{
-                i = -1;
-            }
-        })
+                if (i != index) {
+                    i = index;
+                    if ($.isMobile()) {
+                        $('#a4 .cont').append('<div class="hotPie">' + $(this).find('.hotPie').html() + '</div>');
+                        $('#a4 .cont > .hotPie').fadeIn().click(function () {
+                            i = -1;
+                            $('#a4 .cont > .hotPie').fadeOut().remove()
+                        })
+
+                    } else {
+                        $(this).find('.hotPie').fadeIn()
+                    }
+                } else {
+                    i = -1;
+                }
+            })
+        } else {
+            $('#a4 .pos').hover(function () {
+                $(this).find('.hotPie').fadeIn()
+            }, function () {
+                $('.hotPie').fadeOut()
+            });
+        }
+
     })();
 
     //顶部
